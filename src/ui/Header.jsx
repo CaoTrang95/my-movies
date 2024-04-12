@@ -1,107 +1,96 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import MyToolTip from "./Tooltip";
+import { FaPlus, FaSearch } from "react-icons/fa";
 
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 64px;
   background-color: rgba(3, 37, 65, 1);
 `;
 const NavWrapper = styled.div`
+  width: 100%;
   height: 50px;
   padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
 `;
-const NavLeft = styled.div`
-  height: 100%;
+const NavItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  & a {
-    display: block;
+  flex-shrink: 0;
+  a {
+    display: flex;
+    align-items: center;
     width: 154px;
     margin-right: 30px;
+    height: 20px;
   }
-  & ul {
+  ul {
     height: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
     color: white;
-    gap: 30px;
+    gap: 14px;
     list-style-type: none;
   }
-  & li {
+  li {
     cursor: pointer;
+    margin-right: 14px;
   }
-`;
-
-const TooltipMenu = styled.div`
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  width: 173.078px;
-  height: 138px;
-  z-index: 1000;
-  position: absolute;
-  top: 45px;
-  left: 0px;
-  border-radius: 0 0 0.25rem 0.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-
-  & ul {
-    position: absolute;
-    line-height: 24px;
-    display: block;
-    border-color: rgba(0, 0, 0, 0.15);
-    color: #212529;
-    background-color: #fff;
-    width: 100%;
-    padding: 0.5rem 0;
-    border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
-  }
-  & li {
-    color: #000;
-    font-family: sans-serif;
-    font-size: 15px;
-    width: 100%;
-    background: #fff;
-  }
-  & li:hover {
-    background-color: #f8f9fa;
-    cursor: pointer;
-  }
-  & a {
-    padding: 3px 1.5rem;
-    padding-right: calc(3rem + 16px);
-    color: #000;
-    white-space: nowrap;
+  li a {
+    color: #fff;
     cursor: pointer;
     text-decoration: none;
+    width: 100%;
+    margin-right: 0;
   }
 `;
-const Tooltip = styled.li`
-  height: 100%;
-  position: relative !important;
+const BoxVisible = styled.li`
+  width: 28px;
+  height: 26px;
   display: flex;
   align-items: center;
-
-  &:hover ${TooltipMenu} {
-    visibility: visible;
-    display: block;
-    opacity: 1;
-    cursor: pointer;
-    z-index: 3000;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 0.7rem;
+  &:hover {
+    background-color: white;
+    color: black;
   }
 `;
-
-const NavRight = styled.div``;
+const tooltipMovies = [
+  { link: "/", content: "Popular" },
+  { link: "/", content: "Now Playing" },
+  { link: "/", content: "Upcoming" },
+  { link: "/", content: "Top Rated" },
+];
+const tooltipTvShows = [
+  { link: "/", content: "Popular" },
+  { link: "/", content: "Airing Today" },
+  { link: "/", content: "On TV" },
+  { link: "/", content: "Top Rated" },
+];
+const tooltipPeople = [{ link: "/", content: "Popular People" }];
+const tooltipMore = [
+  { link: "/", content: "Discussions" },
+  { link: "/", content: "Leaderboard" },
+  { link: "/", content: "Support" },
+  { link: "/", content: "API" },
+];
 export default function Header() {
   return (
     <>
       <StyledHeader>
         <NavWrapper>
-          <NavLeft>
+          <NavItem>
             <Link to="/">
               <img
                 src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
@@ -109,59 +98,30 @@ export default function Header() {
               ></img>
             </Link>
             <ul>
-              <Tooltip>
-                <span>Movies</span>
-                <TooltipMenu>
-                  <ul>
-                    <li>
-                      <Link to="/">Popular</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Now Playing</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Upcoming</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Top Rated</Link>
-                    </li>
-                  </ul>
-                </TooltipMenu>
-              </Tooltip>
-              <Tooltip>
-                <span>TV Shows</span>
-                <TooltipMenu>
-                  <ul>
-                    <li>
-                      <Link to="/">Popular</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Airing Today</Link>
-                    </li>
-                    <li>
-                      <Link to="/">On TV</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Top Rated</Link>
-                    </li>
-                  </ul>
-                </TooltipMenu>
-              </Tooltip>
-              <Tooltip>
-                <span>People</span>
-                {/* <TooltipMenu>
-                  <ul>
-                    <li>
-                      <Link to="/">Popular People</Link>
-                    </li>
-                  </ul>
-                </TooltipMenu> */}
-              </Tooltip>
-              <li>More</li>
+              <MyToolTip name="Movies" list={tooltipMovies} />
+              <MyToolTip name="TV Shows" list={tooltipTvShows} />
+              <MyToolTip name="People" list={tooltipPeople} />
+              <MyToolTip name="More" list={tooltipMore} />
             </ul>
-          </NavLeft>
+          </NavItem>
+          <NavItem>
+            <ul>
+              <li>
+                <FaPlus />
+              </li>
+              <BoxVisible>EN</BoxVisible>
+              <li>
+                <Link>Login</Link>
+              </li>
+              <li>
+                <Link>Join TMDB</Link>
+              </li>
+              <li>
+                <FaSearch />
+              </li>
+            </ul>
+          </NavItem>
         </NavWrapper>
-        <NavRight></NavRight>
       </StyledHeader>
     </>
   );
