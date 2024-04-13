@@ -36,12 +36,11 @@ const NavItem = styled.div`
     align-items: center;
     display: flex;
     color: white;
-    gap: 14px;
     list-style-type: none;
   }
   li {
     cursor: pointer;
-    margin-right: 14px;
+    margin-right: 24px;
   }
   li a {
     color: #fff;
@@ -88,9 +87,9 @@ const tooltipMore = [
 export default function Header() {
   return (
     <>
-      <StyledHeader>
-        <NavWrapper>
-          <NavItem>
+      <StyledHeader className="StyledHeader">
+        <NavWrapper className="NavWrapper">
+          <NavItem className="NavItem">
             <Link to="/">
               <img
                 src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"

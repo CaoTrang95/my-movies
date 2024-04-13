@@ -55,9 +55,9 @@ const Tooltip = styled.li`
 `;
 export default function MyToolTip({ name, list }) {
   return (
-    <Tooltip>
+    <Tooltip className="Tooltip">
       {name}
-      <TooltipMenu>
+      <TooltipMenu className="TooltipMenu">
         <ul>
           {list.map((item) => (
             <li>
