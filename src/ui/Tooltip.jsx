@@ -11,6 +11,7 @@ const TooltipMenu = styled.div`
   left: 0px;
   border-radius: 0 0 0.25rem 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  font-weight: 400;
   && ul {
     line-height: 24px;
     display: block;

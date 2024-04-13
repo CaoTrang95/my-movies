@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
   align-items: center;
   height: 64px;
   background-color: rgba(3, 37, 65, 1);
+  font-weight: 600;
 `;
 const NavWrapper = styled.div`
   width: 100%;
@@ -51,6 +52,7 @@ const NavItem = styled.div`
   }
 `;
 const BoxVisible = styled.li`
+  font-weight: 700;
   width: 28px;
   height: 26px;
   display: flex;

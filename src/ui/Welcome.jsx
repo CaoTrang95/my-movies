@@ -57,6 +57,7 @@ const Search = styled.div`
   top: 0;
   left: 0;
   input[type="text"] {
+    font: inherit;
     width: 100%;
     height: 46px;
     font-size: 1.1em;
@@ -68,6 +69,8 @@ const Search = styled.div`
     outline: 0;
   }
   input[type="submit"] {
+    font: inherit;
+    font-weight: 700;
     height: 46px;
     padding: 10px 26px;
     border: 0;
@@ -112,6 +115,7 @@ const Oscar = styled(Column)`
     color: white;
   }
   .view-winner {
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
