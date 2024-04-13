@@ -103,12 +103,12 @@ export default function Header() {
               <MyToolTip name="More" list={tooltipMore} />
             </ul>
           </NavItem>
-          <NavItem>
+          <NavItem className="NavItem">
             <ul>
               <li>
                 <FaPlus />
               </li>
-              <BoxVisible>EN</BoxVisible>
+              <BoxVisible className="BoxVisible">EN</BoxVisible>
               <li>
                 <Link>Login</Link>
               </li>
