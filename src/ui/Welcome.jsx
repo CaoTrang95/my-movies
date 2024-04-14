@@ -18,7 +18,7 @@ const WelcomeContent = styled.section`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   color: #fff;
-  max-width: 1400px;
+  max-width: var(--max-width);
   background-image: image-set(
     url("https://media.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg")
       1x,
@@ -28,14 +28,7 @@ const WelcomeContent = styled.section`
   display: flex;
   align-items: center;
 `;
-const Column = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 30px 40px;
-  max-width: 1400px;
-`;
+
 const Title = styled.div`
   width: 100%;
   margin-bottom: 20px;
@@ -96,7 +89,7 @@ const OscarWrapper = styled.div`
   justify-content: center;
   height: auto;
 `;
-const Oscar = styled(Column)`
+const Oscar = styled.div`
   background-image: linear-gradient(
     to bottom right,
     #221d93 0%,
@@ -111,7 +104,6 @@ const Oscar = styled(Column)`
     transform: translateX(-40px);
   }
   a {
-    text-decoration: none;
     color: white;
   }
   .view-winner {
@@ -133,31 +125,28 @@ export default function Welcome() {
   return (
     <>
       <WelcomeWrapper className="SectionWrapper">
-        <WelcomeContent className="WelcomeContent">
-          <Column className="Column">
-            <Title className="Title">
-              <h2>Welcome.</h2>
-              <h3>
-                Millions of movies, TV shows and people to discover. Explore
-                now.
-              </h3>
-            </Title>
-            <Search className="Search">
-              <form>
-                <label>
-                  <input
-                    type="text"
-                    placeholder="Search for a movie, tv show, person......"
-                  ></input>
-                  <input type="submit" value="Search"></input>
-                </label>
-              </form>
-            </Search>
-          </Column>
+        <WelcomeContent className="WelcomeContent content-wrapper">
+          <Title className="Title">
+            <h2>Welcome.</h2>
+            <h3>
+              Millions of movies, TV shows and people to discover. Explore now.
+            </h3>
+          </Title>
+          <Search className="Search">
+            <form>
+              <label>
+                <input
+                  type="text"
+                  placeholder="Search for a movie, tv show, person......"
+                ></input>
+                <input type="submit" value="Search"></input>
+              </label>
+            </form>
+          </Search>
         </WelcomeContent>
       </WelcomeWrapper>
-      <OscarWrapper>
-        <Oscar>
+      <OscarWrapper className="OscarWrapper">
+        <Oscar className="Oscar content-wrapper">
           <div>
             <img src={OscarImage} alt="96th Academy Awards" />
           </div>

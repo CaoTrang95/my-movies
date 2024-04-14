@@ -69,13 +69,29 @@ const GlobalStyles = createGlobalStyle`
 
 :root{
    & {
+    --max-width: 1300px;
    --tmdbDarkBlue:rgba(3, 37, 65, 1);
    }
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 40px;
+    max-width: var(--max-width);
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 body {

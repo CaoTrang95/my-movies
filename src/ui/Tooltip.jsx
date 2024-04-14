@@ -15,9 +15,6 @@ const TooltipMenu = styled.div`
   && ul {
     line-height: 24px;
     display: block;
-    /* flex-direction: column;
-    align-items: flex-start; */
-    /* row-gap: 10px; */
     background-color: #fff;
     padding: 0.5rem 0;
     border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
@@ -37,8 +34,6 @@ const TooltipMenu = styled.div`
     padding: 3px 1.5rem;
     color: #000;
     white-space: nowrap;
-    cursor: pointer;
-    text-decoration: none;
   }
 `;
 const Tooltip = styled.li`

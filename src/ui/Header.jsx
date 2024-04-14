@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import MyToolTip from "./Tooltip";
-import { FaPlus, FaSearch } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { IoSearchSharp } from "react-icons/io5";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -17,7 +18,7 @@ const NavWrapper = styled.div`
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
-  max-width: 1400px;
+  max-width: var(--max-width);
 `;
 const NavItem = styled.div`
   display: flex;
@@ -52,16 +53,16 @@ const NavItem = styled.div`
   }
 `;
 const BoxVisible = styled.li`
-  font-weight: 700;
+  font-weight: 600;
   width: 28px;
   height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   border-radius: 3px;
   padding: 3px 5px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   &:hover {
     background-color: white;
     color: black;
@@ -118,7 +119,7 @@ export default function Header() {
                 <Link>Join TMDB</Link>
               </li>
               <li>
-                <FaSearch />
+                <IoSearchSharp color="#0aacf1" size={24} />
               </li>
             </ul>
           </NavItem>
