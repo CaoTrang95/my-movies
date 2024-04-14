@@ -54,7 +54,7 @@ const TrendingHeader = styled.div`
     border-radius: 30px;
     height: 100%;
     width: 100%;
-    transition: all 2s;
+    transition: left 0.5s;
   }
 `;
 
@@ -70,21 +70,18 @@ export default function Trending() {
               <h3 onClick={() => setIsToday(true)}>
                 <Link>Today</Link>
               </h3>
-              {isToday && (
-                <div
-                  className="background"
-                  // style={{
-                  //   width: isToday ? "81.5859px" : "109.328px",
-                  //   left: isToday ? "0px" : "81.5859px",
-                  // }}
-                ></div>
-              )}
+              <div
+                className="background"
+                style={{
+                  width: isToday ? "81.5859px" : "109.328px",
+                  left: isToday ? "0px" : "81.5859px",
+                }}
+              ></div>
             </div>
             <div className={`anchor ${!isToday ? "selected" : ""}`}>
               <h3 onClick={() => setIsToday(false)}>
                 <Link>This week</Link>
               </h3>
-              {!isToday && <div className="background"></div>}
             </div>
           </div>
         </TrendingHeader>
