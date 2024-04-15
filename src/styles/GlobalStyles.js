@@ -64,13 +64,14 @@ const GlobalStyles = createGlobalStyle`
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./assets/fonts/source-sans-pro-700.woff2') format('woff2');
+  src: url('/fonts/source-sans-pro-700.woff2') format('woff2');
 }
 
 :root{
    & {
     --max-width: 1300px;
    --tmdbDarkBlue:rgba(3, 37, 65, 1);
+   --tmdbLightGreen: rgba(30, 213, 169,1);
    }
 }
 
@@ -80,7 +81,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 
-.content-wrapper {
+.content-wrapper{
     width: 100%;
     display: flex;
     justify-content: center;
