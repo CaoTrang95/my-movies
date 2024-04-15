@@ -22,7 +22,16 @@ const TrendingHeader = styled.div`
     align-items: center;
     border: 1px solid var(--tmdbDarkBlue);
     border-radius: 30px;
+    position: relative;
+    min-width: 240px;
   }
+  .anchor-tab {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
   h3 {
     font-size: 1em;
     padding: 4px 20px;
@@ -53,8 +62,12 @@ const TrendingHeader = styled.div`
     left: 0;
     border-radius: 30px;
     height: 100%;
-    width: 100%;
-    transition: left 0.5s;
+    width: calc(50% + 1px);
+    transition: 0.5s all ease;
+    transform: translateX(-1px);
+  }
+  .translate-to-left {
+    transform: translateX(100%) translateX(-1px);
   }
 `;
 
@@ -66,23 +79,19 @@ export default function Trending() {
         <TrendingHeader>
           <h2>Trending</h2>
           <div className="selector">
-            <div className={`anchor ${isToday ? "selected" : ""}`}>
+            <div className={`anchor-tab ${isToday ? "selected" : ""}`}>
               <h3 onClick={() => setIsToday(true)}>
                 <Link>Today</Link>
               </h3>
-              <div
-                className="background"
-                style={{
-                  width: isToday ? "81.5859px" : "109.328px",
-                  left: isToday ? "0px" : "81.5859px",
-                }}
-              ></div>
             </div>
-            <div className={`anchor ${!isToday ? "selected" : ""}`}>
+            <div className={`anchor-tab ${!isToday ? "selected" : ""}`}>
               <h3 onClick={() => setIsToday(false)}>
                 <Link>This week</Link>
               </h3>
             </div>
+            <div
+              className={`background ${!isToday ? "translate-to-left" : ""}`}
+            ></div>
           </div>
         </TrendingHeader>
       </TrendingContent>
