@@ -55,8 +55,8 @@ export default function MyToolTip({ name, list }) {
       {name}
       <TooltipMenu className="TooltipMenu">
         <ul>
-          {list.map((item) => (
-            <li>
+          {list.map((item, index) => (
+            <li key={index}>
               <Link to={item.link}>{item.content}</Link>{" "}
             </li>
           ))}
