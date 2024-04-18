@@ -140,9 +140,18 @@ export default function Trending() {
         </TrendingHeader>
         <ListMoviesWrapper className="ListMoviesWrapper">
           <ListMoviesContent className="ListMoviesContent">
-            {listMoviesTrending.map((movie) => (
-              <Movie movie={listMoviesTrending} />
-            ))}
+            {
+              // isLoadingTrending &&
+              Array(8)
+                .fill(0)
+                .map((item, index) => (
+                  <Movie.Loading key={index}></Movie.Loading>
+                ))
+            }
+            {/* {!isLoadingTrending &&
+              listMoviesTrending.map((movie) => (
+                <Movie key={movie.id} movie={movie} />
+              ))} */}
           </ListMoviesContent>
         </ListMoviesWrapper>
       </TrendingContent>
