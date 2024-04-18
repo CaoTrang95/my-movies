@@ -79,6 +79,21 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
+@keyframes onload {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .anim {
+    animation-name: onload;
+    animation-duration: 1.5s;
+  }
 
 .content-wrapper {
     width: 100%;

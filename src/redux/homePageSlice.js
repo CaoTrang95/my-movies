@@ -3,8 +3,8 @@ import { getListMovie } from "../service/moviesApi";
 
 const initialState = {
   listMoviesTrending: [],
-  tabTrending: "today",
-  isLoadingTrending: false,
+  tabTrending: "day",
+  isLoadingTrending: true,
   // listMoviesTrailers: [],
   // listMoviesPopular: [],
   // isLoadingTrailers: false,
@@ -16,7 +16,7 @@ export const getListMoviesAsync = createAsyncThunk(
   "homepage/getListMoviesAsync",
   async (params, { rejectWithValue }) => {
     try {
-      const response = await getListMovie();
+      const response = await getListMovie(params);
       return response;
     } catch (error) {
       throw rejectWithValue(error.message);
@@ -26,20 +26,24 @@ export const getListMoviesAsync = createAsyncThunk(
 const homepageSlice = createSlice({
   name: "homepage",
   initialState,
-  reducers: {},
+  reducers: {
+    setTabTrending(state, action) {
+      state.tabTrending = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getListMoviesAsync.pending, (state, action) => {
         state.isLoadingTrending = true;
       })
       .addCase(getListMoviesAsync.fulfilled, (state, action) => {
-        state.listMoviesTrending = action.payload.results;
-        console.log(state.listMoviesTrending);
         state.isLoadingTrending = false;
+        state.listMoviesTrending = action.payload.results;
       })
       .addCase(getListMoviesAsync.rejected, (state, action) => {
         state.isLoadingTrending = false;
       });
   },
 });
+export const { setTabTrending } = homepageSlice.actions;
 export const hompageReducer = homepageSlice.reducer;

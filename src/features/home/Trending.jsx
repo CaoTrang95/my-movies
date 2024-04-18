@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getListMoviesAsync } from "../../redux/homePageSlice";
+import { getListMoviesAsync, setTabTrending } from "../../redux/homePageSlice";
 import Movie from "./Movie";
 
 const TrendingWrapper = styled.section`
@@ -85,7 +85,7 @@ const TrendingHeader = styled.div`
 `;
 const ListMoviesWrapper = styled.div`
   width: 100%;
-  height: 500px;
+  height: 1000px;
 `;
 const ListMoviesContent = styled.div`
   width: 100%;
@@ -107,15 +107,18 @@ const ListMoviesContent = styled.div`
 `;
 
 export default function Trending() {
-  const [isToday, setIsToday] = useState(true);
   const dispatch = useDispatch();
-  const { listMoviesTrending, isLoadingTrending } = useSelector(
+  const { listMoviesTrending, isLoadingTrending, tabTrending } = useSelector(
     (state) => state.homepage
   );
 
   useEffect(() => {
-    dispatch(getListMoviesAsync());
-  }, []);
+    dispatch(getListMoviesAsync({ tabTrending: tabTrending }));
+  }, [tabTrending]);
+
+  function handleOnclickTab(tabName) {
+    dispatch(setTabTrending(tabName));
+  }
 
   return (
     <TrendingWrapper className="TrendingWrapper">
@@ -123,35 +126,45 @@ export default function Trending() {
         <TrendingHeader className="TrendingHeader">
           <h2>Trending</h2>
           <div className="selector">
-            <div className={`anchor-tab ${isToday ? "selected" : ""}`}>
-              <h3 onClick={() => setIsToday(true)}>
+            <div
+              className={`anchor-tab ${
+                tabTrending === "day" ? "selected" : ""
+              }`}
+            >
+              <h3 onClick={() => handleOnclickTab("day")}>
                 <Link>Today</Link>
               </h3>
             </div>
-            <div className={`anchor-tab ${!isToday ? "selected" : ""}`}>
-              <h3 onClick={() => setIsToday(false)}>
+            <div
+              className={`anchor-tab ${
+                tabTrending === "week" ? "selected" : ""
+              }`}
+            >
+              <h3 onClick={() => handleOnclickTab("week")}>
                 <Link>This week</Link>
               </h3>
             </div>
             <div
-              className={`background ${!isToday ? "translate-to-left" : ""}`}
+              className={`background ${
+                tabTrending === "week" ? "translate-to-left" : ""
+              }`}
             ></div>
           </div>
         </TrendingHeader>
         <ListMoviesWrapper className="ListMoviesWrapper">
-          <ListMoviesContent className="ListMoviesContent">
-            {
-              // isLoadingTrending &&
+          <ListMoviesContent
+            className={`ListMoviesContent ${!isLoadingTrending ? "anim" : ""} `}
+          >
+            {isLoadingTrending &&
               Array(8)
                 .fill(0)
                 .map((item, index) => (
                   <Movie.Loading key={index}></Movie.Loading>
-                ))
-            }
-            {/* {!isLoadingTrending &&
+                ))}
+            {!isLoadingTrending &&
               listMoviesTrending.map((movie) => (
                 <Movie key={movie.id} movie={movie} />
-              ))} */}
+              ))}
           </ListMoviesContent>
         </ListMoviesWrapper>
       </TrendingContent>
