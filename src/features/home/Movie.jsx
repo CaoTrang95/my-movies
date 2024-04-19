@@ -77,34 +77,36 @@ const CardWrapper = styled.div`
 `;
 export default function Movie({ movie }) {
   return (
-    <CardWrapper className="CardWrapper">
-      <div className="wrapper-image image">
-        <Link>
-          <img
-            loading="lazy"
-            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-            alt={movie?.original_title}
-          />
-        </Link>
-        <div className="options icon-more"></div>
-      </div>
-      <div className="content">
-        <div className="consensus"></div>
-        <h2>
-          <Link>{movie?.original_title}</Link>
-        </h2>
-        <p>{movie?.release_date}</p>
-      </div>
-    </CardWrapper>
+    <>
+      {!movie.original_title && (
+        <CardWrapper className="CardWrapper">
+          <div className="wrapper-image ">
+            <LoadingSkeleton />
+          </div>
+        </CardWrapper>
+      )}
+
+      {movie.original_title && (
+        <CardWrapper className="CardWrapper">
+          <div className="wrapper-image image">
+            <Link>
+              <img
+                loading="lazy"
+                src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                alt={movie?.original_title}
+              />
+            </Link>
+            <div className="options icon-more"></div>
+          </div>
+          <div className="content">
+            <div className="consensus"></div>
+            <h2>
+              <Link>{movie?.original_title}</Link>
+            </h2>
+            <p>{movie?.release_date}</p>
+          </div>
+        </CardWrapper>
+      )}
+    </>
   );
 }
-const Loading = () => {
-  return (
-    <CardWrapper className="CardWrapper">
-      <div className="wrapper-image ">
-        <LoadingSkeleton />
-      </div>
-    </CardWrapper>
-  );
-};
-Movie.Loading = Loading;

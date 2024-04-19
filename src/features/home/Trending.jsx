@@ -85,7 +85,9 @@ const TrendingHeader = styled.div`
 `;
 const ListMoviesWrapper = styled.div`
   width: 100%;
-  height: 1000px;
+  position: relative;
+  top: 0;
+  left: 0;
 `;
 const ListMoviesContent = styled.div`
   width: 100%;
@@ -94,7 +96,7 @@ const ListMoviesContent = styled.div`
   max-width: 1300px;
   overflow-x: scroll;
   overflow-y: hidden;
-  transition: height 0.5s linear;
+  opacity: 1;
 
   > div:first-child {
     margin-left: 40px;
@@ -104,17 +106,34 @@ const ListMoviesContent = styled.div`
     margin-left: 20px;
     margin-top: 0;
   }
+  &::after {
+    transition: linear 0.3s;
+    opacity: 1;
+    content: "";
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0,
+      #fff 100%
+    );
+    will-change: opacity;
+    pointer-events: none;
+  }
 `;
 
 export default function Trending() {
   const dispatch = useDispatch();
-  const { listMoviesTrending, isLoadingTrending, tabTrending } = useSelector(
+  const { listMoviesTrending, tabTrending, cardVisibility } = useSelector(
     (state) => state.homepage
   );
 
   useEffect(() => {
     dispatch(getListMoviesAsync({ tabTrending: tabTrending }));
-  }, [tabTrending]);
+  }, [dispatch, tabTrending]);
 
   function handleOnclickTab(tabName) {
     dispatch(setTabTrending(tabName));
@@ -153,18 +172,17 @@ export default function Trending() {
         </TrendingHeader>
         <ListMoviesWrapper className="ListMoviesWrapper">
           <ListMoviesContent
-            className={`ListMoviesContent ${!isLoadingTrending ? "anim" : ""} `}
+            className={`ListMoviesContent ${
+              cardVisibility && listMoviesTrending[0].original_title
+                ? "anim-in"
+                : !cardVisibility
+                ? "anim-out"
+                : ""
+            }`}
           >
-            {isLoadingTrending &&
-              Array(8)
-                .fill(0)
-                .map((item, index) => (
-                  <Movie.Loading key={index}></Movie.Loading>
-                ))}
-            {!isLoadingTrending &&
-              listMoviesTrending.map((movie) => (
-                <Movie key={movie.id} movie={movie} />
-              ))}
+            {listMoviesTrending.map((movie) => (
+              <Movie key={movie.id} movie={movie} />
+            ))}
           </ListMoviesContent>
         </ListMoviesWrapper>
       </TrendingContent>

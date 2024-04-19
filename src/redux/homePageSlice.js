@@ -2,9 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getListMovie } from "../service/moviesApi";
 
 const initialState = {
-  listMoviesTrending: [],
+  listMoviesTrending: Array(8).fill(0),
   tabTrending: "day",
-  isLoadingTrending: true,
+  progressBar: 0,
+  cardVisibility: true,
   // listMoviesTrailers: [],
   // listMoviesPopular: [],
   // isLoadingTrailers: false,
@@ -14,10 +15,11 @@ const initialState = {
 };
 export const getListMoviesAsync = createAsyncThunk(
   "homepage/getListMoviesAsync",
-  async (params, { rejectWithValue }) => {
+  async (params, { rejectWithValue, dispatch }) => {
     try {
+      // await new Promise((r) => setTimeout(r, 3000));
       const response = await getListMovie(params);
-      return response;
+      return { response, dispatch };
     } catch (error) {
       throw rejectWithValue(error.message);
     }
@@ -30,20 +32,29 @@ const homepageSlice = createSlice({
     setTabTrending(state, action) {
       state.tabTrending = action.payload;
     },
+    setDataAfterTimeout(state, results) {
+      state.listMoviesTrending = results.payload;
+      state.cardVisibility = true;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getListMoviesAsync.pending, (state, action) => {
-        state.isLoadingTrending = true;
+        state.progressBar = 50;
       })
       .addCase(getListMoviesAsync.fulfilled, (state, action) => {
-        state.isLoadingTrending = false;
-        state.listMoviesTrending = action.payload.results;
+        state.progressBar = 100;
+        state.cardVisibility = false;
+        setTimeout(() => {
+          action.payload.dispatch(
+            setDataAfterTimeout(action.payload.response.results)
+          );
+        }, 500);
       })
       .addCase(getListMoviesAsync.rejected, (state, action) => {
-        state.isLoadingTrending = false;
+        state.progressBar = 100;
       });
   },
 });
-export const { setTabTrending } = homepageSlice.actions;
+export const { setTabTrending, setDataAfterTimeout } = homepageSlice.actions;
 export const hompageReducer = homepageSlice.reducer;

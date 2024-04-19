@@ -64,14 +64,14 @@ const GlobalStyles = createGlobalStyle`
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./assets/fonts/source-sans-pro-700.woff2') format('woff2');
+  src: url('./fonts/fonts/source-sans-pro-700.woff2') format('woff2');
 }
 
 :root{
-   & {
-    --max-width: 1300px;
-   --tmdbDarkBlue:rgba(3, 37, 65, 1);
-   }
+  & {
+  --max-width: 1300px;
+  --tmdbDarkBlue:rgba(3, 37, 65, 1);
+  }
 }
 
 * {
@@ -79,22 +79,30 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
-@keyframes onload {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+@keyframes fadein {
+  0%{
+    opacity: 0;
   }
-  .anim {
-    animation-name: onload;
-    animation-duration: 1.5s;
+  100% {
+    opacity: 1;
   }
-
+}
+@keyframes fadeout {
+  0%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.anim-in {
+  animation-name: fadein;
+  animation-duration: 2s;
+}
+.anim-out {
+  animation-name: fadeout;
+  animation-duration: .5s;
+}
 .content-wrapper {
     width: 100%;
     display: flex;
