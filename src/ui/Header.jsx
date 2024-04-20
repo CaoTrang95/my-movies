@@ -9,8 +9,13 @@ const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   height: 64px;
+  width: 100%;
   background-color: rgba(3, 37, 65, 1);
   font-weight: 600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
 `;
 const NavWrapper = styled.div`
   width: 100%;

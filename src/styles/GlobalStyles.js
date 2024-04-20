@@ -118,8 +118,10 @@ a {
 }
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--tmdbDarkBlue);
+  font-size: 1em;
 }
 `;
 

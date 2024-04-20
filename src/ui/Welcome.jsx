@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa6";
-import OscarImage from "../assets/images/oscar.png";
 
 const WelcomeWrapper = styled.div`
   width: 100%;
@@ -101,17 +100,17 @@ const Oscar = styled.div`
     width: 300px;
     color: white;
     filter: brightness(0) invert(1);
-    transform: translateX(-40px);
   }
   a {
     color: white;
   }
   .view-winner {
     font-weight: 600;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 170px;
+    max-width: 173px;
     border: 2px solid #fff;
     border-radius: 5px;
     padding: 8px 16px;
@@ -148,10 +147,13 @@ export default function Welcome() {
       <OscarWrapper className="OscarWrapper">
         <Oscar className="Oscar content-wrapper">
           <div>
-            <img src={OscarImage} alt="96th Academy Awards" />
+            <img
+              src="https://www.themoviedb.org/assets/2/awards-preview/oscars-2024-title-f69161f90ed90871e9fe79439ea7e9280e03f3cb896b8d35d5d37b6711d00913.svg"
+              alt="96th Academy Awards"
+            />
           </div>
           <div className="view-winner">
-            <Link to="/">View the winner</Link>
+            <Link to="/">View the winners</Link>
             <FaArrowRight />
           </div>
         </Oscar>
