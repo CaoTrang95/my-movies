@@ -78,7 +78,7 @@ const CardWrapper = styled.div`
 export default function Movie({ movie }) {
   return (
     <>
-      {!movie.original_title && (
+      {!movie.original_title && !movie.name && (
         <CardWrapper className="CardWrapper">
           <div className="wrapper-image ">
             <LoadingSkeleton />
@@ -86,14 +86,14 @@ export default function Movie({ movie }) {
         </CardWrapper>
       )}
 
-      {movie.original_title && (
+      {(movie.original_title ?? movie.name) && (
         <CardWrapper className="CardWrapper">
           <div className="wrapper-image image">
             <Link>
               <img
                 loading="lazy"
                 src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-                alt={movie?.original_title}
+                alt={movie?.original_title ?? movie.name}
               />
             </Link>
             <div className="options icon-more"></div>
@@ -101,9 +101,9 @@ export default function Movie({ movie }) {
           <div className="content">
             <div className="consensus"></div>
             <h2>
-              <Link>{movie?.original_title}</Link>
+              <Link>{movie?.original_title ?? movie.name}</Link>
             </h2>
-            <p>{movie?.release_date}</p>
+            <p>{movie?.release_date ?? movie?.first_air_date}</p>
           </div>
         </CardWrapper>
       )}

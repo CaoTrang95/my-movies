@@ -71,6 +71,7 @@ const GlobalStyles = createGlobalStyle`
   & {
   --max-width: 1300px;
   --tmdbDarkBlue:rgba(3, 37, 65, 1);
+  --tmbLightBlue: rgba(1,180,228,1);
   }
 }
 

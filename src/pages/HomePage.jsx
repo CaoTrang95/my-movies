@@ -1,8 +1,9 @@
-import Welcome from "../ui/Welcome";
+import Welcome from "../features/home/Welcome";
 import Trending from "../features/home/Trending";
 import LoadingBar from "react-top-loading-bar";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Popular from "../features/home/Popular";
 const Main = styled.div`
   width: 100%;
   display: flex;
@@ -40,6 +41,7 @@ export default function HomePage() {
       <Main className="Main">
         <Welcome />
         <Trending />
+        <Popular />
       </Main>
     </>
   );

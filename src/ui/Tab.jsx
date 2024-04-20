@@ -70,14 +70,21 @@ const TabHeader = styled.div`
     transform: translateX(-1px);
   }
   .translate-to-left {
-    transform: translateX(100%) translateX(-1px);
+    transform: translateX(${(props) => props.$tabIndex * 100}%) translateX(-1px);
   }
 `;
-export default function Tab({ dark, title, tabs, activeTab, onTabClick }) {
+export default function Tab({
+  dark,
+  title,
+  tabs,
+  activeTab,
+  tabIndex,
+  onTabClick,
+}) {
   return (
     <TabWrapper className="TabWrapper">
       <TabContent className="TabContent">
-        <TabHeader $dark={dark} $length={tabs?.length}>
+        <TabHeader $dark={dark} $length={tabs?.length} $tabIndex={tabIndex}>
           <h2>{title}</h2>
           <div className="selector">
             {tabs?.map((tab) => {
