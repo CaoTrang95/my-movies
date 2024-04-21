@@ -8,6 +8,7 @@ import {
 import ListMovies from "./ListMovies";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Movie from "./Movie";
 
 const PopularWrapper = styled.div`
   width: 100%;
@@ -16,6 +17,7 @@ const PopularWrapper = styled.div`
 `;
 const PopularContent = styled.div`
   width: 100%;
+  padding: 30px 0;
   max-width: var(--max-width);
   display: flex;
   flex-direction: column;
@@ -69,6 +71,7 @@ export default function Popular() {
           <ListMovies
             cardVisibility={cardPopularVisibility}
             listMovies={listMoviesPopular}
+            render={(movie) => <Movie key={movie.id} movie={movie} />}
           />
         )}
       </PopularContent>

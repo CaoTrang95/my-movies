@@ -119,10 +119,10 @@ a {
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--tmdbDarkBlue);
-  font-size: 1em;
+  font-size: .9em;
 }
 `;
 

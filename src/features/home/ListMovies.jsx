@@ -7,11 +7,11 @@ const ListMoviesWrapper = styled.div`
   top: 0;
   left: 0;
 `;
-const ListMoviesContent = styled.div`
+export const ListMoviesContent = styled.div`
   width: 100%;
   display: flex;
-  padding: 20px 0 20px 0;
-  max-width: 1300px;
+  padding: 20px 0 30px 0;
+  max-width: var(--max-width);
   overflow-x: scroll;
   overflow-y: hidden;
   opacity: 1;
@@ -41,8 +41,15 @@ const ListMoviesContent = styled.div`
     will-change: opacity;
     pointer-events: none;
   }
+  .spacer {
+    margin-left: 20px;
+    width: 20px;
+    min-width: 20px;
+    height: calc(150px * 1.5);
+    min-height: calc(150px * 1.5);
+  }
 `;
-export default function ListMovies({ cardVisibility, listMovies }) {
+export default function ListMovies({ cardVisibility, listMovies, render }) {
   return (
     <ListMoviesWrapper className="ListMoviesWrapper">
       <ListMoviesContent
@@ -54,9 +61,8 @@ export default function ListMovies({ cardVisibility, listMovies }) {
             : ""
         }`}
       >
-        {listMovies.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
+        {listMovies.map(render)}
+        <div className="spacer"></div>
       </ListMoviesContent>
     </ListMoviesWrapper>
   );

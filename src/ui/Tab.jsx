@@ -14,6 +14,7 @@ const TabHeader = styled.div`
     margin-right: 20px;
     font-weight: 600;
     font-size: 1.5em;
+    white-space: nowrap;
   }
   h2 {
     margin-right: 20px;
@@ -84,7 +85,12 @@ export default function Tab({
   return (
     <TabWrapper className="TabWrapper">
       <TabContent className="TabContent">
-        <TabHeader $dark={dark} $length={tabs?.length} $tabIndex={tabIndex}>
+        <TabHeader
+          className="TabHeader"
+          $dark={dark}
+          $length={tabs?.length}
+          $tabIndex={tabIndex}
+        >
           <h2>{title}</h2>
           <div className="selector">
             {tabs?.map((tab) => {

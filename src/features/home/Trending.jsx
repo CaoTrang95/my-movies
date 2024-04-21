@@ -7,6 +7,7 @@ import {
 } from "../../redux/homePageSlice";
 import Tab from "../../ui/Tab";
 import ListMovies from "./ListMovies";
+import Movie from "./Movie";
 
 const TrendingWrapper = styled.section`
   width: 100%;
@@ -21,7 +22,7 @@ const TrendingContent = styled.div`
   width: 100%;
   max-width: 1300px;
   display: flex;
-  padding: 30px 0 30px 0;
+  padding-top: 30px;
   flex-direction: column;
 `;
 
@@ -58,6 +59,7 @@ export default function Trending() {
         <ListMovies
           cardVisibility={cardVisibility}
           listMovies={listMoviesTrending}
+          render={(movie) => <Movie key={movie.id} movie={movie} />}
         />
       </TrendingContent>
     </TrendingWrapper>
