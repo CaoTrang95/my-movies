@@ -72,6 +72,9 @@ const GlobalStyles = createGlobalStyle`
   --max-width: 1300px;
   --tmdbDarkBlue:rgba(3, 37, 65, 1);
   --tmbLightBlue: rgba(1,180,228,1);
+  --color-grey-700: #374151;
+  --color-grey-0: #fff;
+  --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
   }
 }
 
@@ -123,6 +126,19 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--tmdbDarkBlue);
   font-size: .9em;
+}
+body::-webkit-scrollbar,.scroll::-webkit-scrollbar {
+  height: 8px;width: 8px;
+}
+body::-webkit-scrollbar-thumb,.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(219, 219, 219,1);
+  border-radius: 20px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: 0 0;
+}
+body::-webkit-scrollbar-track{
+  background: #fff;
 }
 `;
 

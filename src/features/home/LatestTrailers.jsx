@@ -6,13 +6,12 @@ import {
   setImageBackground,
   setTabTrailers,
 } from "../../redux/homePageSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import MovieVideo from "./MovieVideo";
-import ListMovies from "./ListMovies";
+import ListMovies, { ListMoviesContent } from "./ListMovies";
 
 const TrailersWrapper = styled.div`
   width: 100%;
-  height: 354px;
   display: flex;
   justify-content: center;
 `;
@@ -34,7 +33,10 @@ const TrailersContent = styled.div`
       rgba(3, 37, 65, 0.75) 0%,
       rgba(3, 37, 65, 0.75) 100%
     );
-    padding: 30px 0 20px 0;
+    padding-top: 30px;
+  }
+  ${ListMoviesContent}::after {
+    width: 0;
   }
 `;
 const popularTabs = [

@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LoadingSkeleton from "../../ui/LoadingSkeleton";
+import Menus from "../../ui/Menus";
+import { FaList } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
+import { GoBookmarkFill } from "react-icons/go";
+import { IoMdStar } from "react-icons/io";
 
 const CardWrapper = styled.div`
   width: 150px;
@@ -76,6 +81,7 @@ const CardWrapper = styled.div`
   }
 `;
 export default function Movie({ movie }) {
+  const navigate = useNavigate();
   return (
     <>
       {!movie.original_title && !movie.name && (
@@ -96,7 +102,18 @@ export default function Movie({ movie }) {
                 alt={movie?.original_title ?? movie.name}
               />
             </Link>
-            <div className="options icon-more"></div>
+            {/* <div className="options icon-more"></div> */}
+            {/* <Menus.Menu> */}
+            <Menus.Toggle id={movie.id} />
+            <Menus.List id={movie.id}>
+              <Menus.Button icon={<FaList />} onclick={() => navigate("/")}>
+                Add to list
+              </Menus.Button>
+              <Menus.Button icon={<MdFavorite />}>Favorite</Menus.Button>
+              <Menus.Button icon={<GoBookmarkFill />}>Watchlist</Menus.Button>
+              <Menus.Button icon={<IoMdStar />}>Your rating</Menus.Button>
+            </Menus.List>
+            {/* </Menus.Menu> */}
           </div>
           <div className="content">
             <div className="consensus"></div>

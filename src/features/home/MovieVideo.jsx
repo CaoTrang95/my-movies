@@ -19,10 +19,14 @@ const MovieVideoImage = styled.div`
   width: 100%;
   min-width: 100%;
   height: calc(300px / 1.78);
-  /* height: 100%; */
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
   overflow: hidden;
+  background-color: #dbdbdb;
+
+  &:hover .play-icon {
+    transform: scale(1.3);
+  }
   &:hover {
     transform: scale(1.05);
   }
@@ -73,6 +77,7 @@ const MovieVideoImage = styled.div`
     background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg");
     background-repeat: no-repeat;
     filter: invert(1);
+    transition: all 0.2s ease-in-out;
   }
   .image-size {
     background-size: 30%;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Movie from "./Movie";
+import Menus from "../../ui/Menus";
 
 const ListMoviesWrapper = styled.div`
   width: 100%;
@@ -51,19 +51,21 @@ export const ListMoviesContent = styled.div`
 `;
 export default function ListMovies({ cardVisibility, listMovies, render }) {
   return (
-    <ListMoviesWrapper className="ListMoviesWrapper">
-      <ListMoviesContent
-        className={`ListMoviesContent ${
-          cardVisibility && listMovies[0].original_title
-            ? "anim-in"
-            : !cardVisibility
-            ? "anim-out"
-            : ""
-        }`}
-      >
-        {listMovies.map(render)}
-        <div className="spacer"></div>
-      </ListMoviesContent>
-    </ListMoviesWrapper>
+    <Menus>
+      <ListMoviesWrapper className="ListMoviesWrapper">
+        <ListMoviesContent
+          className={`ListMoviesContent scroll ${
+            cardVisibility && listMovies[0].original_title
+              ? "anim-in"
+              : !cardVisibility
+              ? "anim-out"
+              : ""
+          }`}
+        >
+          {listMovies.map(render)}
+          <div className="spacer"></div>
+        </ListMoviesContent>
+      </ListMoviesWrapper>
+    </Menus>
   );
 }
