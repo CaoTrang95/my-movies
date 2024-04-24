@@ -15,8 +15,8 @@ const StyledToggle = styled.button`
   position: absolute;
   top: 8px;
   right: 8px;
-  z-index: 4;
   opacity: 0.6;
+  z-index: 4;
   &:hover {
     opacity: 1;
     filter: brightness(0) saturate(100%) invert(53%) sepia(33%) saturate(3054%)

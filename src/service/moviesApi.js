@@ -5,11 +5,22 @@ import {
   LIST_MOVIES_POPULAR_ON_TV,
   LIST_MOVIES_POPULAR_SCREAMING,
   LIST_MOVIES_TRENDING,
+  VIDEO_DETAIL,
 } from "../constants/apiConstants";
 import { makeGet } from "./connectionManager";
 
 const getListMoviesTrending = (params) =>
   makeGet(LIST_MOVIES_TRENDING + "/" + params.tabTrending)
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error.message));
+
+const getMovieDetail = (params) =>
+  makeGet(
+    VIDEO_DETAIL +
+      "/" +
+      params.id +
+      "?api_key=d0e75d325a54d7b0c05c67b166d47b6c&append_to_response=videos"
+  )
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));
 
@@ -35,4 +46,9 @@ const getListMoviesPopular = (params) => {
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));
 };
-export { getListMoviesTrending, getListMoviesPopular, getListMoviesTrailers };
+export {
+  getListMoviesTrending,
+  getListMoviesPopular,
+  getListMoviesTrailers,
+  getMovieDetail,
+};

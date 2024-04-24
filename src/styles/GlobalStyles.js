@@ -140,6 +140,16 @@ body::-webkit-scrollbar-thumb,.scroll::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track{
   background: #fff;
 }
+body.modal-open>:not(.StyledModal) {
+  /* backdrop-filter: grayscale(100%) contrast(50%); */
+  filter: grayscale(100%);
+}
+body.modal-open {
+  overflow: hidden;
+}
+.nav-up{
+  top: -64px;
+}
 `;
 
 export default GlobalStyles;

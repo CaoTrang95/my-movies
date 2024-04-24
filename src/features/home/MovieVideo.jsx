@@ -1,5 +1,13 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import LoadingSkeleton from "../../ui/LoadingSkeleton";
+import Modal from "../../ui/Modal";
+import YoutubeFrame from "./session/YoutubeFrame";
+import Menus from "../../ui/Menus";
+import { FaList } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
+import { GoBookmarkFill } from "react-icons/go";
+import { IoMdStar } from "react-icons/io";
 
 const MovieVideoWrapper = styled.div`
   width: 300px;
@@ -21,17 +29,18 @@ const MovieVideoImage = styled.div`
   height: calc(300px / 1.78);
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
-  overflow: hidden;
   background-color: #dbdbdb;
-
+  box-shadow: inset 0 0 2px 2px #000;
   &:hover .play-icon {
     transform: scale(1.3);
   }
   &:hover {
+    box-shadow: inset 0 0 2px 2px #000;
     transform: scale(1.05);
   }
-
   img {
+    object-fit: cover;
+    border-radius: 8px;
     width: 100%;
     height: 100%;
   }
@@ -48,27 +57,7 @@ const MovieVideoImage = styled.div`
     align-items: center;
     font-size: 4em;
   }
-  .options {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 4;
-    opacity: 0.6;
-  }
-  .options:hover {
-    opacity: 1;
-    filter: brightness(0) saturate(100%) invert(53%) sepia(33%) saturate(3054%)
-      hue-rotate(156deg) brightness(98%) contrast(99%);
-    cursor: pointer;
-  }
-  .icon-more {
-    background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-947-circle-more-white-4c440dfc1b0e626c70f4853dbbce9c4d1f2c5d8f3e05a7d3df47881cbd816adf.svg");
-    min-width: 1em;
-    width: 1em;
-    min-height: 1em;
-    height: 1em;
-    font-size: 1.6em;
-  }
+
   .play-icon {
     width: 1em;
     min-width: 1em;
@@ -100,7 +89,9 @@ const MovieVideoContent = styled.div`
     font-weight: 400;
   }
 `;
+
 export default function MovieVideo({ movie, onSetImageBackground }) {
+  const navigate = useNavigate();
   return (
     <>
       {!movie.title && (
@@ -122,9 +113,25 @@ export default function MovieVideo({ movie, onSetImageBackground }) {
               srcSet={`https://media.themoviedb.org/t/p/w355_and_h200_multi_faces${movie?.backdrop_path} 1x, https://media.themoviedb.org/t/p/w710_and_h400_multi_faces${movie?.backdrop_path} 2x`}
               alt="Video movie"
             ></img>
-            <div className="options icon-more"></div>
+            {/* <div className="options icon-more"></div> */}
+            <Menus.Toggle id={movie.id} />
+            <Menus.List id={movie.id}>
+              <Menus.Button icon={<FaList />} onclick={() => navigate("/")}>
+                Add to list
+              </Menus.Button>
+              <Menus.Button icon={<MdFavorite />}>Favorite</Menus.Button>
+              <Menus.Button icon={<GoBookmarkFill />}>Watchlist</Menus.Button>
+              <Menus.Button icon={<IoMdStar />}>Your rating</Menus.Button>
+            </Menus.List>
             <div className="play-wrapper">
-              <span className="play-icon"></span>
+              <Modal>
+                <Modal.Open opens="show-video" moveId={movie.id}>
+                  <span className="play-icon"></span>
+                </Modal.Open>
+                <Modal.Window name="show-video" movieName={movie.title}>
+                  <YoutubeFrame id={movie.id} />
+                </Modal.Window>
+              </Modal>
             </div>
           </MovieVideoImage>
           <MovieVideoContent>

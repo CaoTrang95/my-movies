@@ -28,27 +28,7 @@ const CardWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-  .options {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 4;
-    opacity: 0.6;
-  }
-  .options:hover {
-    opacity: 1;
-    filter: brightness(0) saturate(100%) invert(53%) sepia(33%) saturate(3054%)
-      hue-rotate(156deg) brightness(98%) contrast(99%);
-    cursor: pointer;
-  }
-  .icon-more {
-    background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-947-circle-more-white-4c440dfc1b0e626c70f4853dbbce9c4d1f2c5d8f3e05a7d3df47881cbd816adf.svg");
-    min-width: 1em;
-    width: 1em;
-    min-height: 1em;
-    height: 1em;
-    font-size: 1.6em;
-  }
+
   .content {
     width: 100%;
     padding: 26px 10px 12px;
@@ -103,7 +83,6 @@ export default function Movie({ movie }) {
               />
             </Link>
             {/* <div className="options icon-more"></div> */}
-            {/* <Menus.Menu> */}
             <Menus.Toggle id={movie.id} />
             <Menus.List id={movie.id}>
               <Menus.Button icon={<FaList />} onclick={() => navigate("/")}>
@@ -113,7 +92,6 @@ export default function Movie({ movie }) {
               <Menus.Button icon={<GoBookmarkFill />}>Watchlist</Menus.Button>
               <Menus.Button icon={<IoMdStar />}>Your rating</Menus.Button>
             </Menus.List>
-            {/* </Menus.Menu> */}
           </div>
           <div className="content">
             <div className="consensus"></div>

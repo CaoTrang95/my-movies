@@ -98,12 +98,15 @@ const homepageSlice = createSlice({
         "https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces" +
         state.listMoviesTrailers[0].backdrop_path;
     },
+    setUrlToNull(state, action) {
+      state.videoUrl = null;
+    },
   },
   extraReducers: (builder) => {
     builder
       // Trending
       .addCase(getListMoviesTrendingAsync.pending, (state, action) => {
-        state.progressBar = 50;
+        state.progressBar = 70;
       })
       .addCase(getListMoviesTrendingAsync.fulfilled, (state, action) => {
         state.progressBar = 100;
@@ -119,7 +122,7 @@ const homepageSlice = createSlice({
       })
       // Popular
       .addCase(getListMoviesPopularAsync.pending, (state, action) => {
-        state.progressBar = 50;
+        state.progressBar = 70;
         state.isErrorPopular = false;
       })
       .addCase(getListMoviesPopularAsync.fulfilled, (state, action) => {
@@ -137,7 +140,7 @@ const homepageSlice = createSlice({
       })
       // Trailers
       .addCase(getListMoviesTrailersAsync.pending, (state, action) => {
-        state.progressBar = 50;
+        state.progressBar = 70;
       })
       .addCase(getListMoviesTrailersAsync.fulfilled, (state, action) => {
         state.progressBar = 100;

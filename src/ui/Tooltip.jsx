@@ -46,7 +46,7 @@ const Tooltip = styled.li`
     visibility: visible;
     opacity: 1;
     cursor: pointer;
-    z-index: 3000;
+    z-index: 102;
   }
 `;
 export default function MyToolTip({ name, list }) {

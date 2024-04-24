@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MyToolTip from "./Tooltip";
 import { FaPlus } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
+import { useEffect, useState } from "react";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -15,7 +16,8 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 50;
+  z-index: 2000;
+  transition: top 0.2s linear;
 `;
 const NavWrapper = styled.div`
   width: 100%;
@@ -93,9 +95,37 @@ const tooltipMore = [
   { link: "/", content: "API" },
 ];
 export default function Header() {
+  useEffect(() => {
+    document.addEventListener("scroll", () => handleScroll());
+    return () => {
+      document.removeEventListener("scroll", () => handleScroll());
+    };
+  }, []);
+  const [isNavbarDown, setIsNavbarDown] = useState(true);
+  let lastScrollTop = 0;
+  var delta = 10;
+  var navbarHeight = 64;
+  const handleScroll = () => {
+    var scrollTop = window.scrollY;
+    // Make sure scroll more than delta
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) {
+      return;
+    } else {
+      if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+        // Scroll Down: hidden navbar
+        setIsNavbarDown(false);
+      } else {
+        // Scroll Up: show navbar
+        if (scrollTop + window.innerHeight < document.body.scrollHeight) {
+          setIsNavbarDown(true);
+        }
+      }
+    }
+    lastScrollTop = scrollTop;
+  };
   return (
     <>
-      <StyledHeader className="StyledHeader">
+      <StyledHeader className={`StyledHeader ${isNavbarDown ? "" : "nav-up"}`}>
         <NavWrapper className="NavWrapper">
           <NavItem className="NavItem">
             <Link to="/">
