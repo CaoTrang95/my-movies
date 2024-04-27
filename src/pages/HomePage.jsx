@@ -1,10 +1,11 @@
 import Welcome from "../features/home/Welcome";
 import Trending from "../features/home/Trending";
-import LoadingBar from "react-top-loading-bar";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Popular from "../features/home/Popular";
 import LatestTrailers from "../features/home/LatestTrailers";
+import LoadingBarProgress from "../ui/LoadingBarProgress";
+import { setProgressBar } from "../redux/homePageSlice";
 const Main = styled.div`
   width: 100%;
   display: flex;
@@ -32,12 +33,11 @@ export default function HomePage() {
   const { progressBar } = useSelector((state) => state.homepage);
   return (
     <>
-      <LoadingBar
+      <LoadingBarProgress
         color="#01b4e4"
         progress={progressBar}
-        shadow={true}
         height={4}
-        transitionTime={400}
+        onLoadFinished={() => setProgressBar(0)}
       />
       <Main className="Main">
         <Welcome />

@@ -98,8 +98,8 @@ const homepageSlice = createSlice({
         "https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces" +
         state.listMoviesTrailers[0].backdrop_path;
     },
-    setUrlToNull(state, action) {
-      state.videoUrl = null;
+    setProgressBar(state, action) {
+      state.progressBar = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -164,5 +164,6 @@ export const {
   setListTrendingAfterTimeout,
   setListPopularAfterTimeout,
   setListTrailersAfterTimeout,
+  setProgressBar,
 } = homepageSlice.actions;
 export const hompageReducer = homepageSlice.reducer;

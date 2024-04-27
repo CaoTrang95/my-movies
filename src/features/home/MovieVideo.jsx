@@ -30,12 +30,12 @@ const MovieVideoImage = styled.div`
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
   background-color: #dbdbdb;
-  box-shadow: inset 0 0 2px 2px #000;
+  box-shadow: inset 0 0 1px 1px #000;
   &:hover .play-icon {
     transform: scale(1.3);
   }
   &:hover {
-    box-shadow: inset 0 0 2px 2px #000;
+    box-shadow: inset 0 0 1px 1px #000;
     transform: scale(1.05);
   }
   img {

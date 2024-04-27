@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getMovieTrailerUrlAsync } from "./youtubeFrameSlice";
-import LoadingBar from "react-top-loading-bar";
+import { getMovieTrailerUrlAsync, setProgressBar } from "./youtubeFrameSlice";
+import LoadingBarProgress from "../../../ui/LoadingBarProgress";
 
 const YoutubeWrapper = styled.div`
   min-width: 90px;
@@ -35,12 +35,11 @@ export default function YoutubeFrame({ id }) {
   }, [videoTrailerUrl]);
   return (
     <>
-      <LoadingBar
+      <LoadingBarProgress
         color="#01b4e4"
         progress={progressBar}
-        shadow={true}
         height={4}
-        transitionTime={400}
+        onLoadFinished={() => setProgressBar(0)}
       />
       <YoutubeWrapper className="YoutubeWrapper">
         <div className="video-popup">
@@ -49,6 +48,7 @@ export default function YoutubeFrame({ id }) {
               type="text/html"
               src={videoTrailerUrl}
               title={videoTrailerUrl}
+              allowFullScreen=""
             ></iframe>
           )}
         </div>

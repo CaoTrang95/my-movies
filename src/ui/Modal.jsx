@@ -36,8 +36,8 @@ export const StyledModal = styled.div`
   border-radius: 5px;
   transition: all 0.5s;
   z-index: 101;
-  width: 90%;
-  height: 70vh;
+  width: 88%;
+  height: 90vh;
 
   .title {
     width: 100%;
@@ -48,6 +48,9 @@ export const StyledModal = styled.div`
     padding: 1rem;
     color: #fff;
     font-size: 1.25rem;
+  }
+  .title span {
+    line-height: 1.5;
   }
 `;
 

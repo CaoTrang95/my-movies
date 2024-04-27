@@ -26,12 +26,15 @@ const youtubeFrameSlice = createSlice({
     releaseYoutubeFrame(state, action) {
       state.videoTrailerUrl = null;
     },
+    setProgressBar(state, action) {
+      state.progressBar = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
     builder
       .addCase(getMovieTrailerUrlAsync.pending, (state, action) => {
-        state.progressBar = 70;
+        state.progressBar = 10;
       })
       .addCase(getMovieTrailerUrlAsync.fulfilled, (state, action) => {
         const videos = action.payload.response.videos;
@@ -46,5 +49,6 @@ const youtubeFrameSlice = createSlice({
       });
   },
 });
-export const { releaseYoutubeFrame } = youtubeFrameSlice.actions;
+export const { releaseYoutubeFrame, setProgressBar } =
+  youtubeFrameSlice.actions;
 export const youtubeFrameReducer = youtubeFrameSlice.reducer;
