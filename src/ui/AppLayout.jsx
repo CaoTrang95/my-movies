@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import styled from "styled-components";
+import Footer from "./Footer";
 const PageWrapper = styled.div`
   flex: 1 1 auto;
   position: relative;
@@ -15,6 +16,7 @@ export default function AppLayout() {
     <PageWrapper className="PageWrapper">
       <Header />
       <Outlet />
+      <Footer />
     </PageWrapper>
   );
 }

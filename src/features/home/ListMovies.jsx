@@ -55,14 +55,10 @@ export default function ListMovies({ cardVisibility, listMovies, render }) {
       <ListMoviesWrapper className="ListMoviesWrapper">
         <ListMoviesContent
           className={`ListMoviesContent scroll ${
-            cardVisibility && listMovies[0].original_title
-              ? "anim-in"
-              : !cardVisibility
-              ? "anim-out"
-              : ""
+            cardVisibility ? "anim-in" : !cardVisibility ? "anim-out" : ""
           }`}
         >
-          {listMovies.map(render)}
+          {listMovies && listMovies.map(render)}
           <div className="spacer"></div>
         </ListMoviesContent>
       </ListMoviesWrapper>

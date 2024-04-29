@@ -72,6 +72,10 @@ const GlobalStyles = createGlobalStyle`
   --max-width: 1300px;
   --tmdbDarkBlue:rgba(3, 37, 65, 1);
   --tmbLightBlue: rgba(1,180,228,1);
+  --tmdbLighterGreen: rgba(192,254,207,1);
+  --tmdbLightGreen: rgba(30,213,169,1);
+  --tmdbLogoOrange: rgba(253,193,112,1);
+  --tmdbLogoRed: rgba(217,59,99,1);
   --color-grey-700: #374151;
   --color-grey-0: #fff;
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);

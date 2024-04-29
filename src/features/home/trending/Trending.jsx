@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import LoadingBarProgress from "../../../ui/LoadingBarProgress";
 import {
   getListMoviesTrendingAsync,
+  setProgressBar,
   setTabTrending,
-} from "../../redux/homePageSlice";
-import Tab from "../../ui/Tab";
-import ListMovies from "./ListMovies";
-import Movie from "./Movie";
+} from "./trendingSlice";
+import Tab from "../../../ui/Tab";
+import ListMovies from "../ListMovies";
+import Movie from "../Movie";
 
 const TrendingWrapper = styled.section`
   width: 100%;
@@ -32,11 +34,11 @@ const trendingTabs = [
 ];
 
 export default function Trending() {
-  const dispatch = useDispatch();
-  const { listMoviesTrending, tabTrending, cardVisibility } = useSelector(
-    (state) => state.homepage
-  );
+  const { progressBar, tabTrending, cardVisibility, listMoviesTrending } =
+    useSelector((state) => state.trending);
   const tabIndex = trendingTabs.findIndex((tab) => tab.id === tabTrending);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getListMoviesTrendingAsync({ tabTrending: tabTrending }));
   }, [dispatch, tabTrending]);
@@ -47,6 +49,12 @@ export default function Trending() {
 
   return (
     <TrendingWrapper className="TrendingWrapper">
+      <LoadingBarProgress
+        color="#01b4e4"
+        progress={progressBar}
+        height={4}
+        onLoadFinished={() => setProgressBar(0)}
+      />
       <TrendingContent className="TrendingContent">
         <Tab
           dark="true"

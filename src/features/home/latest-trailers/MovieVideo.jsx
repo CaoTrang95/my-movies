@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import LoadingSkeleton from "../../ui/LoadingSkeleton";
-import Modal from "../../ui/Modal";
-import YoutubeFrame from "./session/YoutubeFrame";
-import Menus from "../../ui/Menus";
+import LoadingSkeleton from "../../../ui/LoadingSkeleton";
+import Modal from "../../../ui/Modal";
+import YoutubeFrame from "../youtube-frame/YoutubeFrame";
+import Menus from "../../../ui/Menus";
 import { FaList } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import { GoBookmarkFill } from "react-icons/go";

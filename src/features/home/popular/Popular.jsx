@@ -1,14 +1,16 @@
 import styled from "styled-components";
-import Tab from "../../ui/Tab";
+import Tab from "../../../ui/Tab";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getListMoviesPopularAsync,
-  setTabPopular,
-} from "../../redux/homePageSlice";
-import ListMovies from "./ListMovies";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Movie from "./Movie";
+import LoadingBarProgress from "../../../ui/LoadingBarProgress";
+import {
+  getListMoviesPopularAsync,
+  setProgressBar,
+  setTabPopular,
+} from "./popularSlice";
+import ListMovies from "../ListMovies";
+import Movie from "../Movie";
 
 const PopularWrapper = styled.div`
   width: 100%;
@@ -40,8 +42,10 @@ export default function Popular() {
     tabPopular,
     cardPopularVisibility,
     isErrorPopular,
-  } = useSelector((state) => state.homepage);
+    progressBar,
+  } = useSelector((state) => state.popular);
   const tabIndex = whatPopularTabs.findIndex((tab) => tab.id === tabPopular);
+
   function handleOnclickTab(newTab) {
     dispatch(setTabPopular(newTab));
   }
@@ -51,6 +55,12 @@ export default function Popular() {
 
   return (
     <PopularWrapper className="PopularWrapper">
+      <LoadingBarProgress
+        color="#01b4e4"
+        progress={progressBar}
+        height={4}
+        onLoadFinished={() => setProgressBar(0)}
+      />
       <PopularContent className="PopularContent">
         <Tab
           dark="true"

@@ -10,7 +10,7 @@ import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import { useDispatch, useSelector } from "react-redux";
-import { releaseYoutubeFrame } from "../features/home/session/youtubeFrameSlice";
+import { releaseYoutubeFrame } from "../features/home/youtube-frame/youtubeFrameSlice";
 
 export const Overlay = styled.div`
   position: fixed;

@@ -1,11 +1,9 @@
 import Welcome from "../features/home/Welcome";
-import Trending from "../features/home/Trending";
-import { useSelector } from "react-redux";
+import Trending from "../features/home/trending/Trending";
 import styled from "styled-components";
-import Popular from "../features/home/Popular";
-import LatestTrailers from "../features/home/LatestTrailers";
-import LoadingBarProgress from "../ui/LoadingBarProgress";
-import { setProgressBar } from "../redux/homePageSlice";
+import LatestTrailers from "../features/home/latest-trailers/LatestTrailers";
+import LeaderBoard from "../features/home/leaderboard/LeaderBoard";
+import Popular from "../features/home/popular/Popular";
 const Main = styled.div`
   width: 100%;
   display: flex;
@@ -30,20 +28,14 @@ const Main = styled.div`
 `;
 
 export default function HomePage() {
-  const { progressBar } = useSelector((state) => state.homepage);
   return (
     <>
-      <LoadingBarProgress
-        color="#01b4e4"
-        progress={progressBar}
-        height={4}
-        onLoadFinished={() => setProgressBar(0)}
-      />
       <Main className="Main">
         <Welcome />
         <Trending />
         <LatestTrailers />
         <Popular />
+        <LeaderBoard />
       </Main>
     </>
   );

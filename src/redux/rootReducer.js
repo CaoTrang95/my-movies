@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
-import { hompageReducer } from "./homePageSlice";
-import { youtubeFrameReducer } from "../features/home/session/youtubeFrameSlice";
+import { latestTrailerReducer } from "../features/home/latest-trailers/latestTrailersSlice";
+import { youtubeFrameReducer } from "../features/home/youtube-frame/youtubeFrameSlice";
+import { trendingReducer } from "../features/home/trending/trendingSlice";
+import { popularReducer } from "../features/home/popular/popularSlice";
 
 const rootReducer = combineReducers({
-  homepage: hompageReducer,
+  trending: trendingReducer,
+  popular: popularReducer,
+  latestTrailers: latestTrailerReducer,
   youtubeFrame: youtubeFrameReducer,
 });
 
