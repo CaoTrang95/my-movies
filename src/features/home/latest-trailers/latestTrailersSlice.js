@@ -39,33 +39,21 @@ const latestTrailerSlice = createSlice({
         "https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces" +
         state.listMoviesTrailers[0].backdrop_path;
     },
-    setProgressBar(state, action) {
-      state.progressBar = action.payload;
-    },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(getListMoviesTrailersAsync.pending, (state, action) => {
-        state.progressBar = 70;
-      })
-      .addCase(getListMoviesTrailersAsync.fulfilled, (state, action) => {
-        state.progressBar = 100;
-        state.cardTrailersVisibility = false;
-        setTimeout(() => {
-          action.payload.dispatch(
-            setListTrailersAfterTimeout(action.payload.response.results)
-          );
-        }, 500);
-      })
-      .addCase(getListMoviesTrailersAsync.rejected, (state, action) => {
-        state.progressBar = 100;
-      });
+    builder.addCase(getListMoviesTrailersAsync.fulfilled, (state, action) => {
+      state.cardTrailersVisibility = false;
+      setTimeout(() => {
+        action.payload.dispatch(
+          setListTrailersAfterTimeout(action.payload.response.results)
+        );
+      }, 500);
+    });
   },
 });
 export const {
   setTabTrailers,
   setImageBackground,
   setListTrailersAfterTimeout,
-  setProgressBar,
 } = latestTrailerSlice.actions;
 export const latestTrailerReducer = latestTrailerSlice.reducer;

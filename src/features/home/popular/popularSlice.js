@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getListMoviesPopular } from "../../../service/moviesApi";
 
 const initialState = {
-  progressBar: 0,
   tabPopular: "in-theaters",
   cardPopularVisibility: true,
   isErrorPopular: false,
@@ -33,18 +32,13 @@ const popularSlice = createSlice({
       state.listMoviesPopular = results.payload;
       state.cardPopularVisibility = true;
     },
-    setProgressBar(state, action) {
-      state.progressBar = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getListMoviesPopularAsync.pending, (state, action) => {
-        state.progressBar = 70;
         state.isErrorPopular = false;
       })
       .addCase(getListMoviesPopularAsync.fulfilled, (state, action) => {
-        state.progressBar = 100;
         state.cardPopularVisibility = false;
         setTimeout(() => {
           action.payload.dispatch(
@@ -53,12 +47,11 @@ const popularSlice = createSlice({
         }, 500);
       })
       .addCase(getListMoviesPopularAsync.rejected, (state, action) => {
-        state.progressBar = 100;
         state.isErrorPopular = true;
       });
   },
 });
 
-export const { setListPopularAfterTimeout, setTabPopular, setProgressBar } =
+export const { setListPopularAfterTimeout, setTabPopular } =
   popularSlice.actions;
 export const popularReducer = popularSlice.reducer;

@@ -9,7 +9,8 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = "";
+    const token =
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMGU3NWQzMjVhNTRkN2IwYzA1YzY3YjE2NmQ0N2I2YyIsInN1YiI6IjY2MTQxMTQwMGJiMDc2MDE4NTMxMGJkNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-V3Igf8touvg-mXJVbvd5cv_OYb1RhZZ4FAfyk1BEZw";
     if (token && config.headers) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }

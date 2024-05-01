@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getListMoviesTrailersAsync,
   setImageBackground,
-  setProgressBar,
   setTabTrailers,
 } from "./latestTrailersSlice";
 import { useEffect } from "react";
 import ListMovies, { ListMoviesContent } from "../ListMovies";
 import MovieVideo from "./MovieVideo";
-import LoadingBarProgress from "../../../ui/LoadingBarProgress";
 
 const TrailersWrapper = styled.div`
   width: 100%;
@@ -51,10 +49,8 @@ export default function LatestTrailers() {
     cardTrailersVisibility,
     tabTrailers,
     imageBackground,
-    progressBar,
   } = useSelector((state) => state.latestTrailers);
 
-  //   const [imageBackground, setImageBackground] = useState("");
   const dispatch = useDispatch();
 
   function handleOnclickTab(newTab) {
@@ -73,12 +69,6 @@ export default function LatestTrailers() {
   const tabIndex = popularTabs.findIndex((tab) => tab.id === tabTrailers);
   return (
     <TrailersWrapper className="TrailersWrapper">
-      <LoadingBarProgress
-        color="#01b4e4"
-        progress={progressBar}
-        height={4}
-        onLoadFinished={() => setProgressBar(0)}
-      />
       <TrailersContent className="TrailersContent" $bg={imageBackground}>
         <div className="image-background">
           <Tab

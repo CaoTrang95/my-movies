@@ -1,12 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import LoadingBarProgress from "../../../ui/LoadingBarProgress";
-import {
-  getListMoviesTrendingAsync,
-  setProgressBar,
-  setTabTrending,
-} from "./trendingSlice";
+import { getListMoviesTrendingAsync, setTabTrending } from "./trendingSlice";
 import Tab from "../../../ui/Tab";
 import ListMovies from "../ListMovies";
 import Movie from "../Movie";
@@ -34,13 +29,24 @@ const trendingTabs = [
 ];
 
 export default function Trending() {
-  const { progressBar, tabTrending, cardVisibility, listMoviesTrending } =
-    useSelector((state) => state.trending);
+  const { tabTrending, cardVisibility, listMoviesTrending } = useSelector(
+    (state) => state.trending
+  );
   const tabIndex = trendingTabs.findIndex((tab) => tab.id === tabTrending);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getListMoviesTrendingAsync({ tabTrending: tabTrending }));
+    var thunkAction = getListMoviesTrendingAsync({ tabTrending: tabTrending });
+    /*
+    {
+      "type" : "",
+      "payload": {
+        "tabTrending": tabTrending
+      }
+    }
+    */
+    // hey thunk, do your job
+    dispatch(thunkAction);
   }, [dispatch, tabTrending]);
 
   function handleOnclickTab(tabName) {
@@ -49,12 +55,6 @@ export default function Trending() {
 
   return (
     <TrendingWrapper className="TrendingWrapper">
-      <LoadingBarProgress
-        color="#01b4e4"
-        progress={progressBar}
-        height={4}
-        onLoadFinished={() => setProgressBar(0)}
-      />
       <TrendingContent className="TrendingContent">
         <Tab
           dark="true"

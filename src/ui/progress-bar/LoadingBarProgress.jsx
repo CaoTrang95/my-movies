@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const MyProgress = styled.div`
@@ -22,18 +22,13 @@ const MyProgress = styled.div`
     opacity: 0;
   }
 `;
-export default function LoadingBarProgress({
-  color,
-  progress,
-  height,
-  onLoadFinished,
-}) {
-  const progressRef = useRef();
+export default function LoadingBarProgress({ color, height, onLoadFinished }) {
+  const { progressBar } = useSelector((state) => state.progressBar);
   const dispatch = useDispatch();
   const [showbar, setShowBar] = useState(true);
   useEffect(() => {
     async function reset() {
-      if (progress === 100) {
+      if (progressBar === 100) {
         // 400ms to show progress bar
         await new Promise((r) => setTimeout(r, 400));
         // 200ms to hidden progress bar
@@ -45,18 +40,15 @@ export default function LoadingBarProgress({
       }
     }
     reset();
-  }, [progress]);
+  }, [progressBar]);
   return (
     <MyProgress
       className="MyProgress"
       $color={color}
-      $progress={progress}
+      $progress={progressBar}
       $height={height}
     >
-      <div
-        ref={progressRef}
-        className={` ${showbar ? "show-bar" : "hidden-bar"}`}
-      ></div>
+      <div className={` ${showbar ? "show-bar" : "hidden-bar"}`}></div>
     </MyProgress>
   );
 }

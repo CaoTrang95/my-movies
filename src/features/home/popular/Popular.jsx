@@ -3,12 +3,7 @@ import Tab from "../../../ui/Tab";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import LoadingBarProgress from "../../../ui/LoadingBarProgress";
-import {
-  getListMoviesPopularAsync,
-  setProgressBar,
-  setTabPopular,
-} from "./popularSlice";
+import { getListMoviesPopularAsync, setTabPopular } from "./popularSlice";
 import ListMovies from "../ListMovies";
 import Movie from "../Movie";
 
@@ -42,7 +37,6 @@ export default function Popular() {
     tabPopular,
     cardPopularVisibility,
     isErrorPopular,
-    progressBar,
   } = useSelector((state) => state.popular);
   const tabIndex = whatPopularTabs.findIndex((tab) => tab.id === tabPopular);
 
@@ -55,12 +49,6 @@ export default function Popular() {
 
   return (
     <PopularWrapper className="PopularWrapper">
-      <LoadingBarProgress
-        color="#01b4e4"
-        progress={progressBar}
-        height={4}
-        onLoadFinished={() => setProgressBar(0)}
-      />
       <PopularContent className="PopularContent">
         <Tab
           dark="true"

@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getMovieTrailerUrlAsync, setProgressBar } from "./youtubeFrameSlice";
-import LoadingBarProgress from "../../../ui/LoadingBarProgress";
+import { getMovieDetailAsync } from "./youtubeFrameSlice";
+import LoadingBarProgress from "../../../ui/progress-bar/LoadingBarProgress";
+import { setProgressBar } from "../../../ui/progress-bar/progressBarSlice";
 
 const YoutubeWrapper = styled.div`
   min-width: 90px;
@@ -25,19 +26,16 @@ const YoutubeWrapper = styled.div`
   }
 `;
 export default function YoutubeFrame({ id }) {
-  const { videoTrailerUrl, progressBar } = useSelector(
-    (state) => state.youtubeFrame
-  );
+  const { videoTrailerUrl } = useSelector((state) => state.youtubeFrame);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMovieTrailerUrlAsync({ id: id }));
+    dispatch(getMovieDetailAsync({ id: id }));
   }, [videoTrailerUrl]);
   return (
     <>
       <LoadingBarProgress
         color="#01b4e4"
-        progress={progressBar}
         height={4}
         onLoadFinished={() => setProgressBar(0)}
       />

@@ -58,7 +58,7 @@ export default function ListMovies({ cardVisibility, listMovies, render }) {
             cardVisibility ? "anim-in" : !cardVisibility ? "anim-out" : ""
           }`}
         >
-          {listMovies && listMovies.map(render)}
+          {listMovies && listMovies?.map(render)}
           <div className="spacer"></div>
         </ListMoviesContent>
       </ListMoviesWrapper>
