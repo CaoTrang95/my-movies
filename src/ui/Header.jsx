@@ -76,7 +76,7 @@ const BoxVisible = styled.li`
   }
 `;
 const tooltipMovies = [
-  { link: "/", content: "Popular" },
+  { link: "movie", content: "Popular" },
   { link: "/", content: "Now Playing" },
   { link: "/", content: "Upcoming" },
   { link: "/", content: "Top Rated" },

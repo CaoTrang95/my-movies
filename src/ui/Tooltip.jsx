@@ -48,6 +48,15 @@ const Tooltip = styled.li`
     cursor: pointer;
     z-index: 102;
   }
+  /* a:active > ${TooltipMenu} {
+    visibility: hidden;
+    opacity: 0;
+  } */
+  ${TooltipMenu}:has(a:active) {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
 `;
 export default function MyToolTip({ name, list }) {
   return (

@@ -78,6 +78,8 @@ const GlobalStyles = createGlobalStyle`
   --tmdbLogoRed: rgba(217,59,99,1);
   --color-grey-700: #374151;
   --color-grey-0: #fff;
+  --color-grey-100: #f3f4f6;
+  --color-grey-300: #d1d5db;
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
   }
 }
@@ -127,6 +129,7 @@ a {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  /* font-family: 'Source Sans Pro', sans-serif !important; */
   -webkit-font-smoothing: antialiased;
   background-color: var(--tmdbDarkBlue);
   font-size: .9em;
@@ -154,6 +157,18 @@ body.modal-open {
 .nav-up{
   top: -64px;
 }
+.form-field{
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.sort-filter-card {
+    display: flex;
+    padding: 14px 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export default GlobalStyles;

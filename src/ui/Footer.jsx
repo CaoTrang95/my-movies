@@ -8,6 +8,9 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: var(--tmdbDarkBlue);
   color: #fff;
+  position: relative;
+  bottom: 0;
+  right: auto;
   nav {
     width: 100%;
     display: flex;
