@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { FaCaretDown } from "react-icons/fa";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
-
 const Select = styled.div`
-  padding: 0.6rem 1rem;
   border: none;
   border-radius: 5px;
   background-color: #c7cdd5;
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  .select {
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 `;
 const StyledButton = styled.button`
   width: 100%;
@@ -27,13 +32,22 @@ const StyledButton = styled.button`
 `;
 const StyledDropList = styled.div`
   position: absolute;
-  z-index: 1;
+  bottom: ${(props) =>
+    props.$position.bottom === "initial"
+      ? props.$position.bottom
+      : props.$position.bottom + "px"};
+  top: ${(props) =>
+    props.$position.top === "initial"
+      ? props.$position.top
+      : props.$position.top + "px"};
+  left: 0;
+  z-index: 2001;
   background-color: var(--color-grey-0);
   border: 1px solid #eee;
   box-shadow: var(--shadow-md);
   border-radius: 0.25rem;
   overflow: hidden;
-  width: calc(100% - 32px);
+  width: 100%;
   height: 200px;
   padding-bottom: 10px;
   padding-top: 8px;
@@ -57,50 +71,76 @@ const StyledDropList = styled.div`
 
 const DropdownContext = createContext();
 
+const heightOfList = 200;
+let topOfSelect,
+  bottomOfSelect,
+  heightOfSelect = null;
 function Dropdown({ children, options, sortValue, onClickDropItem }) {
   const [openId, setOpenId] = useState("");
+  const [position, setPosition] = useState();
   const close = () => setOpenId("");
   const open = setOpenId;
-
   return (
     <DropdownContext.Provider
-      value={{ openId, close, open, options, sortValue, onClickDropItem }}
+      value={{
+        openId,
+        close,
+        open,
+        options,
+        sortValue,
+        onClickDropItem,
+        position,
+        setPosition,
+      }}
     >
-      {children}
+      {" "}
+      <Select className="Select">{children}</Select>{" "}
     </DropdownContext.Provider>
   );
 }
 function DropdownToggle({ id }) {
-  const { openId, close, open, options, sortValue } =
+  const { openId, close, open, options, sortValue, setPosition } =
     useContext(DropdownContext);
   const sortCurrent = options.find((opt) => opt.value === sortValue).label;
+  const SelectRef = useRef();
   function handleClick(e) {
     e.stopPropagation();
+    const DomSelect = SelectRef.current.getBoundingClientRect();
+    topOfSelect = DomSelect.top;
+    bottomOfSelect = DomSelect.bottom;
+    heightOfSelect = DomSelect.height;
+    setPosition({ bottom: "initial", top: heightOfSelect });
+    if (
+      bottomOfSelect + heightOfList > window.innerHeight &&
+      topOfSelect - heightOfList > 0
+    ) {
+      setPosition({ bottom: heightOfSelect, top: "initial" });
+    }
     openId === "" || openId !== id ? open(id) : close();
   }
   return (
-    <Select className="Select" onClick={handleClick}>
-      <span>{sortCurrent}</span>
-      <FaCaretDown />
-    </Select>
+    <div className="select" ref={SelectRef} onClick={handleClick}>
+      {" "}
+      <span>{sortCurrent}</span> <FaCaretDown />{" "}
+    </div>
   );
 }
-
 function DropList({ id }) {
-  const { openId, close, options } = useContext(DropdownContext);
+  const { openId, close, options, position } = useContext(DropdownContext);
   const ref = useOutsideClick(close, false);
-
   if (openId !== id) return null;
-
   return (
-    <StyledDropList className="StyledDropList" ref={ref}>
+    <StyledDropList className="StyledDropList" ref={ref} $position={position}>
+      {" "}
       <div className="list-content">
+        {" "}
         {options.map((opt) => (
           <DropButton opt={opt} key={opt.value}>
-            {opt.label}
+            {" "}
+            {opt.label}{" "}
           </DropButton>
-        ))}
-      </div>
+        ))}{" "}
+      </div>{" "}
     </StyledDropList>
   );
 }
