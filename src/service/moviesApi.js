@@ -1,4 +1,5 @@
 import {
+  GENRES,
   LIST_MOVIES_LATEST_TRAILERS_IN_THEATERS,
   LIST_MOVIES_LATEST_TRAILERS_ON_TV,
   LIST_MOVIES_POPULAR_IN_THEATERS,
@@ -46,9 +47,14 @@ const getListMoviesPopular = (params) => {
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));
 };
+const getListGenres = () =>
+  makeGet(GENRES)
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error.message));
 export {
   getListMoviesTrending,
   getListMoviesPopular,
   getListMoviesTrailers,
   getMovieDetail,
+  getListGenres,
 };

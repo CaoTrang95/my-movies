@@ -2,6 +2,11 @@ import styled from "styled-components";
 import ShowMe from "../features/movie/ShowMe";
 import Sort from "../features/movie/Sort";
 import Filter from "../features/movie/Filter";
+import { useDispatch, useSelector } from "react-redux";
+import Movie from "../features/home/Movie";
+import { getListMoviesPopularAsync } from "../features/home/popular/popularSlice";
+import { useEffect } from "react";
+import Menus from "../ui/Menus";
 
 const MoviePageWrapper = styled.div`
   width: 100%;
@@ -38,12 +43,36 @@ const MoviePageContent = styled.div`
   }
   .list-movies {
     flex: 1;
-    background-color: #e3dddd;
+    display: flex;
+    column-gap: 20px;
+    flex-wrap: wrap;
     margin-left: 30px;
+  }
+  .wrapper-image {
+    width: 100%;
+    height: calc(
+      (
+          100vw - 80px - 260px -(var(--discoverColumnPadding) *
+                var(--numberOfDiscoverColumns))
+        ) / var(--numberOfDiscoverColumns) * 1.5
+    );
+    max-height: calc(
+      (
+          var(--maxPrimaryPageWidth) - 80px - 260px -(var(
+                  --discoverColumnPadding
+                ) * var(--numberOfDiscoverColumns))
+        ) / var(--numberOfDiscoverColumns) * 1.5
+    );
   }
 `;
 
 export default function MoviePage() {
+  const { listMoviesPopular } = useSelector((state) => state.popular);
+  console.log(listMoviesPopular);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getListMoviesPopularAsync({ tabPopular: "in-theaters" }));
+  }, []);
   return (
     <MoviePageWrapper>
       <MoviePageContent className="MoviePageContent">
@@ -54,8 +83,15 @@ export default function MoviePage() {
           <div className="search-infos">
             <Sort />
             <Filter />
+            {/* <Search /> */}
           </div>
-          <div className="list-movies"></div>
+          <div className="list-movies">
+            <Menus>
+              {listMoviesPopular.map((movie) => (
+                <Movie key={movie.id} movie={movie} />
+              ))}
+            </Menus>
+          </div>
         </div>
       </MoviePageContent>
     </MoviePageWrapper>

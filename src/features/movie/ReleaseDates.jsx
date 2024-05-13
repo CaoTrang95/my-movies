@@ -94,7 +94,6 @@ export default function ReleaseDates() {
   const [sortValue, setSortValue] = useState("rating-asc");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("2024-11-12");
-  console.log("from: ", fromDate);
   function onChangeHandler(id) {
     setListCheckBox((prev) => {
       const isChecked = listCheckBox.includes(id);

@@ -81,6 +81,7 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-100: #f3f4f6;
   --color-grey-300: #d1d5db;
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
+  --maxPrimaryPageWidth: 1400px;
   }
 }
 
@@ -169,6 +170,35 @@ body.modal-open {
     justify-content: space-between;
     align-items: center;
   }
+html {
+  --numberOfDiscoverColumns: 1;
+  --discoverColumnPadding: 30px
+}
+
+@media only screen and (min-width: 700px) {
+    html {
+        --numberOfDiscoverColumns:2
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    html {
+        --numberOfDiscoverColumns:3
+    }
+}
+
+@media only screen and (min-width: 1040px) {
+    html {
+        --numberOfDiscoverColumns:4
+    }
+}
+
+@media only screen and (min-width: 1240px) {
+    html {
+        --numberOfDiscoverColumns:5
+    }
+}
+
 `;
 
 export default GlobalStyles;

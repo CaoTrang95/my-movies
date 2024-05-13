@@ -3,6 +3,7 @@ import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import styled from "styled-components";
 import ShowMe from "./ShowMe";
 import ReleaseDates from "./ReleaseDates";
+import Genres from "./Genres";
 
 const StyledFilter = styled.div`
   margin-top: 12px;
@@ -25,6 +26,7 @@ export default function Filter() {
       </div>
       {isExpandFilters && <ShowMe />}
       {isExpandFilters && <ReleaseDates />}
+      <Genres />
     </StyledFilter>
   );
 }
