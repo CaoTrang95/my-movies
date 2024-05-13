@@ -3,6 +3,8 @@ import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import SortByExpand from "./SortByExpand";
 import { optionsSortList } from "../../mock-datas/optionsList";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { setSortValue } from "./searchSlice";
 const StyledSort = styled.div`
   && h2 {
     font-size: 1.1em;
@@ -11,7 +13,8 @@ const StyledSort = styled.div`
 export default function Sort() {
   console.log("Sort re-render");
   const [isExpandSort, setIsExpandSort] = useState(true);
-  const [sortValue, setSortValue] = useState("rating-asc");
+  const { sortValue } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
   return (
     <StyledSort className="form-field">
       <div
@@ -27,7 +30,7 @@ export default function Sort() {
         <SortByExpand
           optionsSortList={optionsSortList}
           sortValue={sortValue}
-          onSetSortValue={setSortValue}
+          onClick={dispatch(setSortValue(sortValue))}
         />
       )}
     </StyledSort>

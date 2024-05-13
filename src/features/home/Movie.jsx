@@ -7,7 +7,7 @@ import { MdFavorite } from "react-icons/md";
 import { GoBookmarkFill } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
   width: 150px;
   min-width: 150px;
   position: relative;
@@ -24,7 +24,13 @@ const CardWrapper = styled.div`
     overflow: hidden;
     background-color: #dbdbdb;
   }
+  a {
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+  }
   img {
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -38,6 +44,7 @@ const CardWrapper = styled.div`
     align-content: flex-start;
     flex-wrap: wrap;
     padding-bottom: 0;
+    row-gap: 4px;
   }
   h2 {
     font-size: 1em;

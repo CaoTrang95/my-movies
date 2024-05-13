@@ -67,6 +67,35 @@ const GlobalStyles = createGlobalStyle`
   src: url('./fonts/fonts/source-sans-pro-700.woff2') format('woff2');
 }
 
+html {
+  --numberOfDiscoverColumns: 1;
+  --discoverColumnPadding: 30px
+}
+
+@media only screen and (min-width: 700px) {
+    html {
+        --numberOfDiscoverColumns:2
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    html {
+        --numberOfDiscoverColumns:3
+    }
+}
+
+@media only screen and (min-width: 1040px) {
+    html {
+        --numberOfDiscoverColumns:4
+    }
+}
+
+@media only screen and (min-width: 1240px) {
+    html {
+        --numberOfDiscoverColumns:5
+    }
+}
+
 :root{
   & {
   --max-width: 1300px;
@@ -170,34 +199,7 @@ body.modal-open {
     justify-content: space-between;
     align-items: center;
   }
-html {
-  --numberOfDiscoverColumns: 1;
-  --discoverColumnPadding: 30px
-}
 
-@media only screen and (min-width: 700px) {
-    html {
-        --numberOfDiscoverColumns:2
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    html {
-        --numberOfDiscoverColumns:3
-    }
-}
-
-@media only screen and (min-width: 1040px) {
-    html {
-        --numberOfDiscoverColumns:4
-    }
-}
-
-@media only screen and (min-width: 1240px) {
-    html {
-        --numberOfDiscoverColumns:5
-    }
-}
 
 `;
 

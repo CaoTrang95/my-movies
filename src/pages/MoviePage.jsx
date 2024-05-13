@@ -3,10 +3,13 @@ import ShowMe from "../features/movie/ShowMe";
 import Sort from "../features/movie/Sort";
 import Filter from "../features/movie/Filter";
 import { useDispatch, useSelector } from "react-redux";
-import Movie from "../features/home/Movie";
+import Movie, { CardWrapper } from "../features/home/Movie";
 import { getListMoviesPopularAsync } from "../features/home/popular/popularSlice";
 import { useEffect } from "react";
 import Menus from "../ui/Menus";
+import Search from "../features/movie/Search";
+import { getListMoviesSearch } from "../service/moviesApi";
+import { getListMoviesSearchAsync } from "../features/movie/searchSlice";
 
 const MoviePageWrapper = styled.div`
   width: 100%;
@@ -17,7 +20,7 @@ const MoviePageWrapper = styled.div`
 `;
 const MoviePageContent = styled.div`
   width: 100%;
-  max-width: var(--max-width);
+  max-width: 1400px;
   padding: 30px 40px;
   display: flex;
   justify-content: space-between;
@@ -47,31 +50,68 @@ const MoviePageContent = styled.div`
     column-gap: 20px;
     flex-wrap: wrap;
     margin-left: 30px;
+    border-radius: 5px;
+    margin-top: -30px;
   }
-  .wrapper-image {
-    width: 100%;
-    height: calc(
+  ${CardWrapper} {
+    margin-top: 30px;
+    border-radius: 8px;
+    border: 1px solid #e3e3e3;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: calc(
       (
-          100vw - 80px - 260px -(var(--discoverColumnPadding) *
-                var(--numberOfDiscoverColumns))
-        ) / var(--numberOfDiscoverColumns) * 1.5
+          100vw - 80px - 260px -
+            (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
+        ) / var(--numberOfDiscoverColumns)
     );
-    max-height: calc(
+    max-width: calc(
       (
-          var(--maxPrimaryPageWidth) - 80px - 260px -(var(
-                  --discoverColumnPadding
-                ) * var(--numberOfDiscoverColumns))
-        ) / var(--numberOfDiscoverColumns) * 1.5
+          var(--maxPrimaryPageWidth) - 80px - 260px -
+            (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
+        ) / var(--numberOfDiscoverColumns)
     );
+    h2 {
+      font-size: 1em;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1em;
+      margin: 0;
+    }
+    .image {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .content {
+      width: 100%;
+      padding-bottom: 12px;
+    }
+    .wrapper-image {
+      width: 100%;
+      height: calc(
+        (
+            100vw - 80px - 260px -(var(--discoverColumnPadding) *
+                  var(--numberOfDiscoverColumns))
+          ) / var(--numberOfDiscoverColumns) * 1.5
+      );
+      max-height: calc(
+        (
+            var(--maxPrimaryPageWidth) - 80px - 260px -(var(
+                    --discoverColumnPadding
+                  ) * var(--numberOfDiscoverColumns))
+          ) / var(--numberOfDiscoverColumns) * 1.5
+      );
+    }
   }
 `;
 
 export default function MoviePage() {
-  const { listMoviesPopular } = useSelector((state) => state.popular);
-  console.log(listMoviesPopular);
+  const { listMovies } = useSelector((state) => state.search);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getListMoviesPopularAsync({ tabPopular: "in-theaters" }));
+    dispatch(getListMoviesSearchAsync({ sortValue: "rating-asc" }));
   }, []);
   return (
     <MoviePageWrapper>
@@ -83,11 +123,11 @@ export default function MoviePage() {
           <div className="search-infos">
             <Sort />
             <Filter />
-            {/* <Search /> */}
+            <Search />
           </div>
           <div className="list-movies">
             <Menus>
-              {listMoviesPopular.map((movie) => (
+              {listMovies.map((movie) => (
                 <Movie key={movie.id} movie={movie} />
               ))}
             </Menus>

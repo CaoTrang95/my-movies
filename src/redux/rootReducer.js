@@ -5,6 +5,7 @@ import { trendingReducer } from "../features/home/trending/trendingSlice";
 import { popularReducer } from "../features/home/popular/popularSlice";
 import { progressBarReducer } from "../ui/progress-bar/progressBarSlice";
 import { genresReducer } from "../features/movie/genresSlice";
+import { searchReducer } from "../features/movie/searchSlice";
 
 const rootReducer = combineReducers({
   trending: trendingReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   youtubeFrame: youtubeFrameReducer,
   progressBar: progressBarReducer,
   genres: genresReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;

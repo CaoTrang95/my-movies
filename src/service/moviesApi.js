@@ -6,6 +6,7 @@ import {
   LIST_MOVIES_POPULAR_ON_TV,
   LIST_MOVIES_POPULAR_SCREAMING,
   LIST_MOVIES_TRENDING,
+  SEARCH,
   VIDEO_DETAIL,
 } from "../constants/apiConstants";
 import { makeGet } from "./connectionManager";
@@ -51,10 +52,17 @@ const getListGenres = () =>
   makeGet(GENRES)
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));
+
+const getListMoviesSearch = (params) =>
+  makeGet(SEARCH, params)
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error.message));
+
 export {
   getListMoviesTrending,
   getListMoviesPopular,
   getListMoviesTrailers,
   getMovieDetail,
   getListGenres,
+  getListMoviesSearch,
 };

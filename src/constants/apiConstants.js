@@ -6,3 +6,4 @@ export const LIST_MOVIES_LATEST_TRAILERS_ON_TV = "3/movie/upcoming";
 export const LIST_MOVIES_LATEST_TRAILERS_IN_THEATERS = "3/movie/top_rated";
 export const VIDEO_DETAIL = "3/movie";
 export const GENRES = "3/genre/movie/list";
+export const SEARCH = "3/discover/movie";
