@@ -53,6 +53,20 @@ const MoviePageContent = styled.div`
     border-radius: 5px;
     margin-top: -30px;
   }
+  .pagination {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(1, 180, 228, 1);
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
   ${CardWrapper} {
     margin-top: 30px;
     border-radius: 8px;
@@ -108,11 +122,17 @@ const MoviePageContent = styled.div`
 `;
 
 export default function MoviePage() {
-  const { listMovies } = useSelector((state) => state.search);
+  const { listMovies, enableSearch, page } = useSelector(
+    (state) => state.search
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getListMoviesSearchAsync({ sortValue: "rating-asc" }));
+    dispatch(getListMoviesSearchAsync({ page: 1 }));
   }, []);
+  function onClickLoadMoreHandler() {
+    console.log("Page: ", page);
+    dispatch(getListMoviesSearchAsync({ page: page + 1 }));
+  }
   return (
     <MoviePageWrapper>
       <MoviePageContent className="MoviePageContent">
@@ -123,7 +143,7 @@ export default function MoviePage() {
           <div className="search-infos">
             <Sort />
             <Filter />
-            <Search />
+            <Search $enableSearch={enableSearch} />
           </div>
           <div className="list-movies">
             <Menus>
@@ -131,6 +151,9 @@ export default function MoviePage() {
                 <Movie key={movie.id} movie={movie} />
               ))}
             </Menus>
+            <div className="pagination" onClick={onClickLoadMoreHandler}>
+              Load More
+            </div>
           </div>
         </div>
       </MoviePageContent>

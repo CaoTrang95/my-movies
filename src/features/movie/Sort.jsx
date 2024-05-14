@@ -30,7 +30,7 @@ export default function Sort() {
         <SortByExpand
           optionsSortList={optionsSortList}
           sortValue={sortValue}
-          onClick={dispatch(setSortValue(sortValue))}
+          onSetSortValue={(sortValue) => dispatch(setSortValue(sortValue))}
         />
       )}
     </StyledSort>

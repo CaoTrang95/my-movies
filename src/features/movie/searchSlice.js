@@ -3,13 +3,16 @@ import { getListMoviesSearch } from "../../service/moviesApi";
 
 const initialState = {
   sortValue: "rating-asc",
+  page: 0,
   listMovies: [],
   enableSearch: false,
 };
 export const getListMoviesSearchAsync = createAsyncThunk(
   "popular/getListMoviesSearchAsync",
-  async (params, { rejectWithValue, dispatch }) => {
+  async (params, { rejectWithValue, dispatch, getState }) => {
     try {
+      params = { ...params, sortValue: getState().search.sortValue };
+      console.log(params);
       const response = await getListMoviesSearch(params);
       return { response, dispatch };
     } catch (error) {
@@ -28,9 +31,16 @@ const searchSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getListMoviesSearchAsync.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.listMovies = action.payload.response.results;
+      if (state.page === 0) {
+        state.listMovies = action.payload.response.results;
+      } else {
+        state.listMovies = [
+          ...state.listMovies,
+          ...action.payload.response.results,
+        ];
+      }
       console.log(state.listMovies);
+      state.page = state.page + 1;
     });
   },
 });
