@@ -19,7 +19,7 @@ const MoviePageWrapper = styled.div`
 `;
 const MoviePageContent = styled.div`
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--maxPrimaryPageWidth);
   padding: 30px 40px;
   display: flex;
   justify-content: space-between;

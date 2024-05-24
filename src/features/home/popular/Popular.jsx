@@ -15,7 +15,7 @@ const PopularWrapper = styled.div`
 const PopularContent = styled.div`
   width: 100%;
   padding: 30px 0;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
   display: flex;
   flex-direction: column;
   .error {

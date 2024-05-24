@@ -17,7 +17,7 @@ const WelcomeContent = styled.section`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   color: #fff;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
   background-image: image-set(
     url("https://media.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg")
       1x,

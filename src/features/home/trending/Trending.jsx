@@ -12,12 +12,12 @@ const TrendingWrapper = styled.section`
   justify-content: center;
   background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg");
   background-position: 50% 200px;
-  background-size: 1300px;
+  background-size: var(--maxPrimaryPageWidth);
   background-repeat: no-repeat;
 `;
 const TrendingContent = styled.div`
   width: 100%;
-  max-width: 1300px;
+  max-width: var(--maxPrimaryPageWidth);
   display: flex;
   padding-top: 30px;
   flex-direction: column;

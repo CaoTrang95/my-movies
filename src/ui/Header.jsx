@@ -25,7 +25,7 @@ const NavWrapper = styled.div`
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
 `;
 const NavItem = styled.div`
   display: flex;

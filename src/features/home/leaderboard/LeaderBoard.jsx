@@ -10,7 +10,7 @@ const LeaderBoardContent = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
   width: 100%;
   padding: 0px 40px 30px 40px;
 `;

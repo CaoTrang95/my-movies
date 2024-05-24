@@ -17,7 +17,7 @@ const TrailersWrapper = styled.div`
 `;
 const TrailersContent = styled.div`
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
   height: 100%;
   justify-content: center;
   background-image: url(${(props) => props.$bg});

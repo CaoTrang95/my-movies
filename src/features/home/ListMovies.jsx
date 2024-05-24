@@ -11,7 +11,7 @@ export const ListMoviesContent = styled.div`
   width: 100%;
   display: flex;
   padding: 20px 0 30px 0;
-  max-width: var(--max-width);
+  max-width: var(--maxPrimaryPageWidth);
   overflow-x: scroll;
   overflow-y: hidden;
   opacity: 1;

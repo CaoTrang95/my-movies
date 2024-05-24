@@ -69,7 +69,14 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   --numberOfDiscoverColumns: 1;
-  --discoverColumnPadding: 30px
+  --discoverColumnPadding: 30px;
+  --maxPrimaryPageWidth: 1400px;
+}
+
+@media only screen and (min-width: 1400px) {
+  html {
+      --maxPrimaryPageWidth: 1300px
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -98,7 +105,6 @@ html {
 
 :root{
   & {
-  --max-width: 1300px;
   --tmdbDarkBlue:rgba(3, 37, 65, 1);
   --tmbLightBlue: rgba(1,180,228,1);
   --tmdbLighterGreen: rgba(192,254,207,1);
@@ -110,7 +116,6 @@ html {
   --color-grey-100: #f3f4f6;
   --color-grey-300: #d1d5db;
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
-  --maxPrimaryPageWidth: 1400px;
   }
 }
 
@@ -149,7 +154,7 @@ html {
     justify-content: center;
     flex-direction: column;
     padding: 30px 40px;
-    max-width: var(--max-width);
+    max-width: var(--maxPrimaryPageWidth);
 }
 
 a {
@@ -206,7 +211,6 @@ body.modal-open {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 `;
 
 export default GlobalStyles;
