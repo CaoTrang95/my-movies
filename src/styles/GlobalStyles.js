@@ -199,7 +199,13 @@ body.modal-open {
     justify-content: space-between;
     align-items: center;
   }
-
+.dot-text {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 `;
 

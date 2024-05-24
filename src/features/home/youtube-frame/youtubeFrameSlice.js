@@ -3,7 +3,6 @@ import { getMovieDetail } from "../../../service/moviesApi";
 
 const initialState = {
   videoTrailerUrl: null,
-  homepageState: {},
 };
 
 export const getMovieDetailAsync = createAsyncThunk(

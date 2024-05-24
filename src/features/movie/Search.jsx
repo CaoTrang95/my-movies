@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getListMoviesSearchAsync } from "./searchSlice";
+import { getListMoviesSearchAsync, setClickedLoadMore } from "./searchSlice";
 
 const StyledSearch = styled.div`
   width: 100%;
@@ -17,12 +17,13 @@ const StyledSearch = styled.div`
   justify-content: center;
 `;
 export default function Search() {
+  const enableSearch = useSelector((state) => state.search.enableSearch);
   const dispatch = useDispatch();
+
   function onClickSearchHandler() {
+    dispatch(setClickedLoadMore(false));
     dispatch(getListMoviesSearchAsync({ page: 1 }));
-    console.log("Search");
   }
-  const { enableSearch } = useSelector((state) => state.search);
   return (
     <StyledSearch $enableSearch={enableSearch} onClick={onClickSearchHandler}>
       Search

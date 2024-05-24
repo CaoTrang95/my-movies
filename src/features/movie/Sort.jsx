@@ -13,7 +13,7 @@ const StyledSort = styled.div`
 export default function Sort() {
   console.log("Sort re-render");
   const [isExpandSort, setIsExpandSort] = useState(true);
-  const { sortValue } = useSelector((state) => state.search);
+  const sortValue = useSelector((state) => state.search.sortValue);
   const dispatch = useDispatch();
   return (
     <StyledSort className="form-field">

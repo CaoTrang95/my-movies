@@ -8,6 +8,7 @@ const acceptedThunkActionList = [
   "popular/getListMoviesPopularAsync",
   "latestTrailers/getListMoviesTrailersAsync",
   "youtubeFrame/getMovieDetailAsync",
+  "search/getListMoviesSearchAsync",
 ];
 
 function isThunkAction(action, type) {

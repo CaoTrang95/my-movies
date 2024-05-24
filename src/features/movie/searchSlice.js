@@ -2,13 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getListMoviesSearch } from "../../service/moviesApi";
 
 const initialState = {
-  sortValue: "popularity.asc",
+  sortValue: "popularity.desc",
+  clickedLoadMore: false,
   page: 1,
   listMovies: [],
   enableSearch: false,
 };
 export const getListMoviesSearchAsync = createAsyncThunk(
-  "popular/getListMoviesSearchAsync",
+  "search/getListMoviesSearchAsync",
   async (params, { rejectWithValue, getState }) => {
     try {
       const pagePagination = params.page;
@@ -28,6 +29,9 @@ const searchSlice = createSlice({
       state.sortValue = action.payload;
       state.enableSearch = true;
     },
+    setClickedLoadMore(state, action) {
+      state.clickedLoadMore = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getListMoviesSearchAsync.fulfilled, (state, action) => {
@@ -38,11 +42,11 @@ const searchSlice = createSlice({
           ...state.listMovies,
           ...action.payload.response.results,
         ];
-        state.page = action.payload.pagePagination;
       }
+      state.page = action.payload.pagePagination;
     });
   },
 });
 
-export const { setSortValue } = searchSlice.actions;
+export const { setSortValue, setClickedLoadMore } = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;

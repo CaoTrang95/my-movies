@@ -1,16 +1,14 @@
 import styled from "styled-components";
-import ShowMe from "../features/movie/ShowMe";
 import Sort from "../features/movie/Sort";
 import Filter from "../features/movie/Filter";
-import { useDispatch, useSelector } from "react-redux";
-import Movie, { CardWrapper } from "../features/home/Movie";
-import { getListMoviesPopularAsync } from "../features/home/popular/popularSlice";
+import { useDispatch } from "react-redux";
+import { CardWrapper } from "../features/home/Movie";
 import { useEffect } from "react";
-import Menus from "../ui/Menus";
 import Search from "../features/movie/Search";
-import { getListMoviesSearch } from "../service/moviesApi";
 import { getListMoviesSearchAsync } from "../features/movie/searchSlice";
 import { ListMovies } from "../features/movie/ListMovies";
+import LoadingBarProgress from "../ui/progress-bar/LoadingBarProgress";
+import { setProgressBar } from "../ui/progress-bar/progressBarSlice";
 
 const MoviePageWrapper = styled.div`
   width: 100%;
@@ -106,20 +104,27 @@ export default function MoviePage() {
   }, []);
 
   return (
-    <MoviePageWrapper>
-      <MoviePageContent className="MoviePageContent">
-        <div className="title">
-          <h2>Popular Movies</h2>
-        </div>
-        <div className="content">
-          <div className="search-infos">
-            <Sort />
-            <Filter />
-            <Search />
+    <>
+      <LoadingBarProgress
+        color="#01b4e4"
+        height={4}
+        onLoadFinished={() => setProgressBar(0)}
+      />
+      <MoviePageWrapper>
+        <MoviePageContent className="MoviePageContent">
+          <div className="title">
+            <h2>Popular Movies</h2>
           </div>
-          <ListMovies />
-        </div>
-      </MoviePageContent>
-    </MoviePageWrapper>
+          <div className="content">
+            <div className="search-infos">
+              <Sort />
+              <Filter />
+              <Search />
+            </div>
+            <ListMovies />
+          </div>
+        </MoviePageContent>
+      </MoviePageWrapper>
+    </>
   );
 }

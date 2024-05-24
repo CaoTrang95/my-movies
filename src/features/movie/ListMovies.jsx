@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Menus from "../../ui/Menus";
 import Movie from "../home/Movie";
-import { getListMoviesSearchAsync } from "./searchSlice";
+import { getListMoviesSearchAsync, setClickedLoadMore } from "./searchSlice";
 import styled from "styled-components";
 import { useCallback, useRef } from "react";
 const StyledListMovies = styled.div`
@@ -29,15 +29,20 @@ const StyledListMovies = styled.div`
 `;
 
 export function ListMovies() {
-  const { listMovies, page } = useSelector((state) => state.search);
+  console.log("ListMovies render");
+  const listMovies = useSelector((state) => state.search.listMovies);
+  const page = useSelector((state) => state.search.page);
+  const clickedLoadMore = useSelector((state) => state.search.clickedLoadMore);
   const dispatch = useDispatch();
   const observer = useRef(null);
-  const clickedLoadMore = useRef(false);
 
   const loadMore = useCallback(
     (node) => {
       if (!node) return;
-      if (!clickedLoadMore.current) return;
+      if (clickedLoadMore === false) {
+        if (observer.current) observer.current.disconnect();
+        return;
+      }
       // if (isLoading || !hasMore) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
@@ -47,18 +52,18 @@ export function ListMovies() {
       });
       if (node) observer.current.observe(node);
     },
-    [page]
+    [page, clickedLoadMore]
   );
   function onClickLoadMoreHandler() {
-    clickedLoadMore.current = true;
+    dispatch(setClickedLoadMore(true));
     dispatch(getListMoviesSearchAsync({ page: page + 1 }));
   }
   return (
     <StyledListMovies className="list-movies">
       <Menus>
-        {listMovies.map((movie) => (
+        {listMovies?.map((movie, index) => (
           <Movie
-            key={movie.id + movie.backdrop_path + movie.vote_average}
+            key={movie.id + movie.title + movie.poster_path + index}
             movie={movie}
           />
         ))}

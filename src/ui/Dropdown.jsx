@@ -131,16 +131,13 @@ function DropList({ id }) {
   if (openId !== id) return null;
   return (
     <StyledDropList className="StyledDropList" ref={ref} $position={position}>
-      {" "}
       <div className="list-content">
-        {" "}
         {options.map((opt) => (
           <DropButton opt={opt} key={opt.value}>
-            {" "}
-            {opt.label}{" "}
+            {opt?.label}
           </DropButton>
-        ))}{" "}
-      </div>{" "}
+        ))}
+      </div>
     </StyledDropList>
   );
 }

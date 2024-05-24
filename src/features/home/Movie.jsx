@@ -102,7 +102,7 @@ export default function Movie({ movie }) {
           </div>
           <div className="content">
             <div className="consensus"></div>
-            <h2>
+            <h2 className="dot-text">
               <Link>{movie?.original_title ?? movie.name}</Link>
             </h2>
             <p>{movie?.release_date ?? movie?.first_air_date}</p>
