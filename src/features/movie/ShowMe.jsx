@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { showMe } from "../../mock-datas/optionsList";
+import { useSelector } from "react-redux";
 const ShowMeWrapper = styled.div`
   &.show-me {
     border-top: 1px solid #e3e3e3;
@@ -53,11 +55,7 @@ const Radio = styled.div`
     gap: 6px;
   }
 `;
-const showMe = [
-  { id: 0, label: "Everything" },
-  { id: 1, label: "Movies I Haven't Seen" },
-  { id: 2, label: "Movies I Have Seen" },
-];
+
 export default function ShowMe() {
   const [radioValue, setRadioValue] = useState(0);
   return (

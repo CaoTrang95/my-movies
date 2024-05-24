@@ -101,7 +101,7 @@ function Dropdown({ children, options, sortValue, onClickDropItem }) {
 function DropdownToggle({ id }) {
   const { openId, close, open, options, sortValue, setPosition } =
     useContext(DropdownContext);
-  const sortCurrent = options.find((opt) => opt.value === sortValue).label;
+  const sortCurrent = options.find((opt) => opt.value === sortValue)?.label;
   const SelectRef = useRef();
   function handleClick(e) {
     e.stopPropagation();
@@ -134,7 +134,7 @@ function DropList({ id }) {
       <div className="list-content">
         {options.map((opt) => (
           <DropButton opt={opt} key={opt.value}>
-            {opt?.label}
+            {opt.label}
           </DropButton>
         ))}
       </div>

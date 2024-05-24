@@ -8,3 +8,8 @@ export const optionsSortList = [
   { value: "original_title.asc", label: "Title (A-Z)" },
   { value: "original_title.desc", label: "Title (Z-A)" },
 ];
+export const showMe = [
+  { id: 0, label: "Everything" },
+  { id: 1, label: "Movies I Haven't Seen" },
+  { id: 2, label: "Movies I Have Seen" },
+];

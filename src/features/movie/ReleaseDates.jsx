@@ -3,6 +3,8 @@ import styled from "styled-components";
 import check from "../../assets/images/check.svg";
 import Dropdown from "../../ui/Dropdown";
 import { optionsSortList } from "../../mock-datas/optionsList";
+import { useDispatch, useSelector } from "react-redux";
+import { setFromDate, setToDate } from "./searchSlice";
 const StyledReleaseDates = styled.div`
   width: 100%;
   padding: 14px 16px 16px;
@@ -91,9 +93,10 @@ export default function ReleaseDates() {
   const [isSearchAllReleases, setIsSearchAllReleases] = useState(true);
   const [isSearchAllCountries, setIsSearchAllCountries] = useState(true);
   const [listCheckBox, setListCheckBox] = useState([2, 3, 4, 5, 6, 7]);
-  const [sortValue, setSortValue] = useState("rating-asc");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("2024-11-12");
+  const [sortValue, setSortValue] = useState("original_title.asc");
+  const fromDate = useSelector((state) => state.search.paramsSearch.fromDate);
+  const toDate = useSelector((state) => state.search.paramsSearch.toDate);
+  const dispatch = useDispatch();
   function onChangeHandler(id) {
     setListCheckBox((prev) => {
       const isChecked = listCheckBox.includes(id);
@@ -106,7 +109,7 @@ export default function ReleaseDates() {
     });
   }
   function onFromDateHandler(e) {
-    setFromDate(e.target.value);
+    dispatch(setFromDate(e.target.value));
   }
   return (
     <StyledReleaseDates>
@@ -175,7 +178,7 @@ export default function ReleaseDates() {
             type="date"
             id="to-date"
             value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
+            onChange={(e) => dispatch(setToDate(e.target.value))}
           />
         </div>
       </ListCheckbox>

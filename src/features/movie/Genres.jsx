@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getListGenresAsync } from "./genresSlice";
+import { setWithGenres } from "./searchSlice";
 
 const StyledGenres = styled.div`
   display: flex;
@@ -34,21 +35,18 @@ const StyledGenres = styled.div`
   }
 `;
 export default function Genres() {
-  const { listGenres } = useSelector((state) => state.genres);
-  const [listCheck, setListCheck] = useState([]);
+  const listGenres = useSelector((state) => state.genres.listGenres);
+  const withGenres = useSelector(
+    (state) => state.search.paramsSearch.withGenres
+  );
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getListGenresAsync());
   }, []);
+
   function onCheckedHandler(id) {
-    setListCheck((prev) => {
-      if (listCheck.includes(id)) {
-        //uncheck
-        return prev?.filter((item) => item !== id);
-      } else {
-        return [...prev, id];
-      }
-    });
+    dispatch(setWithGenres({ id: id }));
   }
   return (
     <StyledGenres>
@@ -60,7 +58,7 @@ export default function Genres() {
             onClick={() => {
               onCheckedHandler(item.id);
             }}
-            className={listCheck.includes(item.id) ? "checked" : ""}
+            className={withGenres.includes(item.id) ? "checked" : ""}
           >
             {item.name}
           </li>
