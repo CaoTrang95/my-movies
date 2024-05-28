@@ -82,7 +82,7 @@ export default function Movie({ movie }) {
       {(movie.original_title ?? movie.name) && (
         <CardWrapper className="CardWrapper">
           <div className="wrapper-image image">
-            <Link>
+            <Link to={"/movie/" + movie.id}>
               <img
                 loading="lazy"
                 src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}

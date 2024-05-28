@@ -1,4 +1,5 @@
 import {
+  DETAILMOVIE,
   GENRES,
   LIST_MOVIES_LATEST_TRAILERS_IN_THEATERS,
   LIST_MOVIES_LATEST_TRAILERS_ON_TV,
@@ -58,6 +59,13 @@ const getListMoviesSearch = (params) =>
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));
 
+const getDetailMovie = (params) =>
+  makeGet(
+    DETAILMOVIE + params + "?append_to_response=movies%2Cimages%2Cbackdrops"
+  )
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error.message));
+
 export {
   getListMoviesTrending,
   getListMoviesPopular,
@@ -65,4 +73,5 @@ export {
   getMovieDetail,
   getListGenres,
   getListMoviesSearch,
+  getDetailMovie,
 };

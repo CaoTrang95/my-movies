@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { MdArrowDropDown } from "react-icons/md";
+import { useRef } from "react";
 
 const TooltipMenu = styled.div`
   transition: 200ms;
@@ -48,24 +50,26 @@ const Tooltip = styled.li`
     cursor: pointer;
     z-index: 102;
   }
-  /* a:active > ${TooltipMenu} {
-    visibility: hidden;
-    opacity: 0;
-  } */
-  ${TooltipMenu}:has(a:active) {
-    visibility: hidden;
-    opacity: 0;
-    z-index: -1;
-  }
 `;
-export default function MyToolTip({ name, list }) {
+export default function MyToolTip({ name, list, showIcon = false }) {
+  const TooltipRef = useRef();
+  function onClickHandler() {
+    if (TooltipRef.current) {
+      TooltipRef.current.style.display = "none";
+
+      setTimeout(() => {
+        if (TooltipRef.current) TooltipRef.current.style.display = "block";
+      }, "1000");
+    }
+  }
   return (
     <Tooltip className="Tooltip">
       {name}
-      <TooltipMenu className="TooltipMenu">
+      {showIcon && <MdArrowDropDown size={22} />}
+      <TooltipMenu className="TooltipMenu" ref={TooltipRef}>
         <ul>
           {list.map((item, index) => (
-            <li key={index}>
+            <li key={index} onClick={onClickHandler}>
               <Link to={item.link}>{item.content}</Link>{" "}
             </li>
           ))}

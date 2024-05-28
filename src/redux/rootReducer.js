@@ -6,6 +6,7 @@ import { popularReducer } from "../features/home/popular/popularSlice";
 import { progressBarReducer } from "../ui/progress-bar/progressBarSlice";
 import { genresReducer } from "../features/movie/genresSlice";
 import { searchReducer } from "../features/movie/searchSlice";
+import { movieDetailReducer } from "../features/detail-movie/detailMovieSlice";
 
 const rootReducer = combineReducers({
   trending: trendingReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   progressBar: progressBarReducer,
   genres: genresReducer,
   search: searchReducer,
+  detailMovie: movieDetailReducer,
 });
 
 export default rootReducer;

@@ -71,6 +71,7 @@ html {
   --numberOfDiscoverColumns: 1;
   --discoverColumnPadding: 30px;
   --maxPrimaryPageWidth: 1400px;
+  --primaryColor: rgba(10.5, 31.5, 31.5, 1);
 }
 
 @media only screen and (min-width: 1400px) {
