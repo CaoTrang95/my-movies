@@ -61,7 +61,9 @@ const getListMoviesSearch = (params) =>
 
 const getDetailMovie = (params) =>
   makeGet(
-    DETAILMOVIE + params + "?append_to_response=movies%2Cimages%2Cbackdrops"
+    DETAILMOVIE +
+      params +
+      "?append_to_response=movies,images,backdrops,credits,keywords"
   )
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));

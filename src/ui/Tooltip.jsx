@@ -15,7 +15,6 @@ const TooltipMenu = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.15);
   font-weight: 400;
   && ul {
-    line-height: 24px;
     display: block;
     background-color: #fff;
     padding: 0.5rem 0;
@@ -36,6 +35,8 @@ const TooltipMenu = styled.div`
     padding: 3px 1.5rem;
     color: #000;
     white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
   }
 `;
 const Tooltip = styled.li`
@@ -51,7 +52,12 @@ const Tooltip = styled.li`
     z-index: 102;
   }
 `;
-export default function MyToolTip({ name, list, showIcon = false }) {
+export default function MyToolTip({
+  name,
+  list,
+  showIcon = false,
+  showNumber = false,
+}) {
   const TooltipRef = useRef();
   function onClickHandler() {
     if (TooltipRef.current) {
@@ -70,7 +76,10 @@ export default function MyToolTip({ name, list, showIcon = false }) {
         <ul>
           {list.map((item, index) => (
             <li key={index} onClick={onClickHandler}>
-              <Link to={item.link}>{item.content}</Link>{" "}
+              <Link to={item.link}>
+                <span>{item.content}</span>
+                <span>{showNumber && item.number}</span>
+              </Link>
             </li>
           ))}
         </ul>

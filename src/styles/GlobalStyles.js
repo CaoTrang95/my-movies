@@ -157,7 +157,47 @@ html {
     padding: 30px 40px;
     max-width: var(--maxPrimaryPageWidth);
 }
-
+.tooltip {
+  position: relative;
+}
+.tooltiptext {
+  visibility: hidden;
+  text-align: center;
+  white-space: nowrap;
+  background-color: rgba(3, 37, 65, 1);
+  color: #fff;
+  border-radius: 3px;
+  padding: 8px 12px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.tooltiptext.bottom {
+  top: 150%;
+}
+.tooltiptext.top {
+  bottom: 70%;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+}
+.tooltip .tooltiptext.bottom::after {
+  bottom: 100%; /* At the bottom of the tooltip */
+  border-color: transparent transparent rgba(3, 37, 65, 1) transparent;
+}
+.tooltip .tooltiptext.top::after {
+  top: 100%; /* At the top of the tooltip */
+  border-color: rgba(3, 37, 65, 1) transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 a {
     cursor: pointer;
     text-decoration: none;

@@ -13,3 +13,38 @@ export const showMe = [
   { id: 1, label: "Movies I Haven't Seen" },
   { id: 2, label: "Movies I Have Seen" },
 ];
+export const tooltipOverview = [
+  { link: "/", content: "Main" },
+  { link: "/", content: "Alternative Titles" },
+  { link: "/", content: "Cast & Crew" },
+  { link: "/", content: "Release Dates" },
+  { link: "/", content: "Translations" },
+  { link: "/", content: "Changes" },
+  { link: "/", content: "Report" },
+  { link: "/", content: "Edit" },
+];
+export const tooltipMedia = [
+  { link: "/", content: "Backdrops", number: 61 },
+  { link: "/", content: "Logos", number: 54 },
+  { link: "/", content: "Posters", number: 263 },
+  {
+    link: "/",
+    content: "Videos",
+    arrays: [
+      { link: "/", content: "Clips", number: 2 },
+      { link: "/", content: "Teasers", number: 6 },
+      { link: "/", content: "Behind the Scenes", number: 4 },
+      { link: "/", content: "Trailers", number: 3 },
+      { link: "/", content: "Featurettes", number: 5 },
+    ],
+  },
+];
+export const tooltipFandom = [
+  { link: "/", content: "Discussions" },
+  { link: "/", content: "Reviews" },
+];
+export const tooltipShare = [
+  { link: "/", content: "Share Link" },
+  { link: "/", content: "Facebook" },
+  { link: "/", content: "Tweet" },
+];
