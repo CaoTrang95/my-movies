@@ -144,9 +144,8 @@ export default function ReleaseDates() {
               sortValue={sortValue}
               onClickDropItem={setSortValue}
             >
-              {" "}
-              <Dropdown.DropdownToggle id="show-countries"></Dropdown.DropdownToggle>{" "}
-              <Dropdown.DropList id="show-countries"></Dropdown.DropList>{" "}
+              <Dropdown.DropdownToggle id="show-countries"></Dropdown.DropdownToggle>
+              <Dropdown.DropList id="show-countries"></Dropdown.DropList>
             </Dropdown>
           </div>
         )}

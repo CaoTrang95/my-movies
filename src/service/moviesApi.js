@@ -63,7 +63,7 @@ const getDetailMovie = (params) =>
   makeGet(
     DETAILMOVIE +
       params +
-      "?append_to_response=movies,images,backdrops,credits,keywords"
+      "?append_to_response=movies,images,backdrops,credits,keywords,reviews,videos,recommendations"
   )
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error.message));

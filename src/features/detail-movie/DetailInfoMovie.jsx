@@ -367,7 +367,6 @@ export default function DetailInfoMovie() {
                     <h2>
                       {movie.original_title}
                       <span className="release-date">
-                        {" "}
                         ({movie.release_date?.split("-")[0]})
                       </span>
                     </h2>

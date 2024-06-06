@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Cast from "./Cast";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import Social from "./Review";
+import Media from "./Media";
+import Recommendation from "./Recommendation";
 const TopBilledCastWrapper = styled.div`
   width: calc(100vw - 80px - 268px);
   max-width: calc(var(--maxPrimaryPageWidth) - 80px - 268px);
@@ -18,6 +21,15 @@ const TopBilledCastWrapper = styled.div`
     font-size: 1.4em;
     margin-bottom: 20px;
   }
+  h4 {
+    color: #000;
+    margin-top: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+  h4:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
   .list-casts {
     display: flex;
     overflow-x: scroll;
@@ -25,7 +37,7 @@ const TopBilledCastWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-  &::after {
+  .scroll::after {
     transition: linear 0.3s;
     opacity: 1;
     content: "";
@@ -72,6 +84,12 @@ export default function TopBilledCast() {
           </p>
         </div>
       </div>
+      <Link to={"/"}>
+        <h4>Full Cast & Crew</h4>
+      </Link>
+      <Social />
+      <Media />
+      <Recommendation />
     </TopBilledCastWrapper>
   );
 }

@@ -41,9 +41,12 @@ const TooltipMenu = styled.div`
 `;
 const Tooltip = styled.li`
   height: 100%;
+  gap: 6px;
   position: relative !important;
   display: flex;
   align-items: center;
+  border-bottom: ${(props) =>
+    props.$selected ? "4px solid var(--tmbLightBlue)" : ""};
   &:hover ${TooltipMenu} {
     transition: 200ms;
     visibility: visible;
@@ -57,6 +60,7 @@ export default function MyToolTip({
   list,
   showIcon = false,
   showNumber = false,
+  selected = false,
 }) {
   const TooltipRef = useRef();
   function onClickHandler() {
@@ -69,7 +73,7 @@ export default function MyToolTip({
     }
   }
   return (
-    <Tooltip className="Tooltip">
+    <Tooltip className="Tooltip" $selected={selected}>
       {name}
       {showIcon && <MdArrowDropDown size={22} />}
       <TooltipMenu className="TooltipMenu" ref={TooltipRef}>

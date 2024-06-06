@@ -48,7 +48,12 @@ export default function DetailMovie() {
     <>
       <MenuMovie className="MenuMovie">
         <ul>
-          <MyToolTip name="Overview" list={tooltipOverview} showIcon={true} />
+          <MyToolTip
+            name="Overview"
+            list={tooltipOverview}
+            showIcon={true}
+            selected={true}
+          />
           <MyToolTip
             name="Media"
             list={tooltipMedia}

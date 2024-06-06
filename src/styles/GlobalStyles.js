@@ -113,6 +113,7 @@ html {
   --tmdbLogoOrange: rgba(253,193,112,1);
   --tmdbLogoRed: rgba(217,59,99,1);
   --color-grey-700: #374151;
+  --lightGrey: rgba(227,227,227,1);
   --color-grey-0: #fff;
   --color-grey-100: #f3f4f6;
   --color-grey-300: #d1d5db;

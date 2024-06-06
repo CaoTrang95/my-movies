@@ -5,6 +5,11 @@ const initialState = {
   casts: [],
   crews: [],
   keywords: [],
+  reviews: [],
+  backdrops: [],
+  posters: [],
+  videos: [],
+  recommendations: [],
   isLoading: true,
 };
 export const getDetailMovieAsync = createAsyncThunk(
@@ -52,7 +57,12 @@ const detailMovieSlice = createSlice({
           item.job === "Screenplay"
       );
       state.keywords = action.payload.keywords.keywords;
-      console.log(state.casts);
+      state.reviews = action.payload.reviews.results;
+      state.backdrops = action.payload.images.backdrops;
+      state.posters = action.payload.images.posters;
+      state.videos = action.payload.videos.results;
+      state.recommendations = action.payload.recommendations.results;
+      console.log(action.payload);
     });
   },
 });

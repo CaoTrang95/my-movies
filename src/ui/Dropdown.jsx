@@ -93,8 +93,7 @@ function Dropdown({ children, options, sortValue, onClickDropItem }) {
         setPosition,
       }}
     >
-      {" "}
-      <Select className="Select">{children}</Select>{" "}
+      <Select className="Select">{children}</Select>
     </DropdownContext.Provider>
   );
 }
@@ -120,8 +119,7 @@ function DropdownToggle({ id }) {
   }
   return (
     <div className="select" ref={SelectRef} onClick={handleClick}>
-      {" "}
-      <span>{sortCurrent}</span> <FaCaretDown />{" "}
+      <span>{sortCurrent}</span> <FaCaretDown />
     </div>
   );
 }
