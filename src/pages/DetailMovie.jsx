@@ -9,6 +9,7 @@ import {
 } from "../mock-datas/optionsList";
 import TopBilledCast from "../features/detail-movie/TopBilledCast";
 import RightColumnInfo from "../features/detail-movie/RightColumnInfo";
+import { useSelector } from "react-redux";
 const MenuMovie = styled.div`
   width: 100%;
   display: flex;
@@ -44,6 +45,8 @@ const OtherContentWrapper = styled.div`
 `;
 
 export default function DetailMovie() {
+  const isLoading = useSelector((state) => state.detailMovie.isLoading);
+
   return (
     <>
       <MenuMovie className="MenuMovie">
@@ -67,8 +70,8 @@ export default function DetailMovie() {
       <DetailInfoMovie />
       <OtherContentWrapper>
         <div className="content-wrapper">
-          <TopBilledCast />
-          <RightColumnInfo />
+          {!isLoading && <TopBilledCast />}
+          {!isLoading && <RightColumnInfo />}
         </div>
       </OtherContentWrapper>
       ;

@@ -166,7 +166,13 @@ export default function Media() {
             </li>
           ))}
         </ul>
-        {id !== "popular" && <Link>View All {viewAll}</Link>}
+        {id === "video" && videos.length > 6 && <Link>View All {viewAll}</Link>}
+        {id === "poster" && posters.length > 6 && (
+          <Link>View All {viewAll}</Link>
+        )}
+        {id === "backdrop" && backdrops.length > 6 && (
+          <Link>View All {viewAll}</Link>
+        )}
       </MediaMenu>
       <Content>
         <div className="list-contents scroll">

@@ -4,14 +4,31 @@ import Movie from "../home/Movie";
 import { getListMoviesSearchAsync, setClickedLoadMore } from "./searchSlice";
 import styled from "styled-components";
 import { useCallback, useRef } from "react";
+import Spinner from "../../ui/Spinner";
 const StyledListMovies = styled.div`
   flex: 1;
   display: flex;
-  column-gap: 20px;
-  flex-wrap: wrap;
   margin-left: 30px;
-  border-radius: 5px;
   margin-top: -30px;
+  flex-direction: column;
+  .list-movies {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+  }
+  .loading-movies-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loading-movies-container-full {
+    height: calc(100vh - 100px);
+  }
+  .loading-movies-container-mini {
+    margin-top: 20px;
+    height: 48px;
+  }
   .pagination {
     margin-top: 30px;
     width: 100%;
@@ -29,7 +46,7 @@ const StyledListMovies = styled.div`
 `;
 
 export function ListMovies() {
-  console.log("ListMovies render");
+  const isLoading = useSelector((state) => state.search.isLoading);
   const listMovies = useSelector((state) => state.search.listMovies);
   const page = useSelector((state) => state.search.page);
   const clickedLoadMore = useSelector((state) => state.search.clickedLoadMore);
@@ -61,13 +78,26 @@ export function ListMovies() {
   return (
     <StyledListMovies className="list-movies">
       <Menus>
-        {listMovies?.map((movie, index) => (
-          <Movie
-            key={movie.id + movie.title + movie.poster_path + index}
-            movie={movie}
-          />
-        ))}
+        <div className="list-movies">
+          {listMovies?.map((movie, index) => (
+            <Movie
+              key={movie.id + movie.title + movie.poster_path + index}
+              movie={movie}
+            />
+          ))}
+        </div>
       </Menus>
+      {isLoading && (
+        <div
+          className={`loading-movies-container ${
+            listMovies.length === 0
+              ? "loading-movies-container-full"
+              : "loading-movies-container-mini"
+          }`}
+        >
+          <Spinner size={listMovies.length === 0 ? 48 : 36} />
+        </div>
+      )}
       <div
         className="pagination"
         onClick={onClickLoadMoreHandler}

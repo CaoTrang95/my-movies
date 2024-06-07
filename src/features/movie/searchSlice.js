@@ -12,6 +12,7 @@ const initialState = {
   page: 1,
   listMovies: [],
   enableSearch: false,
+  isLoading: true,
 };
 export const getListMoviesSearchAsync = createAsyncThunk(
   "search/getListMoviesSearchAsync",
@@ -71,17 +72,22 @@ const searchSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getListMoviesSearchAsync.fulfilled, (state, action) => {
-      if (action.payload.pagePagination === 1) {
-        state.listMovies = action.payload.response.results;
-      } else {
-        state.listMovies = [
-          ...state.listMovies,
-          ...action.payload.response.results,
-        ];
-      }
-      state.page = action.payload.pagePagination;
-    });
+    builder
+      .addCase(getListMoviesSearchAsync.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getListMoviesSearchAsync.fulfilled, (state, action) => {
+        if (action.payload.pagePagination === 1) {
+          state.listMovies = action.payload.response.results;
+        } else {
+          state.listMovies = [
+            ...state.listMovies,
+            ...action.payload.response.results,
+          ];
+        }
+        state.page = action.payload.pagePagination;
+        state.isLoading = false;
+      });
   },
 });
 

@@ -60,7 +60,7 @@ const TopBilledCastWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px;
+    padding: 0 20px 0 10px;
     a {
       white-space: nowrap;
       font-weight: 700;
@@ -70,19 +70,23 @@ const TopBilledCastWrapper = styled.div`
 `;
 export default function TopBilledCast() {
   const casts = useSelector((state) => state.detailMovie.casts);
-  const isLoading = useSelector((state) => state.detailMovie.isLoading);
+  const castsShow = casts.slice(0, 9);
   return (
     <TopBilledCastWrapper>
       <h3>Top Billed Cast</h3>
       <div className="list-casts scroll">
-        {!isLoading && casts.map((cast) => <Cast key={cast.id} cast={cast} />)}
-        <div className="view-more">
-          <p>
-            <Link>
-              View More <FaArrowRight />
-            </Link>
-          </p>
-        </div>
+        {castsShow.map((cast) => (
+          <Cast key={cast.id} cast={cast} />
+        ))}
+        {casts.length > 10 && (
+          <div className="view-more">
+            <p>
+              <Link>
+                View More <FaArrowRight />
+              </Link>
+            </p>
+          </div>
+        )}
       </div>
       <Link to={"/"}>
         <h4>Full Cast & Crew</h4>

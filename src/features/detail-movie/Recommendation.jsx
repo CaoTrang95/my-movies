@@ -12,6 +12,7 @@ const StyledRecommend = styled.div`
     overflow-y: hidden;
     display: flex;
     gap: 20px;
+    padding-bottom: 14px;
   }
   .recomend-wrapper {
     width: 250px;
@@ -37,6 +38,7 @@ export default function Recommendation() {
   const recommendations = useSelector(
     (state) => state.detailMovie.recommendations
   );
+  const movieName = useSelector((state) => state.detailMovie.movie.title);
   return (
     <StyledRecommend>
       <h3>Recommendations</h3>
@@ -50,11 +52,11 @@ export default function Recommendation() {
                   src={`https://media.themoviedb.org/t/p/w250_and_h141_face${item.backdrop_path}`}
                   srcSet={`https://media.themoviedb.org/t/p/w250_and_h141_face${item.backdrop_path} 1x, 
                  https://media.themoviedb.org/t/p/w500_and_h282_face${item.backdrop_path} 2x`}
-                  alt={item.original_title}
+                  alt={item.title}
                 ></img>
               </div>
               <div className="info">
-                <span>{item.original_title}</span>
+                <span>{item.title}</span>
                 <span>
                   {item.vote_average * 10 !== 0
                     ? Math.ceil(item.vote_average * 10) + "%"
@@ -64,6 +66,12 @@ export default function Recommendation() {
             </div>
           ))}
       </div>
+      {recommendations.length === 0 && (
+        <p>
+          We don't have enough data to suggest any movies based on
+          <span> {movieName}</span>. You can help by rating movies you've seen.
+        </p>
+      )}
     </StyledRecommend>
   );
 }

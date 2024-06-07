@@ -365,7 +365,7 @@ export default function DetailInfoMovie() {
                 <div className="poster-info">
                   <div className="title">
                     <h2>
-                      {movie.original_title}
+                      {movie.title}
                       <span className="release-date">
                         ({movie.release_date?.split("-")[0]})
                       </span>

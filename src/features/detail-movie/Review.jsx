@@ -93,6 +93,7 @@ function randomColor() {
 }
 export default function Social() {
   const reviews = useSelector((state) => state.detailMovie.reviews);
+  const movieName = useSelector((state) => state.detailMovie.movie.title);
   const colorAvatar = randomColor();
   const date = new Date(reviews[0]?.created_at);
   const createAt = date.toDateString();
@@ -109,50 +110,59 @@ export default function Social() {
         <h4 className="active"> Reviews {reviews.length}</h4>
         <h4>Discussions</h4>
       </SocialMenu>
-      <Review $colorAvatar={colorAvatar}>
-        <div className="grouped">
-          <div className="avatar">
-            {!reviews[0]?.author_details?.avatar_path && (
-              <span>{reviews[0]?.author[0]}</span>
-            )}
-            {reviews[0]?.author_details?.avatar_path && (
-              <img
-                loading="lazy"
-                src={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path}`}
-                srcset={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path} 1x, 
+      {reviews.length === 0 ? (
+        <p>
+          We don't have any reviews for {movieName}. Would you like to write
+          one?
+        </p>
+      ) : (
+        <>
+          <Review $colorAvatar={colorAvatar}>
+            <div className="grouped">
+              <div className="avatar">
+                {!reviews[0]?.author_details?.avatar_path && (
+                  <span>{reviews[0]?.author[0]}</span>
+                )}
+                {reviews[0]?.author_details?.avatar_path && (
+                  <img
+                    loading="lazy"
+                    src={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path}`}
+                    srcset={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path} 1x, 
                https://media.themoviedb.org/t/p/w90_and_h90_face${reviews[0]?.author_details?.avatar_path} 2x`}
-                alt="CinemaSerf"
-              ></img>
-            )}
-          </div>
-          <div className="info">
-            <h3>A review by {reviews[0]?.author}</h3>
-            <div className="others">
-              <div className="rating">
-                <FaStar /> {reviews[0]?.author_details?.rating * 10}%
+                    alt="CinemaSerf"
+                  ></img>
+                )}
               </div>
-              <div className="author">
-                Written by {reviews[0]?.author} on {createAt}
+              <div className="info">
+                <h3>A review by {reviews[0]?.author}</h3>
+                <div className="others">
+                  <div className="rating">
+                    <FaStar /> {reviews[0]?.author_details?.rating * 10}%
+                  </div>
+                  <div className="author">
+                    Written by {reviews[0]?.author} on {createAt}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="content">
-          {contents?.map((item, index) => (
-            <div key={item}>
-              {index !== 3 && <p>{item}</p>}
-              {index === 3 && (
-                <p>
-                  {item}... <Link to="/">read the rest</Link>
-                </p>
-              )}
+            <div className="content">
+              {contents?.map((item, index) => (
+                <div key={item}>
+                  {index !== 3 && <p>{item}</p>}
+                  {index === 3 && (
+                    <p>
+                      {item}... <Link to="/">read the rest</Link>
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </Review>
-      <Link>
-        <h4>Read All Reviews</h4>
-      </Link>
+          </Review>
+          <Link>
+            <h4>Read All Reviews</h4>
+          </Link>
+        </>
+      )}
     </>
   );
 }
