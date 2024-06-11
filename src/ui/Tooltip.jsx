@@ -7,32 +7,32 @@ const TooltipMenu = styled.div`
   transition: 200ms;
   visibility: hidden;
   opacity: 0;
-  width: 170px;
+  width: 17rem;
   position: absolute;
-  top: 45px;
+  top: 4.5rem;
   left: 0px;
   border-radius: 0 0 0.25rem 0.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 0.1rem solid rgba(0, 0, 0, 0.15);
   font-weight: 400;
   && ul {
     display: block;
     background-color: #fff;
     padding: 0.5rem 0;
-    border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+    border-radius: 0.25rem;
   }
   & ul li {
     width: 100%;
     color: #000;
     font-family: sans-serif;
     font-size: 15px;
-    padding: 5px 1px;
+    padding: 0.5rem 0.1rem;
   }
   & li:hover {
     background-color: #f8f9fa;
     cursor: pointer;
   }
   && a {
-    padding: 3px 1.5rem;
+    padding: 0.3rem 1.5rem;
     color: #000;
     white-space: nowrap;
     display: flex;
@@ -41,12 +41,12 @@ const TooltipMenu = styled.div`
 `;
 const Tooltip = styled.li`
   height: 100%;
-  gap: 6px;
+  gap: 0.6rem;
   position: relative !important;
   display: flex;
   align-items: center;
   border-bottom: ${(props) =>
-    props.$selected ? "4px solid var(--tmbLightBlue)" : ""};
+    props.$selected ? "0.4rem solid var(--tmbLightBlue)" : ""};
   &:hover ${TooltipMenu} {
     transition: 200ms;
     visibility: visible;

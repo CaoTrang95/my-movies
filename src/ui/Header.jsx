@@ -4,12 +4,14 @@ import MyToolTip from "./Tooltip";
 import { FaPlus } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { IoMenu } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
 
 const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 64px;
+  height: 6.4rem;
   width: 100%;
   background-color: rgba(3, 37, 65, 1);
   font-weight: 600;
@@ -18,26 +20,83 @@ const StyledHeader = styled.header`
   left: 0;
   z-index: 2000;
   transition: top 0.2s linear;
+  .main-nav {
+    width: 90%;
+    height: 100vh;
+    padding: 2rem;
+    z-index: 9999;
+    background: rgba(3, 37, 65, 0.9);
+    backdrop-filter: blur(2rem);
+    position: absolute;
+    top: 6.4rem;
+    left: 0;
+    transition: ease 0.3s;
+    transform: translateX(-100%);
+    color: #fff;
+    ul {
+      list-style-type: none;
+      font-size: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.5rem;
+      .sub-menu {
+        margin-top: 1.6rem;
+        font-size: 1.6rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+      }
+      .sub-menu-li {
+        font-size: 1.6rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+  .nav-open {
+    transform: translateX(0);
+  }
 `;
-const NavWrapper = styled.div`
+export const NavWrapper = styled.div`
   width: 100%;
-  height: 50px;
-  padding: 0 40px;
+  height: 5rem;
+  padding: 0 4rem;
   display: flex;
   justify-content: space-between;
   max-width: var(--maxPrimaryPageWidth);
+  height: var(--height-nav-bar);
+  padding: 0 var(--padding-left-right);
+  gap: 2rem;
+  .header-nav-bar-small {
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    width: 33%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .icons {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 const NavItem = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   a {
     display: flex;
     align-items: center;
-    width: 154px;
-    margin-right: 30px;
-    height: 20px;
+    width: 15.4rem;
+    margin-right: 3rem;
+    height: 2rem;
   }
   ul {
     height: 100%;
@@ -49,7 +108,7 @@ const NavItem = styled.div`
   }
   li {
     cursor: pointer;
-    margin-right: 24px;
+    margin-right: 2.4rem;
   }
   li a {
     color: #fff;
@@ -61,14 +120,14 @@ const NavItem = styled.div`
 `;
 const BoxVisible = styled.li`
   font-weight: 600;
-  width: 28px;
-  height: 26px;
+  width: 2.8rem;
+  height: 2.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ffffff;
-  border-radius: 3px;
-  padding: 3px 5px;
+  border: 0.1rem solid #ffffff;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.5rem;
   font-size: 0.9rem;
   &:hover {
     background-color: white;
@@ -95,6 +154,10 @@ const tooltipMore = [
   { link: "/", content: "API" },
 ];
 export default function Header() {
+  const [isShowNavBarPhone, setIsShowNavBarPhone] = useState(false);
+  const [isShowMovies, setIsShowMovies] = useState(false);
+  const [isShowTV, setIsShowTV] = useState(false);
+  const [isShowPeople, setIsShowPeople] = useState(false);
   useEffect(() => {
     document.addEventListener("scroll", () => handleScroll());
     return () => {
@@ -127,6 +190,27 @@ export default function Header() {
     <>
       <StyledHeader className={`StyledHeader ${isNavbarDown ? "" : "nav-up"}`}>
         <NavWrapper className="NavWrapper">
+          <div className="header-nav-bar-small">
+            <IoMenu
+              size={"2rem"}
+              color="#fff"
+              onClick={() => {
+                setIsShowNavBarPhone((prev) => !prev);
+              }}
+            />
+            <div className="logo">
+              <Link to="/">
+                <img
+                  alt="logo"
+                  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+                ></img>
+              </Link>
+            </div>
+            <div className="icons">
+              <FaRegUser size={"2rem"} />
+              <IoSearchSharp color="#0aacf1" size={"2rem"} />
+            </div>
+          </div>
           <NavItem className="NavItem">
             <Link to="/">
               <img
@@ -159,6 +243,45 @@ export default function Header() {
             </ul>
           </NavItem>
         </NavWrapper>
+        <div className={`main-nav ${isShowNavBarPhone ? "nav-open" : ""}`}>
+          <ul>
+            <li onClick={() => setIsShowMovies((prev) => !prev)}>
+              Movies
+              {isShowMovies && (
+                <ul className="sub-menu">
+                  {tooltipMovies.map((item) => (
+                    <li key={item.content}>{item.content}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <li onClick={() => setIsShowTV((prev) => !prev)}>
+              TV Shows
+              {isShowTV && (
+                <ul className="sub-menu">
+                  {tooltipTvShows.map((item) => (
+                    <li key={item.content}>{item.content}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <li onClick={() => setIsShowPeople((prev) => !prev)}>
+              People
+              {isShowPeople && (
+                <ul className="sub-menu">
+                  {tooltipPeople.map((item) => (
+                    <li key={item.content}>{item.content}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <ul className="sub-menu-li">
+              {tooltipMore.map((item) => (
+                <li key={item.content}>{item.content}</li>
+              ))}
+            </ul>
+          </ul>
+        </div>
       </StyledHeader>
     </>
   );

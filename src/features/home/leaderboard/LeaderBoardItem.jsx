@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-const Wrapper = styled.li`
+export const WrapperLeaderBoard = styled.li`
   display: flex;
   width: 50%;
-  padding-right: 20px;
+  padding-right: 2rem;
   .avatar {
-    width: 56px;
-    min-width: 56px;
-    height: 56px;
+    width: 5.6rem;
+    min-width: 5.6rem;
+    height: 5.6rem;
     border-radius: 50%;
     background-color: #${(props) => props.$randomColor};
-    margin-right: 10px;
+    margin-right: 1rem;
     overflow: hidden;
   }
   .name-avatar {
@@ -19,7 +19,7 @@ const Wrapper = styled.li`
     height: 100%;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     color: #fff;
     text-transform: uppercase;
   }
@@ -35,14 +35,14 @@ const Wrapper = styled.li`
   .meter {
     display: flex;
     align-items: center;
-    height: 8px;
-    margin-top: 6px;
+    height: 0.8rem;
+    margin-top: 0.6rem;
     width: 100%;
   }
   .board-bar {
     height: 100%;
-    margin-right: 10px;
-    border-radius: 8px;
+    margin-right: 1rem;
+    border-radius: 0.8rem;
   }
   .all {
     width: ${(props) => props.$allPercent}%;
@@ -76,7 +76,7 @@ export default function LeaderBoardItem({ board, maxLeader, maxThisWeek }) {
   const colorAvatar = randomColor();
 
   return (
-    <Wrapper
+    <WrapperLeaderBoard
       $allPercent={lastAllPercent}
       $weekPercent={lastWeekPercent}
       $randomColor={colorAvatar}
@@ -96,6 +96,6 @@ export default function LeaderBoardItem({ board, maxLeader, maxThisWeek }) {
           <h4>{numberWithCommas(board.thisWeek)}</h4>
         </div>
       </div>
-    </Wrapper>
+    </WrapperLeaderBoard>
   );
 }

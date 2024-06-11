@@ -8,19 +8,19 @@ import { GoBookmarkFill } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 
 export const CardWrapper = styled.div`
-  width: 150px;
-  min-width: 150px;
+  width: 15rem;
+  min-width: 15rem;
   position: relative;
   top: 0;
   left: 0;
   .wrapper-image {
     width: 100%;
-    min-height: calc(150px * 1.5);
-    height: calc(150px * 1.5);
+    min-height: calc(15rem * 1.5);
+    height: calc(15rem * 1.5);
   }
   .image {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem;
     overflow: hidden;
     background-color: #dbdbdb;
   }
@@ -37,17 +37,17 @@ export const CardWrapper = styled.div`
 
   .content {
     width: 100%;
-    padding: 26px 10px 12px;
+    padding: 2.6rem 1rem 1.2rem;
     position: relative;
     white-space: normal;
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
     padding-bottom: 0;
-    row-gap: 4px;
+    row-gap: 0.4rem;
   }
   h2 {
-    font-size: 1em;
+    font-size: 1.6rem;
     margin: 0;
     width: 100%;
     word-wrap: normal;
@@ -61,7 +61,7 @@ export const CardWrapper = styled.div`
     color: rgba(1, 180, 228, 1);
   }
   p {
-    font-size: 1em;
+    font-size: 1.6rem;
     margin: 0;
     padding: 0;
     color: rgba(0, 0, 0, 0.6);

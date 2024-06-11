@@ -10,25 +10,25 @@ const ListMoviesWrapper = styled.div`
 export const ListMoviesContent = styled.div`
   width: 100%;
   display: flex;
-  padding: 20px 0 30px 0;
+  padding: 2rem 0 var(--padding-top-bottom) 0;
   max-width: var(--maxPrimaryPageWidth);
   overflow-x: scroll;
   overflow-y: hidden;
   opacity: 1;
 
   > div:first-child {
-    margin-left: 40px;
+    margin-left: var(--padding-left-right);
   }
 
   .CardWrapper {
-    margin-left: 20px;
+    margin-left: 2rem;
     margin-top: 0;
   }
   &::after {
     transition: linear 0.3s;
     opacity: 1;
     content: "";
-    width: 60px;
+    width: 6rem;
     height: 100%;
     position: absolute;
     top: 0;
@@ -42,11 +42,11 @@ export const ListMoviesContent = styled.div`
     pointer-events: none;
   }
   .spacer {
-    margin-left: 20px;
-    width: 20px;
-    min-width: 20px;
-    height: calc(150px * 1.5);
-    min-height: calc(150px * 1.5);
+    margin-left: 2rem;
+    width: 2rem;
+    min-width: 2rem;
+    height: calc(15rem * 1.5);
+    min-height: calc(15rem * 1.5);
   }
 `;
 export default function ListMovies({ cardVisibility, listMovies, render }) {

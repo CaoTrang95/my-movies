@@ -2,24 +2,24 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 const StyledRecommend = styled.div`
   width: 100%;
-  height: 300px;
-  border-top: 1px solid #d7d7d7;
-  margin-top: 30px;
-  padding-top: 20px;
+  height: 30rem;
+  border-top: 0.1rem solid #d7d7d7;
+  margin-top: 3rem;
+  padding-top: 2rem;
   .list-recommend {
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
-    gap: 20px;
-    padding-bottom: 14px;
+    gap: 2rem;
+    padding-bottom: 1.4rem;
   }
   .recomend-wrapper {
-    width: 250px;
-    min-width: 250px;
-    height: 140px;
-    min-height: 140px;
-    border-radius: 8px;
+    width: 25rem;
+    min-width: 25rem;
+    height: 14rem;
+    min-height: 14rem;
+    border-radius: 0.8rem;
     overflow: hidden;
     img {
       width: 100%;
@@ -29,7 +29,7 @@ const StyledRecommend = styled.div`
   .info {
     display: flex;
     justify-content: space-between;
-    margin-top: 6px;
+    margin-top: 0.6rem;
   }
   .recommend:hover {
   }

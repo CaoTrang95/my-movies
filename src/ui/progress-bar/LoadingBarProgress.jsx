@@ -16,7 +16,7 @@ const MyProgress = styled.div`
     width: ${(props) => props.$progress}%;
     height: 100%;
     background-color: ${(props) => props.$color};
-    box-shadow: rgb(1, 180, 228) 0px 0px 2px, rgb(1, 180, 228) 0px 0px 2px;
+    box-shadow: rgb(1, 180, 228) 0px 0px 0.2rem, rgb(1, 180, 228) 0px 0px 0.2rem;
   }
   .hidden-bar {
     opacity: 0;

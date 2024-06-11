@@ -9,20 +9,20 @@ const StyledSearch = styled.div`
   color: ${(props) => (props.$enableSearch ? "#fff" : "rgba(0, 0, 0, 0.5)")};
   font-size: 1.2em;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: 2rem;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 2rem;
 `;
 const StyledShortSearch = styled.div`
   width: 100%;
-  height: 44px;
+  height: 4.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 const StyledLongSearch = styled.div`
   width: 100vw;
-  height: 50px;
+  height: 5rem;
   position: fixed;
   bottom: 0;
   left: 0;

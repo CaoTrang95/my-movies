@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSortValue } from "./searchSlice";
 const StyledSort = styled.div`
   && h2 {
-    font-size: 1.1em;
+    font-size: 1.8rem;
   }
 `;
 export default function Sort() {

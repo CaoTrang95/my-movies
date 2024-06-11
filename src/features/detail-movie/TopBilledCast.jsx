@@ -7,9 +7,9 @@ import Social from "./Review";
 import Media from "./Media";
 import Recommendation from "./Recommendation";
 const TopBilledCastWrapper = styled.div`
-  width: calc(100vw - 80px - 268px);
-  max-width: calc(var(--maxPrimaryPageWidth) - 80px - 268px);
-  padding-right: 30px;
+  width: calc(100vw - 8rem - 26.8rem);
+  max-width: calc(var(--maxPrimaryPageWidth) - 8rem - 26.8rem);
+  padding-right: 3rem;
   display: flex;
   align-self: flex-start;
   flex-direction: column;
@@ -19,12 +19,12 @@ const TopBilledCastWrapper = styled.div`
   h3 {
     font-weight: 600;
     font-size: 1.4em;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   h4 {
     color: #000;
-    margin-top: 30px;
-    font-size: 1.1em;
+    margin-top: 3rem;
+    font-size: 1.8rem;
     cursor: pointer;
   }
   h4:hover {
@@ -41,7 +41,7 @@ const TopBilledCastWrapper = styled.div`
     transition: linear 0.3s;
     opacity: 1;
     content: "";
-    width: 60px;
+    width: 6rem;
     height: 100%;
     position: absolute;
     top: 0;
@@ -55,12 +55,12 @@ const TopBilledCastWrapper = styled.div`
     pointer-events: none;
   }
   .view-more {
-    margin-left: 10px;
+    margin-left: 1rem;
     background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px 0 10px;
+    padding: 0 2rem 0 1rem;
     a {
       white-space: nowrap;
       font-weight: 700;

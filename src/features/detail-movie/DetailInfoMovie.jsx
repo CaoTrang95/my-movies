@@ -7,9 +7,8 @@ import { Link, useParams } from "react-router-dom";
 
 const MovieInfoWrapper = styled.div`
   width: 100%;
-  height: 535px;
   background-image: url(${(props) => props.$image});
-  background-position: left calc((50vw - 170px) - 340px) top;
+  background-position: left calc((50vw - 17rem) - 34rem) top;
   background-size: auto;
   background-repeat: no-repeat;
   .custom_bg {
@@ -19,7 +18,7 @@ const MovieInfoWrapper = styled.div`
     justify-content: center;
     background-image: linear-gradient(
       to right,
-      rgba(10.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
+      rgba(10.5, 31.5, 31.5, 1) calc((50vw - 17rem) - 34rem),
       rgba(10.5, 31.5, 31.5, 0.84) 50%,
       rgba(10.5, 31.5, 31.5, 0.84) 100%
     );
@@ -27,15 +26,15 @@ const MovieInfoWrapper = styled.div`
 `;
 const MovieInfoContent = styled.div`
   width: var(--maxPrimaryPageWidth);
-  padding: 30px 40px;
+  padding: var(--padding-top-bottom) var(--padding-left-right);
   display: flex;
   color: #fff;
   .poster-wrapper {
-    width: 300px;
-    min-width: 300px;
-    height: 450px;
+    width: 30rem;
+    min-width: 30rem;
+    height: 45rem;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     position: relative;
     top: 0;
     left: 0;
@@ -51,27 +50,27 @@ const MovieInfoContent = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
+    border-radius: 0.8rem;
     visibility: hidden;
     opacity: 0;
     transition: linear 0.2s;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(2rem);
     color: #fff;
     a {
       width: 100%;
       height: 100%;
-      font-size: 1.3em;
+      font-size: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-      gap: 6px;
+      gap: 0.6rem;
     }
     .expand {
-      min-width: 1em;
-      width: 1em;
-      min-height: 1em;
-      height: 1em;
+      min-width: 1.6rem;
+      width: 1.6rem;
+      min-height: 1.6rem;
+      height: 1.6rem;
       background-position: center center;
       background-repeat: no-repeat;
       background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-216-fullscreen-white-87524788011715a9bd73de86ef577442070ebc9873a7abb2845a6310a7f6174a.svg");
@@ -82,12 +81,12 @@ const MovieInfoContent = styled.div`
     height: 100%;
   }
   .poster-info {
-    padding-left: 40px;
+    padding-left: 4rem;
     display: flex;
     flex-direction: column;
   }
   .title {
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
     width: 100%;
     h2 {
       font-size: 2rem;
@@ -96,7 +95,7 @@ const MovieInfoContent = styled.div`
   }
   .fact {
     display: flex;
-    gap: 24px;
+    gap: 2.4rem;
   }
   .release-date {
     opacity: 0.8;
@@ -104,11 +103,11 @@ const MovieInfoContent = styled.div`
   }
   .time::before,
   .genres::before {
-    font-size: 1.1em;
+    font-size: 1.8rem;
     line-height: 1;
     content: "•";
-    width: 10px;
-    height: 10px;
+    width: 1rem;
+    height: 1rem;
     position: absolute;
     top: 0;
     left: -10px;
@@ -124,11 +123,11 @@ const MovieInfoContent = styled.div`
     align-items: center;
   }
   .outer-ring {
-    width: 68px;
-    height: 68px;
+    width: 6.8rem;
+    height: 6.8rem;
     background-color: #081c22;
-    border-radius: 50px;
-    padding: 4px;
+    border-radius: 5rem;
+    padding: 0.4rem;
     transform: scale(1);
     transition: transform 0.2s;
   }
@@ -163,8 +162,8 @@ const MovieInfoContent = styled.div`
     stroke-linecap: round;
   }
   .outer-ring svg circle:last-of-type {
-    stroke-dasharray: 175px;
-    stroke-dashoffset: calc(175px - (175px * 73) / 100);
+    stroke-dasharray: 17.5rem;
+    stroke-dashoffset: calc(17.5rem - (17.5rem * 73) / 100);
     stroke: ${(props) =>
       props.$percent >= 7
         ? "#21d07a"
@@ -186,7 +185,7 @@ const MovieInfoContent = styled.div`
     font-size: 2rem;
   }
   .outer-ring .title h2 {
-    margin: 25px 0 0;
+    margin: 2.5rem 0 0;
   }
   .rating-text {
     /* position: absolute; */
@@ -201,10 +200,10 @@ const MovieInfoContent = styled.div`
   .user-score {
     font-weight: 700;
     margin-left: 0.25rem;
-    line-height: 24px;
+    line-height: 2.4rem;
   }
   .reactions {
-    margin-left: 24px;
+    margin-left: 2.4rem;
     ul {
       list-style: none;
       display: flex;
@@ -237,7 +236,7 @@ const MovieInfoContent = styled.div`
     transition-duration: 150ms;
     background-color: rgba(3, 37, 65, 1);
     border-radius: 9999px;
-    margin-left: 12px;
+    margin-left: 1.2rem;
     font-weight: 600;
     transform: scale(1);
     transition: transform 0.2s;
@@ -246,34 +245,34 @@ const MovieInfoContent = styled.div`
     transform: scale(1.05);
   }
   .vibe {
-    text-underline-offset: 2px;
-    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2rem;
+    text-decoration-thickness: 0.2rem;
     text-decoration-color: #01b4e4;
     text-decoration-line: underline;
     padding-left: 0.25rem;
   }
   .actions {
     ul {
-      margin-bottom: 20px;
-      margin-top: 20px;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
       list-style: none;
       display: flex;
       flex-direction: row;
-      gap: 24px;
+      gap: 2.4rem;
       color: #fff;
     }
     li {
       background-color: rgba(3, 37, 65, 1);
       border-radius: 50%;
-      width: 46px;
-      height: 46px;
+      width: 4.6rem;
+      height: 4.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .play {
       display: flex;
-      gap: 6px;
+      gap: 0.6rem;
       border: 0;
       background: 0 0;
       width: auto;
@@ -291,28 +290,28 @@ const MovieInfoContent = styled.div`
     }
   }
   .tagline {
-    font-size: 1.1em;
+    font-size: 1.8rem;
     font-weight: 400;
     font-style: italic;
     opacity: 0.7;
   }
   h3 {
     font-weight: 600;
-    font-size: 1.3em;
-    margin-top: 10px;
-    margin-bottom: 8px;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
   }
   .overview {
     line-height: 1.4rem;
-    font-size: 0.9em;
+    font-size: 1.4rem;
   }
   .crews {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    row-gap: 20px;
-    margin-top: 20px;
+    row-gap: 2rem;
+    margin-top: 2rem;
   }
   .crew-item {
     width: 33%;
@@ -321,12 +320,12 @@ const MovieInfoContent = styled.div`
     flex-direction: column;
     .crew-name {
       white-space: nowrap;
-      font-size: 1em;
+      font-size: 1.6rem;
       font-weight: 700;
     }
     .crew-job {
-      margin-top: 5px;
-      font-size: 0.9em;
+      margin-top: 0.5rem;
+      font-size: 1.4rem;
     }
   }
 `;

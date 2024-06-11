@@ -7,25 +7,25 @@ import { setWithGenres } from "./searchSlice";
 const StyledGenres = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #e3e3e3;
-  padding: 14px 16px 16px;
+  border-top: 0.1rem solid #e3e3e3;
+  padding: 1.4rem 1.6rem 1.6rem;
   h3 {
     width: 100%;
-    font-size: 1em;
+    font-size: 1.6rem;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
   ul {
     list-style: none;
   }
   li {
     display: inline-flex;
-    border: 1px solid #9e9e9e;
-    border-radius: 14px;
-    padding: 4px 12px;
-    font-size: 0.9em;
-    margin-right: 6px;
-    margin-top: 8px;
+    border: 0.1rem solid #9e9e9e;
+    border-radius: 1.4rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 1.4rem;
+    margin-right: 0.6rem;
+    margin-top: 0.8rem;
   }
   .checked,
   li:hover {

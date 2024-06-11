@@ -14,12 +14,12 @@ const PopularWrapper = styled.div`
 `;
 const PopularContent = styled.div`
   width: 100%;
-  padding: 30px 0;
+  padding: var(--padding-top-bottom) 0;
   max-width: var(--maxPrimaryPageWidth);
   display: flex;
   flex-direction: column;
   .error {
-    padding: 20px 40px 20px 40px;
+    padding: 2rem 4rem 2rem 4rem;
   }
   .error a {
     color: var(--tmbLightBlue);

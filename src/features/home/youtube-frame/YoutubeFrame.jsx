@@ -6,8 +6,8 @@ import LoadingBarProgress from "../../../ui/progress-bar/LoadingBarProgress";
 import { setProgressBar } from "../../../ui/progress-bar/progressBarSlice";
 
 const YoutubeWrapper = styled.div`
-  min-width: 90px;
-  min-height: 50px;
+  min-width: 9rem;
+  min-height: 5rem;
   width: 100%;
   background-color: hsl(0, 6.25%, 12.549019607843137%);
   z-index: 105;
@@ -43,7 +43,10 @@ export default function YoutubeFrame({ id, keyMovie }) {
         <div className="video-popup">
           <iframe
             type="text/html"
-            src={videoTrailerUrl || `//www.youtube.com/embed/${keyMovie}`}
+            src={
+              videoTrailerUrl ||
+              `//www.youtube.com/embed/${keyMovie}?autoplay=1&amp;origin=https%3A%2F%2Fwww.themoviedb.org&amp;hl=en&amp;modestbranding=1&amp;fs=1&amp;autohide=1`
+            }
             title={videoTrailerUrl}
             allowFullScreen=""
           ></iframe>
@@ -52,3 +55,12 @@ export default function YoutubeFrame({ id, keyMovie }) {
     </>
   );
 }
+<iframe
+  type="text/html"
+  style="background-color: #000;"
+  width="959"
+  height="539"
+  src="//www.youtube.com/embed/hRFY_Fesa9Q?autoplay=1&amp;origin=https%3A%2F%2Fwww.themoviedb.org&amp;hl=en&amp;modestbranding=1&amp;fs=1&amp;autohide=1"
+  frameborder="0"
+  allowfullscreen=""
+></iframe>;

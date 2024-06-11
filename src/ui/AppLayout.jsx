@@ -18,7 +18,7 @@ const PageWrapper = styled.div`
     top: 0;
     left: 0;
     background-image: url("https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1_white-ff84c271cc8c93e00aa0264a425434c329089bdfc6a392987332b5f32903f75c.svg");
-    background-position: 50% calc(50% - 200px);
+    background-position: 50% calc(50% - 20rem);
     background-repeat: no-repeat;
     background-size: 20%;
     z-index: -1;

@@ -7,17 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFromDate, setToDate } from "./searchSlice";
 const StyledReleaseDates = styled.div`
   width: 100%;
-  padding: 14px 16px 16px;
-  border-top: 1px solid #e3e3e3;
+  padding: 1.4rem 1.6rem 1.6rem;
+  border-top: 0.1rem solid #e3e3e3;
   h3 {
     width: 100%;
-    font-size: 1em;
+    font-size: 1.6rem;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
   .check-form {
     width: 100%;
-    gap: 6px;
+    gap: 0.6rem;
     display: flex;
     align-items: center;
   }
@@ -27,19 +27,19 @@ const StyledReleaseDates = styled.div`
     height: 1rem;
     -webkit-appearance: none;
     appearance: none;
-    border-width: 1px;
+    border-width: 0.1rem;
     border-radius: 0.25rem;
     border-style: solid;
     border-color: #adb5bd;
     position: relative;
   }
   input[type="date"] {
-    padding: 6px;
+    padding: 0.6rem;
     border-color: #ced4da;
-    border-width: 1px;
-    border-radius: 5px;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
     border-style: solid;
-    margin-top: 5px;
+    margin-top: 0.5rem;
   }
   input:checked {
     border-color: var(--tmbLightBlue);
@@ -61,8 +61,8 @@ const StyledReleaseDates = styled.div`
     background-image: url(${check});
   }
   .countries {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
   }
   .from-date {
     display: flex;
@@ -70,7 +70,7 @@ const StyledReleaseDates = styled.div`
     align-items: center;
     color: #a4a4a4;
     p {
-      width: 100px;
+      width: 10rem;
     }
   }
 `;

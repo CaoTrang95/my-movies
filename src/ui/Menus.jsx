@@ -13,8 +13,8 @@ const StyledToggle = styled.button`
   background: none;
   border: none;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0.8rem;
+  right: 0.8rem;
   z-index: 4;
   opacity: 0.6;
   &:hover {
@@ -44,18 +44,18 @@ const StyledButton = styled.button`
   text-align: left;
   background: none;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.9em;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
   transition: all 0.2s;
   display: flex;
-  gap: 6px;
-  border-bottom: 1px solid rgba(33, 37, 41, 0.15);
+  gap: 0.6rem;
+  border-bottom: 0.1rem solid rgba(33, 37, 41, 0.15);
   &:hover {
     background-color: var(--tmdbDarkBlue);
     color: #fff;
   }
   & svg {
-    transform: translateY(1px);
+    transform: translateY(0.1rem);
   }
 `;
 

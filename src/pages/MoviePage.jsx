@@ -12,7 +12,7 @@ import { setProgressBar } from "../ui/progress-bar/progressBarSlice";
 
 const MoviePageWrapper = styled.div`
   width: 100%;
-  margin-top: 64px;
+  margin-top: 6.4rem;
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -20,13 +20,13 @@ const MoviePageWrapper = styled.div`
 const MoviePageContent = styled.div`
   width: 100%;
   max-width: var(--maxPrimaryPageWidth);
-  padding: 30px 40px;
+  padding: var(--padding-top-bottom) var(--padding-left-right);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   .title {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   h2 {
     font-size: 1.6em;
@@ -37,36 +37,36 @@ const MoviePageContent = styled.div`
     display: flex;
   }
   .search-infos {
-    width: 260px;
-    min-width: 260px;
-    height: 1380px;
+    width: 26rem;
+    min-width: 26rem;
+    height: 138rem;
     display: flex;
     flex-direction: column;
   }
   ${CardWrapper} {
-    margin-top: 30px;
-    border-radius: 8px;
-    border: 1px solid #e3e3e3;
+    margin-top: 3rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #e3e3e3;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
     width: calc(
       (
-          100vw - 80px - 260px -
+          100vw - 8rem - 26rem -
             (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
         ) / var(--numberOfDiscoverColumns)
     );
     max-width: calc(
       (
-          var(--maxPrimaryPageWidth) - 80px - 260px -
+          var(--maxPrimaryPageWidth) - 8rem - 26rem -
             (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
         ) / var(--numberOfDiscoverColumns)
     );
     h2 {
-      font-size: 1em;
+      font-size: 1.6rem;
       font-weight: 600;
     }
     p {
-      font-size: 1em;
+      font-size: 1.6rem;
       margin: 0;
     }
     .image {
@@ -76,19 +76,19 @@ const MoviePageContent = styled.div`
     }
     .content {
       width: 100%;
-      padding-bottom: 12px;
+      padding-bottom: 1.2rem;
     }
     .wrapper-image {
       width: 100%;
       height: calc(
         (
-            100vw - 80px - 260px -(var(--discoverColumnPadding) *
+            100vw - 8rem - 26rem -(var(--discoverColumnPadding) *
                   var(--numberOfDiscoverColumns))
           ) / var(--numberOfDiscoverColumns) * 1.5
       );
       max-height: calc(
         (
-            var(--maxPrimaryPageWidth) - 80px - 260px -(var(
+            var(--maxPrimaryPageWidth) - 8rem - 26rem -(var(
                     --discoverColumnPadding
                   ) * var(--numberOfDiscoverColumns))
           ) / var(--numberOfDiscoverColumns) * 1.5

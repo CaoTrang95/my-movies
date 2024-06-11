@@ -4,40 +4,40 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const SocialMenu = styled.div`
   width: 100%;
-  border-top: 1px solid #d7d7d7;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  margin-top: 30px;
+  border-top: 0.1rem solid #d7d7d7;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   align-self: center;
-  gap: 30px;
+  gap: 3rem;
   && h3,
   && h4 {
     margin: 0;
-    padding-bottom: 5px;
+    padding-bottom: 0.5rem;
   }
   .active {
-    border-bottom: 4px solid #000;
+    border-bottom: 0.4rem solid #000;
   }
 `;
 const Review = styled.div`
   width: 100%;
-  border: 1px solid #d7d7d7;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 0.1rem solid #d7d7d7;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 2rem;
   .grouped {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
   }
   .avatar {
-    width: 45px;
-    height: 45px;
-    font-size: 1.1em;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.8rem;
     color: white;
     background-color: #${(props) => props.$colorAvatar};
     border-radius: 50%;
@@ -47,40 +47,40 @@ const Review = styled.div`
     align-items: center;
   }
   && h3 {
-    font-size: 1.3em;
+    font-size: 2rem;
     margin: 0;
   }
   .info {
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
+    row-gap: 0.4rem;
   }
   .others {
     display: flex;
     align-items: center;
     .rating {
-      padding: 4px 4px;
+      padding: 0.4rem 0.4rem;
       background-color: var(--tmdbDarkBlue);
       font-weight: 600;
       color: #fff;
-      border-radius: 6px;
-      border: 1px solid var(--tmdbDarkBlue);
-      font-size: 0.9em;
-      margin-right: 8px;
+      border-radius: 0.6rem;
+      border: 0.1rem solid var(--tmdbDarkBlue);
+      font-size: 1.4rem;
+      margin-right: 0.8rem;
       display: flex;
-      gap: 4px;
+      gap: 0.4rem;
     }
     .author {
       font-weight: 300;
-      font-size: 0.9em;
+      font-size: 1.4rem;
     }
   }
   .content {
-    padding-top: 20px;
+    padding-top: 2rem;
     white-space: pre-wrap;
-    font-size: 1em;
+    font-size: 1.6rem;
     p {
-      margin-bottom: 16px;
+      margin-bottom: 1.6rem;
     }
     p a {
       color: #000;

@@ -8,13 +8,13 @@ import Spinner from "../../ui/Spinner";
 const StyledListMovies = styled.div`
   flex: 1;
   display: flex;
-  margin-left: 30px;
-  margin-top: -30px;
+  margin-left: 3rem;
+  margin-top: -3rem;
   flex-direction: column;
   .list-movies {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 20px;
+    column-gap: 2rem;
   }
   .loading-movies-container {
     width: 100%;
@@ -23,24 +23,24 @@ const StyledListMovies = styled.div`
     justify-content: center;
   }
   .loading-movies-container-full {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 10rem);
   }
   .loading-movies-container-mini {
-    margin-top: 20px;
-    height: 48px;
+    margin-top: 2rem;
+    height: 4.8rem;
   }
   .pagination {
-    margin-top: 30px;
+    margin-top: 3rem;
     width: 100%;
     max-width: 100%;
-    height: 50px;
-    border-radius: 8px;
+    height: 5rem;
+    border-radius: 0.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(1, 180, 228, 1);
     color: #fff;
-    font-size: 1.5em;
+    font-size: 2.4rem;
     font-weight: 600;
   }
 `;

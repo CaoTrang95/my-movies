@@ -14,9 +14,9 @@ const MenuMovie = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 46px;
+  height: 4.6rem;
   background-color: white;
-  margin-top: 64px;
+  margin-top: 6.4rem;
   ul {
     height: 100%;
     justify-content: center;
@@ -26,7 +26,7 @@ const MenuMovie = styled.div`
   }
   li {
     cursor: pointer;
-    margin-right: 48px;
+    margin-right: 4.8rem;
   }
   li a {
     cursor: pointer;

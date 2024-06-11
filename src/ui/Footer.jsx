@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+export const FooterWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -15,42 +15,42 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 80px 0;
+    padding: 8rem 0;
   }
   nav div {
-    margin-right: 40px;
+    margin-right: 4rem;
   }
   .join {
-    /* width: 146px; */
+    /* width: 14.6rem; */
     position: relative;
-    top: -32px;
+    top: -3.2rem;
     right: 0;
-    margin-right: 40px;
+    margin-right: 4rem;
   }
   img {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
-    width: 130px;
-    height: 94px;
+    width: 13rem;
+    height: 9.4rem;
   }
   a {
     display: inline-block;
     position: relative;
-    top: 140px;
+    top: 14rem;
     background-color: #fff;
     border-color: #fff;
     color: var(--tmbLightBlue);
-    font-size: 1.3em;
+    font-size: 2rem;
     font-weight: 700;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 8px 16px;
+    border: 0.2rem solid #fff;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.6rem;
   }
   h3 {
     text-transform: uppercase;
-    font-size: 1.3em;
+    font-size: 2rem;
     line-height: 1.4em;
     white-space: nowrap;
   }
@@ -59,14 +59,14 @@ const Wrapper = styled.div`
   }
   li {
     line-height: 1.6em;
-    font-size: 1.1em;
-    max-width: 260px;
+    font-size: 1.8rem;
+    max-width: 26rem;
     white-space: nowrap;
   }
 `;
 export default function Footer() {
   return (
-    <Wrapper>
+    <FooterWrapper>
       <nav>
         <div className="join">
           <img
@@ -111,6 +111,6 @@ export default function Footer() {
           </ul>
         </div>
       </nav>
-    </Wrapper>
+    </FooterWrapper>
   );
 }

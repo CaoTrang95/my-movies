@@ -10,37 +10,37 @@ import { GoBookmarkFill } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 
 const MovieVideoWrapper = styled.div`
-  width: 300px;
-  min-width: 300px;
-  max-width: 300px;
+  width: 30rem;
+  min-width: 30rem;
+  max-width: 30rem;
   height: auto;
-  margin-left: 20px;
+  margin-left: 2rem;
   position: relative;
   top: 0;
   left: 0;
 
   &:first-child {
-    margin-left: 40px;
+    margin-left: var(--padding-left-right);
   }
 `;
 const MovieVideoImage = styled.div`
   width: 100%;
   min-width: 100%;
-  height: calc(300px / 1.78);
+  height: calc(30rem / 1.78);
   transition: all 0.2s ease-in-out;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: #dbdbdb;
-  box-shadow: inset 0 0 1px 1px #000;
+  box-shadow: inset 0 0 0.1rem 0.1rem #000;
   &:hover .play-icon {
     transform: scale(1.3);
   }
   &:hover {
-    box-shadow: inset 0 0 1px 1px #000;
+    box-shadow: inset 0 0 0.1rem 0.1rem #000;
     transform: scale(1.05);
   }
   img {
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     width: 100%;
     height: 100%;
   }
@@ -50,8 +50,8 @@ const MovieVideoImage = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: calc(300px / 1.78);
+    width: 30rem;
+    height: calc(30rem / 1.78);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,10 +59,10 @@ const MovieVideoImage = styled.div`
   }
 
   .play-icon {
-    width: 1em;
-    min-width: 1em;
-    min-height: 1em;
-    height: 1em;
+    width: 1.6rem;
+    min-width: 1.6rem;
+    min-height: 1.6rem;
+    height: 1.6rem;
     background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg");
     background-repeat: no-repeat;
     filter: invert(1);
@@ -75,7 +75,7 @@ const MovieVideoImage = styled.div`
 const MovieVideoContent = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 1rem;
   flex-wrap: wrap;
   h2 {
     font-size: 1.2em;
@@ -85,7 +85,7 @@ const MovieVideoContent = styled.div`
     justify-content: center;
   }
   h3 {
-    font-size: 1em;
+    font-size: 1.6rem;
     font-weight: 400;
   }
 `;

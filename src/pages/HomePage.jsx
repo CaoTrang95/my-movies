@@ -12,7 +12,7 @@ const Main = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: #fff;
-  margin-top: 64px;
+  margin-top: 6.4rem;
 `;
 
 export default function HomePage() {

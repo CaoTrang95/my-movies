@@ -1,4 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { NavWrapper } from "../ui/Header";
+import Footer, { FooterWrapper } from "../ui/Footer";
+import { WrapperLeaderBoard } from "../features/home/leaderboard/LeaderBoardItem";
 const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'Source Sans Pro';
@@ -69,20 +72,60 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   --numberOfDiscoverColumns: 1;
-  --discoverColumnPadding: 30px;
+  --discoverColumnPadding: 3rem;
   --maxPrimaryPageWidth: 1400px;
   --primaryColor: rgba(10.5, 31.5, 31.5, 1);
+  --padding-top-bottom: 3rem;
+  --padding-left-right: 4rem;
+  --height-nav-bar: 5rem;
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+${NavWrapper} .header-nav-bar-small {
+    display: none;
+  }
+.NavItem{
+  display: flex;
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (max-width: 87em) {
   html {
-      --maxPrimaryPageWidth: 1300px
+      --maxPrimaryPageWidth: 130rem
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 44em) {
     html {
-        --numberOfDiscoverColumns:2
+      --numberOfDiscoverColumns:2;
+      --padding-top-bottom: 2rem;
+      --padding-left-right: 2rem;
+      --height-nav-bar: 4.4rem
+    }
+    ${NavWrapper} .header-nav-bar-small {
+      display: flex;
+    }
+
+    .NavItem {
+      display: none;
+    }
+
+    ${FooterWrapper} nav {
+      flex-direction: column;
+      row-gap: 3rem;
+      padding: 2rem;
+      .join img {
+        display: none;
+      }
+      .join {
+        top: 0;
+      }
+      .join a {
+        top: 0;
+        color: #235ea7;
+      }
+    }
+    ${WrapperLeaderBoard} {
+      width: 100%;
     }
 }
 
@@ -92,13 +135,13 @@ html {
     }
 }
 
-@media only screen and (min-width: 1040px) {
+@media only screen and (min-width: 104rem) {
     html {
         --numberOfDiscoverColumns:4
     }
 }
 
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 124rem) {
     html {
         --numberOfDiscoverColumns:5
     }
@@ -155,7 +198,7 @@ html {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 30px 40px;
+    padding: var(--padding-top-bottom) var(--padding-left-right);
     max-width: var(--maxPrimaryPageWidth);
 }
 .tooltip {
@@ -167,8 +210,8 @@ html {
   white-space: nowrap;
   background-color: rgba(3, 37, 65, 1);
   color: #fff;
-  border-radius: 3px;
-  padding: 8px 12px;
+  border-radius: 0.3rem;
+  padding:0.8rem1.2rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -185,7 +228,7 @@ html {
   position: absolute;
   left: 50%;
   margin-left: -6px;
-  border-width: 6px;
+  border-width:0.6rem;
   border-style: solid;
 }
 .tooltip .tooltiptext.bottom::after {
@@ -209,14 +252,15 @@ body {
   /* font-family: 'Source Sans Pro', sans-serif !important; */
   -webkit-font-smoothing: antialiased;
   background-color: var(--tmdbDarkBlue);
-  font-size: .9em;
+  font-size: 1.4rem;
+  overflow-x: hidden;
 }
 body::-webkit-scrollbar,.scroll::-webkit-scrollbar {
-  height: 8px;width: 8px;
+  height:0.8rem;width:0.8rem;
 }
 body::-webkit-scrollbar-thumb,.scroll::-webkit-scrollbar-thumb {
   background-color: rgba(219, 219, 219,1);
-  border-radius: 20px;
+  border-radius: 2rem;
 }
 .scroll::-webkit-scrollbar-track {
   background: 0 0;
@@ -232,17 +276,17 @@ body.modal-open {
   overflow: hidden;
 }
 .nav-up{
-  top: -64px;
+  top: -6.4rem;
 }
 .form-field{
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid #e3e3e3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius:0.8rem;
+  border: 0.1rem solid #e3e3e3;
+  box-shadow: 0 0.2rem0.8rem rgba(0, 0, 0, 0.1);
 }
 .sort-filter-card {
     display: flex;
-    padding: 14px 16px;
+    padding:1.4rem1.6rem;
     justify-content: space-between;
     align-items: center;
   }

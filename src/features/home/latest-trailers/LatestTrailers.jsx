@@ -33,7 +33,7 @@ const TrailersContent = styled.div`
       rgba(3, 37, 65, 0.75) 0%,
       rgba(3, 37, 65, 0.75) 100%
     );
-    padding-top: 30px;
+    padding-top: 3rem;
   }
   ${ListMoviesContent}::after {
     width: 0;

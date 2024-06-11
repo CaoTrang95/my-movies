@@ -8,33 +8,32 @@ const TabWrapper = styled.section`
 const TabContent = styled.div``;
 const TabHeader = styled.div`
   display: flex;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 var(--padding-left-right);
   h2 {
-    margin-right: 20px;
+    margin-right: 2rem;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 2.4rem;
     white-space: nowrap;
   }
   h2 {
-    margin-right: 20px;
+    margin-right: 2rem;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 2.4rem;
     color: ${(props) => (props.$dark ? "#000" : "#fff")};
   }
   .selector {
     display: flex;
     align-items: center;
-    border: 1px solid ${(props) => (props.$dark ? "#032541" : "#1ed5a9")};
-    border-radius: 30px;
+    border: 0.1rem solid ${(props) => (props.$dark ? "#032541" : "#1ed5a9")};
+    border-radius: 3rem;
     position: relative;
     top: 0;
     left: 0;
     min-width: ${(props) => props.$length * 120}px;
   }
   h3 {
-    font-size: 1em;
-    padding: 4px 20px;
+    font-size: 1.4rem;
+    padding: 0.4rem 2rem;
     z-index: 1;
   }
   .anchor-tab {
@@ -64,14 +63,15 @@ const TabHeader = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 30px;
+    border-radius: 3rem;
     height: 100%;
-    width: calc(${(props) => 100 / props.$length}% + 1px);
+    width: calc(${(props) => 100 / props.$length}% + 0.1rem);
     transition: 0.5s all ease;
-    transform: translateX(-1px);
+    transform: translateX(-0.1rem);
   }
   .translate-to-left {
-    transform: translateX(${(props) => props.$tabIndex * 100}%) translateX(-1px);
+    transform: translateX(${(props) => props.$tabIndex * 100}%)
+      translateX(-0.1rem);
   }
 `;
 export default function Tab({

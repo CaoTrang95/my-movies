@@ -1,15 +1,8 @@
-import {
-  cloneElement,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
-import { useOutsideClick } from "../hooks/useOutsideClick";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { releaseYoutubeFrame } from "../features/home/youtube-frame/youtubeFrameSlice";
 
 export const Overlay = styled.div`
@@ -33,7 +26,7 @@ export const StyledModal = styled.div`
   left: 50vw;
   transform: translate(-50%, -50%);
   background-color: #000;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   transition: all 0.5s;
   z-index: 101;
   width: 88%;
@@ -57,7 +50,7 @@ export const StyledModal = styled.div`
 const Button = styled.button`
   background: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   transition: all 0.2s;
   &:hover {
     background-color: gray;
@@ -66,7 +59,7 @@ const Button = styled.button`
     width: 1.5rem;
     height: 1.5rem;
     color: #fff;
-    padding: 2px;
+    padding: 0.2rem;
     display: flex;
     align-items: center;
   }

@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const CastWrapper = styled.div`
-  margin: 10px 4px 10px 10px;
-  border: 1px solid rgba(227, 227, 227, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  margin: 1rem 0.4rem 1rem 1rem;
+  border: 0.1rem solid rgba(227, 227, 227, 1);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
   overflow: hidden;
-  min-width: 140px;
-  width: 140px;
+  min-width: 14rem;
+  width: 14rem;
   a {
-    min-width: 138px;
-    width: 138px;
-    height: 175px;
+    min-width: 14rem;
+    width: 14rem;
+    height: 17.5rem;
     display: block;
   }
   img {
@@ -21,15 +21,15 @@ const CastWrapper = styled.div`
     height: 100%;
   }
   p {
-    padding: 0 10px;
-    padding-top: 10px;
-    font-size: 1em;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #000;
   }
   .character {
     font-weight: 500;
-    font-size: 0.9em;
+    font-size: 1.4rem;
   }
   .picture-avatar {
     width: 100%;

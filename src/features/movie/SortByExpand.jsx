@@ -2,15 +2,15 @@ import styled from "styled-components";
 import Dropdown from "../../ui/Dropdown";
 const SortByExpandWrapper = styled.div`
   &.sort-expand {
-    border-top: 1px solid #e3e3e3;
+    border-top: 0.1rem solid #e3e3e3;
     width: 100%;
-    padding: 14px 16px 16px;
+    padding: 1.4rem 1.6rem 1.6rem;
     position: relative;
     h3 {
       width: 100%;
-      font-size: 1em;
+      font-size: 1.6rem;
       font-weight: 300;
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
   }
 `;

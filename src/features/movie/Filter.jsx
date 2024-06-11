@@ -6,9 +6,9 @@ import ReleaseDates from "./ReleaseDates";
 import Genres from "./Genres";
 
 const StyledFilter = styled.div`
-  margin-top: 12px;
+  margin-top: 1.2rem;
   && h2 {
-    font-size: 1.1em;
+    font-size: 1.8rem;
   }
 `;
 export default function Filter() {

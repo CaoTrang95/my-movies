@@ -14,8 +14,8 @@ const StyledLoadingSkeleton = styled.div`
   animation-duration: 2s;
   animation-name: placeholderLoading;
   animation-iteration-count: infinite;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
   background-color: #dbdbdb;
   background-position: center center;
   background-repeat: no-repeat;

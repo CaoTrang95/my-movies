@@ -7,13 +7,13 @@ import Modal from "../../ui/Modal";
 import YoutubeFrame from "../home/youtube-frame/YoutubeFrame";
 const MediaMenu = styled.div`
   width: 100%;
-  border-top: 1px solid #d7d7d7;
-  margin-top: 30px;
+  border-top: 0.1rem solid #d7d7d7;
+  margin-top: 3rem;
   display: flex;
-  gap: 30px;
+  gap: 3rem;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 8px;
+  padding-top: 2rem;
+  padding-bottom: 0.8rem;
   position: relative;
   && h3,
   && h4 {
@@ -22,24 +22,24 @@ const MediaMenu = styled.div`
   a {
     color: var(--tmbLightBlue);
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 1.4rem;
     position: absolute;
-    right: 20px;
+    right: 2rem;
   }
   .active {
-    /* box-shadow: 0px -3px 0px 0px #000 inset; */
-    border-bottom: 4px solid #000000;
+    /* box-shadow: 0px -0.3rem 0px 0px #000 inset; */
+    border-bottom: 0.4rem solid #000000;
   }
   ul {
     list-style-type: none;
     display: flex;
     /* align-items: center; */
-    gap: 20px;
+    gap: 2rem;
   }
   li {
-    font-size: 1.1em;
+    font-size: 1.8rem;
     font-weight: 600;
-    padding: 8px 0;
+    padding: 0.8rem 0;
     display: inline-block;
     box-sizing: border-box;
   }
@@ -53,18 +53,18 @@ const Content = styled.div`
   .list-contents {
     overflow-x: scroll;
     overflow-y: hidden;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     display: flex;
   }
   .backdrop {
-    width: 500px;
-    min-width: 500px;
-    height: 300px;
-    min-height: 300px;
+    width: 50rem;
+    min-width: 50rem;
+    height: 30rem;
+    min-height: 30rem;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2rem0.8rem rgba(0, 0, 0, 0.1);
     background-size: 20%;
     img {
       width: 100%;
@@ -72,17 +72,17 @@ const Content = styled.div`
     }
   }
   .popular {
-    height: 300px;
-    min-height: 300px;
+    height: 30rem;
+    min-height: 30rem;
     img {
       object-fit: cover;
     }
   }
   .poster {
-    min-width: 200px;
-    width: 200px;
-    min-height: 300px;
-    height: 300px;
+    min-width: 20rem;
+    width: 20rem;
+    min-height: 30rem;
+    height: 30rem;
     display: flex;
     img {
       width: 100%;
@@ -90,20 +90,20 @@ const Content = styled.div`
     }
   }
   .view-more {
-    margin-left: 10px;
-    margin-right: 18px;
+    margin-left: 1rem;
+    margin-right: 1.8rem;
     background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     a {
-      font-size: 1.1em;
+      font-size: 1.8rem;
       white-space: nowrap;
       color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 0.6rem;
     }
   }
 `;
@@ -113,17 +113,17 @@ const VideoImage = styled.div`
   background-size: 100%;
   color: #fff;
   font-size: 1.2em;
-  width: 500px;
-  min-width: 500px;
-  height: 300px;
-  min-height: 300px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 50rem;
+  min-width: 50rem;
+  height: 30rem;
+  min-height: 30rem;
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   .play-background {
-    width: 67px;
-    height: 67px;
+    width: 6.8rem;
+    height: 6.8rem;
     display: flex;
     align-items: center;
     justify-content: center;

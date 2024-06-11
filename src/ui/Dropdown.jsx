@@ -4,7 +4,7 @@ import { createContext, useContext, useRef, useState } from "react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 const Select = styled.div`
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background-color: #c7cdd5;
   position: relative;
   .select {
@@ -21,11 +21,11 @@ const StyledButton = styled.button`
   text-align: left;
   background: none;
   border: none;
-  padding: 8px 20px;
-  font-size: 0.9em;
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
   transition: all 0.2s;
   display: flex;
-  gap: 6px;
+  gap: 0.6rem;
   &:hover {
     background-color: #f8f9fa;
   }
@@ -43,14 +43,14 @@ const StyledDropList = styled.div`
   left: 0;
   z-index: 2001;
   background-color: var(--color-grey-0);
-  border: 1px solid #eee;
+  border: 0.1rem solid #eee;
   box-shadow: var(--shadow-md);
   border-radius: 0.25rem;
   overflow: hidden;
   width: 100%;
-  height: 200px;
-  padding-bottom: 10px;
-  padding-top: 8px;
+  height: 20rem;
+  padding-bottom: 1rem;
+  padding-top: 0.8rem;
   .list-content {
     width: 100%;
     height: 100%;

@@ -4,9 +4,9 @@ import { FaArrowRight } from "react-icons/fa6";
 
 const WelcomeWrapper = styled.div`
   width: 100%;
-  min-height: 300px;
+  min-height: 30rem;
   height: calc(100vh / 2.5);
-  max-height: 360px;
+  max-height: 36rem;
   display: flex;
   justify-content: center;
 `;
@@ -30,32 +30,32 @@ const WelcomeContent = styled.section`
 
 const Title = styled.div`
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   h2 {
-    font-size: 3em;
+    font-size: 4.8rem;
     font-weight: 700;
     line-height: 1;
   }
   h3 {
-    font-size: 2em;
+    font-size: 3.2rem;
     font-weight: 600;
     margin: 0;
   }
 `;
 const Search = styled.div`
   width: 100%;
-  margin-top: 30px;
+  margin-top: 3rem;
   position: relative;
   top: 0;
   left: 0;
   input[type="text"] {
     font: inherit;
     width: 100%;
-    height: 46px;
-    font-size: 1.1em;
+    height: 4.6rem;
+    font-size: 1.8rem;
     border: 0;
-    border-radius: 30px;
-    padding: 10px 20px;
+    border-radius: 3rem;
+    padding: 1rem 2rem;
   }
   input[type="text"]:focus {
     outline: 0;
@@ -63,18 +63,18 @@ const Search = styled.div`
   input[type="submit"] {
     font: inherit;
     font-weight: 700;
-    height: 46px;
-    padding: 10px 26px;
+    height: 4.6rem;
+    padding: 1rem 2.6rem;
     border: 0;
     background: linear-gradient(
       to right,
       rgba(30, 213, 169, 1) 0%,
       rgba(1, 180, 228, 1) 100%
     );
-    border-radius: 30px;
+    border-radius: 3rem;
     position: absolute;
     top: 0;
-    right: -1px;
+    right: -0.1rem;
     color: #fff;
     cursor: pointer;
   }
@@ -97,7 +97,7 @@ const Oscar = styled.div`
   );
   color: white;
   img {
-    width: 300px;
+    width: 30rem;
     color: white;
     filter: brightness(0) invert(1);
   }
@@ -106,16 +106,16 @@ const Oscar = styled.div`
   }
   .view-winner {
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 173px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 8px 16px;
+    max-width: 17.4rem;
+    border: 0.2rem solid #fff;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.6rem;
     transition: linear 0.1s;
-    border-radius: 30px;
+    border-radius: 3rem;
     cursor: pointer;
   }
 `;

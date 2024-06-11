@@ -3,57 +3,57 @@ import { IoHomeOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 const RightColumnInfoStyled = styled.div`
-  min-width: 260px;
-  width: 260px;
+  min-width: 26rem;
+  width: 26rem;
   display: flex;
   flex-direction: column;
-  row-gap: 20px; /* height: 500px; */
+  row-gap: 2rem; /* height: 50rem; */
   .info-item {
     display: flex;
     flex-direction: column;
-    font-size: 1em;
-    row-gap: 4px;
+    font-size: 1.6rem;
+    row-gap: 0.4rem;
     p {
       font-weight: 600;
     }
     span {
-      font-size: 1em;
+      font-size: 1.6rem;
     }
   }
   .section-keyword {
-    margin-top: 10px;
+    margin-top: 1rem;
     .keyword {
-      padding: 4px 10px;
+      padding: 0.4rem 1rem;
       background-color: rgba(0, 0, 0, 0.1);
-      border: 1px solid #d7d7d7;
-      border-radius: 4px;
+      border: 0.1rem solid #d7d7d7;
+      border-radius: 0.4rem;
     }
     h4 {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
   }
   ul {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    row-gap: 5px;
-    column-gap: 5px;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
   }
   li {
-    font-size: 0.9em;
+    font-size: 1.4rem;
     white-space: nowrap;
     font-weight: 400;
   }
 `;
 const External = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
   width: 100%;
-  height: 24px;
-  margin-bottom: 10px;
+  height: 2.4rem;
+  margin-bottom: 1rem;
   .homepage {
-    border-left: 1px solid #d7d7d7;
-    padding-left: 8px;
+    border-left: 0.1rem solid #d7d7d7;
+    padding-left: 0.8rem;
   }
 `;
 function numberWithCommas(x) {
@@ -67,19 +67,19 @@ export default function RightColumnInfo() {
       <External>
         <div className="tooltip">
           <span className="tooltiptext top">Visit Facebook</span>
-          <FaFacebook size={"24px"} />
+          <FaFacebook size={"2.4rem"} />
         </div>
         <div className="tooltip">
           <span className="tooltiptext top">Visit Twitter</span>
-          <FaTwitter size={"24px"} />
+          <FaTwitter size={"2.4rem"} />
         </div>
         <div className="tooltip">
           <span className="tooltiptext top">Visit Instagram</span>
-          <FaInstagram size={"24px"} />
+          <FaInstagram size={"2.4rem"} />
         </div>
         <div className="tooltip homepage">
           <span className="tooltiptext top">Visit Homepage</span>
-          <IoHomeOutline size={"24px"} />
+          <IoHomeOutline size={"2.4rem"} />
         </div>
       </External>
       <div className="info-item">
