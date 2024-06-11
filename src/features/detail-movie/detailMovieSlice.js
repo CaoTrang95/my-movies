@@ -62,7 +62,6 @@ const detailMovieSlice = createSlice({
       state.posters = action.payload.images.posters;
       state.videos = action.payload.videos.results;
       state.recommendations = action.payload.recommendations.results;
-      console.log(action.payload);
     });
   },
 });

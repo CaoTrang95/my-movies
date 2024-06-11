@@ -127,7 +127,7 @@ export default function Social() {
                   <img
                     loading="lazy"
                     src={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path}`}
-                    srcset={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path} 1x, 
+                    srcSet={`https://media.themoviedb.org/t/p/w45_and_h45_face${reviews[0]?.author_details?.avatar_path} 1x, 
                https://media.themoviedb.org/t/p/w90_and_h90_face${reviews[0]?.author_details?.avatar_path} 2x`}
                     alt="CinemaSerf"
                   ></img>

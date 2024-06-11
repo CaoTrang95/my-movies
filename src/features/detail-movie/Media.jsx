@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaArrowAltCircleRight, FaPlay } from "react-icons/fa";
+import Modal from "../../ui/Modal";
+import YoutubeFrame from "../home/youtube-frame/YoutubeFrame";
 const MediaMenu = styled.div`
   width: 100%;
   border-top: 1px solid #d7d7d7;
@@ -179,20 +181,26 @@ export default function Media() {
           {(id === "video" || id === "popular") &&
             videosShow &&
             videosShow.map((item) => (
-              <VideoImage
-                key={item.key}
-                className="video"
-                $videoImage={`https://i.ytimg.com/vi/${item.key}/hqdefault.jpg`}
-              >
-                <div className="play-background">
-                  <FaPlay></FaPlay>
-                </div>
-              </VideoImage>
+              <Modal key={item.key}>
+                <Modal.Open opens="show-video" moveId={item.key}>
+                  <VideoImage
+                    className="video"
+                    $videoImage={`https://i.ytimg.com/vi/${item.key}/hqdefault.jpg`}
+                  >
+                    <div className="play-background">
+                      <FaPlay></FaPlay>
+                    </div>
+                  </VideoImage>
+                </Modal.Open>
+                <Modal.Window name="show-video" movieName={item.title}>
+                  <YoutubeFrame keyMovie={item.key} />
+                </Modal.Window>
+              </Modal>
             ))}
           {(id === "backdrop" || id === "popular") &&
             backdropsShow &&
             backdropsShow.map((item) => (
-              <div className="backdrop">
+              <div className="backdrop" key={item.file_path}>
                 <img
                   src={`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${item.file_path}`}
                   srcSet={`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${item.file_path} 1x, 
@@ -204,7 +212,7 @@ export default function Media() {
           {(id === "poster" || id === "popular") &&
             postersShow &&
             postersShow.map((item) => (
-              <div className="poster">
+              <div className="poster" key={item.file_path}>
                 <img
                   src={`https://media.themoviedb.org/t/p/w220_and_h330_face${item.file_path}`}
                   srcSet={`https://media.themoviedb.org/t/p/w220_and_h330_face${item.file_path} 1x, 

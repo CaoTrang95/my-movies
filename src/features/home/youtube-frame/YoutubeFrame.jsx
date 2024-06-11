@@ -25,12 +25,12 @@ const YoutubeWrapper = styled.div`
     height: 100%;
   }
 `;
-export default function YoutubeFrame({ id }) {
+export default function YoutubeFrame({ id, keyMovie }) {
   const { videoTrailerUrl } = useSelector((state) => state.youtubeFrame);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMovieDetailAsync({ id: id }));
+    if (id) dispatch(getMovieDetailAsync({ id: id }));
   }, [videoTrailerUrl]);
   return (
     <>
@@ -41,14 +41,12 @@ export default function YoutubeFrame({ id }) {
       />
       <YoutubeWrapper className="YoutubeWrapper">
         <div className="video-popup">
-          {videoTrailerUrl && (
-            <iframe
-              type="text/html"
-              src={videoTrailerUrl}
-              title={videoTrailerUrl}
-              allowFullScreen=""
-            ></iframe>
-          )}
+          <iframe
+            type="text/html"
+            src={videoTrailerUrl || `//www.youtube.com/embed/${keyMovie}`}
+            title={videoTrailerUrl}
+            allowFullScreen=""
+          ></iframe>
         </div>
       </YoutubeWrapper>
     </>

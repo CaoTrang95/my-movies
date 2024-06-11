@@ -11,7 +11,6 @@ const StyledSort = styled.div`
   }
 `;
 export default function Sort() {
-  console.log("Sort re-render");
   const [isExpandSort, setIsExpandSort] = useState(true);
   const sortValue = useSelector((state) => state.search.paramsSearch.sortValue);
   const dispatch = useDispatch();
