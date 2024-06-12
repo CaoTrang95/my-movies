@@ -81,6 +81,7 @@ export function ListMovies() {
         <div className="list-movies">
           {listMovies?.map((movie, index) => (
             <Movie
+              isShowOverview={true}
               key={movie.id + movie.title + movie.poster_path + index}
               movie={movie}
             />

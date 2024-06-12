@@ -32,19 +32,19 @@ const MoviePageContent = styled.div`
     font-size: 1.6em;
     font-weight: 600;
   }
-  .content {
+  .content-movie-list {
     width: 100%;
     display: flex;
   }
   .search-infos {
     width: 26rem;
     min-width: 26rem;
-    height: 138rem;
     display: flex;
     flex-direction: column;
   }
   ${CardWrapper} {
     margin-top: 3rem;
+    padding-bottom: 2rem;
     border-radius: 0.8rem;
     border: 0.1rem solid #e3e3e3;
     overflow: hidden;
@@ -74,7 +74,7 @@ const MoviePageContent = styled.div`
       border-radius: 0;
       box-shadow: none;
     }
-    .content {
+    .content-movie-list {
       width: 100%;
       padding-bottom: 1.2rem;
     }
@@ -115,7 +115,7 @@ export default function MoviePage() {
           <div className="title">
             <h2>Popular Movies</h2>
           </div>
-          <div className="content">
+          <div className="content-movie-list">
             <div className="search-infos">
               <Sort />
               <Filter />

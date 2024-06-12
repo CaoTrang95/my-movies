@@ -6,7 +6,7 @@ const TabWrapper = styled.section`
   display: flex;
 `;
 const TabContent = styled.div``;
-const TabHeader = styled.div`
+export const TabHeader = styled.div`
   display: flex;
   padding: 0 var(--padding-left-right);
   h2 {

@@ -21,8 +21,8 @@ const Radio = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   input {
-    width: 1rem;
-    height: 1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     border-style: solid;
     border-width: 0.1rem;
     position: relative;

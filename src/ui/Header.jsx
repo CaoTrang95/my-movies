@@ -51,6 +51,9 @@ const StyledHeader = styled.header`
         margin-bottom: 1rem;
         color: rgba(255, 255, 255, 0.6);
       }
+      a {
+        color: #fff;
+      }
     }
   }
   .nav-open {
@@ -250,7 +253,14 @@ export default function Header() {
               {isShowMovies && (
                 <ul className="sub-menu">
                   {tooltipMovies.map((item) => (
-                    <li key={item.content}>{item.content}</li>
+                    <li
+                      key={item.content}
+                      onClick={() => {
+                        setIsShowNavBarPhone(false);
+                      }}
+                    >
+                      <Link to={item.link}>{item.content}</Link>
+                    </li>
                   ))}
                 </ul>
               )}

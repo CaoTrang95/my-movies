@@ -64,7 +64,7 @@ const Content = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
-    box-shadow: 0 0.2rem0.8rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
     background-size: 20%;
     img {
       width: 100%;

@@ -5,7 +5,7 @@ import { getDetailMovieAsync } from "./detailMovieSlice";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 
-const MovieInfoWrapper = styled.div`
+export const MovieInfoWrapper = styled.div`
   width: 100%;
   background-image: url(${(props) => props.$image});
   background-position: left calc((50vw - 17rem) - 34rem) top;
@@ -24,7 +24,7 @@ const MovieInfoWrapper = styled.div`
     );
   }
 `;
-const MovieInfoContent = styled.div`
+export const MovieInfoContent = styled.div`
   width: var(--maxPrimaryPageWidth);
   padding: var(--padding-top-bottom) var(--padding-left-right);
   display: flex;
@@ -346,119 +346,124 @@ export default function DetailInfoMovie() {
         <MovieInfoWrapper
           $image={`https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie?.backdrop_path}`}
         >
-          <div className="custom_bg">
-            {!isLoading && (
-              <MovieInfoContent $percent={movie.vote_average}>
-                <div className="poster-wrapper">
-                  <img
-                    alt="movie"
-                    src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path}`}
-                    srcSet={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path} 1x, https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path} 2x`}
-                  />
-                  <div className="zoom">
-                    <Link>
-                      <span className="expand"></span>Expand
-                    </Link>
-                  </div>
-                </div>
-                <div className="poster-info">
-                  <div className="title">
-                    <h2>
-                      {movie.title}
-                      <span className="release-date">
-                        ({movie.release_date?.split("-")[0]})
-                      </span>
-                    </h2>
-                    <div className="fact">
-                      <span>{movie.release_date}</span>
-                      <span className="genres">
-                        {movie?.genres?.map((item) => item.name).join(", ")}
-                      </span>
-                      <span className="time">
-                        {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
-                      </span>
+          <div className="background-wrapper">
+            <div className="custom_bg">
+              {!isLoading && (
+                <MovieInfoContent $percent={movie.vote_average}>
+                  <div className="poster-wrapper">
+                    <img
+                      alt="movie"
+                      src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path}`}
+                      srcSet={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path} 1x, https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path} 2x`}
+                    />
+                    <div className="zoom">
+                      <Link>
+                        <span className="expand"></span>Expand
+                      </Link>
                     </div>
                   </div>
-                  <div className="ring-line">
-                    <div className="outer-ring">
-                      <div className="percent">
-                        <svg>
-                          <circle cx="30" cy="30" r="28"></circle>
-                          <circle cx="30" cy="30" r="28"></circle>
-                        </svg>
-                        <div className="number">
-                          {/* <span className={`rating-text icon-r70`}></span> */}
-                          <h3>{percent}</h3>
-                        </div>
+                  <div className="poster-info">
+                    <div className="title">
+                      <h2>
+                        {movie.title}
+                        <span className="release-date">
+                          ({movie.release_date?.split("-")[0]})
+                        </span>
+                      </h2>
+                      <div className="fact">
+                        <span>{movie.release_date}</span>
+                        <span className="genres">
+                          {movie?.genres?.map((item) => item.name).join(", ")}
+                        </span>
+                        <span className="time">
+                          {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}
+                          m
+                        </span>
                       </div>
                     </div>
-                    <div className="user-score">
-                      User <br></br>Score
+                    <div className="ring-line">
+                      <div className="outer-ring">
+                        <div className="percent">
+                          <svg>
+                            <circle cx="30" cy="30" r="28"></circle>
+                            <circle cx="30" cy="30" r="28"></circle>
+                          </svg>
+                          <div className="number">
+                            {/* <span className={`rating-text icon-r70`}></span> */}
+                            <h3>{percent}</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="user-score">
+                        User <br></br>Score
+                      </div>
+                      <div className="reactions">
+                        <ul>
+                          <li title="Grinning face">
+                            <img
+                              alt="smile"
+                              src="https://www.themoviedb.org/assets/2/v8/1f600-f53b445a86235a4ef54899ad2f1a936e3ff6d1dcdaafc9ed63d6a6070491c0a1.svg"
+                            ></img>
+                          </li>
+                          <li title="Smiling face with heart eyes">
+                            <img
+                              alt="heart"
+                              src="https://www.themoviedb.org/assets/2/v8/1f60d-f12478ffe50d98da9d6cafbf29ef1777b8d1d2bb123224c978ca9ba4e6e6159b.svg"
+                            ></img>
+                          </li>
+                          <li title="Face exhaling">
+                            <img
+                              alt="supprice"
+                              src="https://www.themoviedb.org/assets/2/v8/1f62e-3e6a508ad2bbd0fdbba61653e9f81b3e4007e140dda8fc6f0e1b24510541ec8c.svg"
+                            ></img>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="vibes">
+                        What's your <span className="vibe">Vibe</span>?
+                      </div>
                     </div>
-                    <div className="reactions">
+                    <div className="actions">
                       <ul>
-                        <li title="Grinning face">
-                          <img
-                            alt="smile"
-                            src="https://www.themoviedb.org/assets/2/v8/1f600-f53b445a86235a4ef54899ad2f1a936e3ff6d1dcdaafc9ed63d6a6070491c0a1.svg"
-                          ></img>
+                        <li className="tooltip">
+                          <span className="tooltiptext bottom">
+                            Add to list
+                          </span>
+                          <FaList />
                         </li>
-                        <li title="Smiling face with heart eyes">
-                          <img
-                            alt="heart"
-                            src="https://www.themoviedb.org/assets/2/v8/1f60d-f12478ffe50d98da9d6cafbf29ef1777b8d1d2bb123224c978ca9ba4e6e6159b.svg"
-                          ></img>
+                        <li className="tooltip">
+                          <span className="tooltiptext bottom">
+                            Mark as favorite
+                          </span>
+                          <FaHeart />
                         </li>
-                        <li title="Face exhaling">
-                          <img
-                            alt="supprice"
-                            src="https://www.themoviedb.org/assets/2/v8/1f62e-3e6a508ad2bbd0fdbba61653e9f81b3e4007e140dda8fc6f0e1b24510541ec8c.svg"
-                          ></img>
+                        <li className="tooltip">
+                          <span className="tooltiptext bottom">
+                            Add to your watchlist
+                          </span>
+                          <FaBookmark />
+                        </li>
+                        <li className="play">
+                          <FaPlay />
+                          <Link>Play Trailer</Link>
                         </li>
                       </ul>
                     </div>
-                    <div className="vibes">
-                      What's your <span className="vibe">Vibe</span>?
-                    </div>
-                  </div>
-                  <div className="actions">
-                    <ul>
-                      <li className="tooltip">
-                        <span className="tooltiptext bottom">Add to list</span>
-                        <FaList />
-                      </li>
-                      <li className="tooltip">
-                        <span className="tooltiptext bottom">
-                          Mark as favorite
-                        </span>
-                        <FaHeart />
-                      </li>
-                      <li className="tooltip">
-                        <span className="tooltiptext bottom">
-                          Add to your watchlist
-                        </span>
-                        <FaBookmark />
-                      </li>
-                      <li className="play">
-                        <FaPlay />
-                        <Link>Play Trailer</Link>
-                      </li>
+                    <div className="tagline">{movie.tagline}</div>
+                    <h3>Overview</h3>
+                    <div className="overview">{movie.overview}</div>
+                    <ul className="crews">
+                      {crews.map((item) => (
+                        <li className="crew-item" key={item.id}>
+                          <p className="crew-name">{item.name}</p>
+                          <span className="crew-job">{item.job}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
-                  <div className="tagline">{movie.tagline}</div>
-                  <h3>Overview</h3>
-                  <div className="overview">{movie.overview}</div>
-                  <ul className="crews">
-                    {crews.map((item) => (
-                      <li className="crew-item" key={item.id}>
-                        <p className="crew-name">{item.name}</p>
-                        <span className="crew-job">{item.job}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </MovieInfoContent>
-            )}
+                </MovieInfoContent>
+              )}
+            </div>
           </div>
         </MovieInfoWrapper>
       )}

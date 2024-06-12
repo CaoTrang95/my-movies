@@ -2,6 +2,12 @@ import { createGlobalStyle } from "styled-components";
 import { NavWrapper } from "../ui/Header";
 import Footer, { FooterWrapper } from "../ui/Footer";
 import { WrapperLeaderBoard } from "../features/home/leaderboard/LeaderBoardItem";
+import { TabHeader } from "../ui/Tab";
+import { CardWrapper } from "../features/home/Movie";
+import {
+  MovieInfoContent,
+  MovieInfoWrapper,
+} from "../features/detail-movie/DetailInfoMovie";
 const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'Source Sans Pro';
@@ -93,13 +99,14 @@ ${NavWrapper} .header-nav-bar-small {
       --maxPrimaryPageWidth: 130rem
   }
 }
-
+@media only screen and (max-width: 53em) {html{font-size: 50%;}}
 @media only screen and (max-width: 44em) {
     html {
       --numberOfDiscoverColumns:2;
       --padding-top-bottom: 2rem;
       --padding-left-right: 2rem;
-      --height-nav-bar: 4.4rem
+      --height-nav-bar: 4.4rem;
+      font-size: 50%;
     }
     ${NavWrapper} .header-nav-bar-small {
       display: flex;
@@ -112,7 +119,7 @@ ${NavWrapper} .header-nav-bar-small {
     ${FooterWrapper} nav {
       flex-direction: column;
       row-gap: 3rem;
-      padding: 2rem;
+      padding: 3rem 2rem 6rem;
       .join img {
         display: none;
       }
@@ -127,6 +134,75 @@ ${NavWrapper} .header-nav-bar-small {
     ${WrapperLeaderBoard} {
       width: 100%;
     }
+    ${TabHeader}{flex-direction: column;gap: 1.2rem;}
+    .content-movie-list {
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+  .search-infos {
+    width: 100% !important;
+    .from-date {
+      gap: 6rem;
+      #from-date {
+        flex: 1;
+      }
+    }
+    .from-date {
+      gap: 6rem;
+      #to-date {
+        flex: 1;
+      }
+    }
+  }
+  .list-movies {
+    flex-direction: column;
+    margin-left: 0;
+    ${CardWrapper} {
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: 0;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+      .wrapper-image {
+        width: 9.4rem;
+        height: 14rem;
+        min-height: 14rem;
+      }
+      .content {
+        flex: 1;
+        padding: 2.6rem 1.4rem 1.2rem;
+        .overview-content {
+          display: -webkit-box;
+        }
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  ${MovieInfoContent} {
+    flex-direction: column;
+    .poster-wrapper {
+      width: calc(((100vw / 2.222222) - 40px) / 1.5);
+      min-width: calc(((100vw / 2.222222) - 40px) / 1.5);
+      height: calc((100vw / 2.222222) - 40px);
+      min-height: calc((100vw / 2.222222) - 40px);
+    }
+  }
+  ${MovieInfoWrapper} {
+    .background-wrapper {
+      background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
+      height: calc((100vw / 2.222222));
+      background-size: cover;
+      .custom_bg {
+        background-image: none;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 900px) {
@@ -211,7 +287,7 @@ ${NavWrapper} .header-nav-bar-small {
   background-color: rgba(3, 37, 65, 1);
   color: #fff;
   border-radius: 0.3rem;
-  padding:0.8rem1.2rem;
+  padding:0.8rem 1.2rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -282,11 +358,11 @@ body.modal-open {
   width: 100%;
   border-radius:0.8rem;
   border: 0.1rem solid #e3e3e3;
-  box-shadow: 0 0.2rem0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
 }
 .sort-filter-card {
     display: flex;
-    padding:1.4rem1.6rem;
+    padding:1.4rem 1.6rem;
     justify-content: space-between;
     align-items: center;
   }

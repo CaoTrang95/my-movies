@@ -66,8 +66,18 @@ export const CardWrapper = styled.div`
     padding: 0;
     color: rgba(0, 0, 0, 0.6);
   }
+  .overview-content {
+    margin-top: 2rem;
+    opacity: 0.8;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
+  }
 `;
-export default function Movie({ movie }) {
+export default function Movie({ movie, isShowOverview = false }) {
   const navigate = useNavigate();
   return (
     <>
@@ -106,6 +116,9 @@ export default function Movie({ movie }) {
               <Link>{movie?.original_title ?? movie.name}</Link>
             </h2>
             <p>{movie?.release_date ?? movie?.first_air_date}</p>
+            {isShowOverview && (
+              <div className="overview-content">{movie.overview}</div>
+            )}
           </div>
         </CardWrapper>
       )}

@@ -23,8 +23,8 @@ const StyledReleaseDates = styled.div`
   }
   input[type="radio"],
   input[type="checkbox"] {
-    width: 1rem;
-    height: 1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     -webkit-appearance: none;
     appearance: none;
     border-width: 0.1rem;
@@ -47,8 +47,8 @@ const StyledReleaseDates = styled.div`
     background-color: var(--tmbLightBlue);
   }
   input:checked::before {
-    width: 1rem;
-    height: 1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     font-size: 1rem;
     position: absolute;
     top: 50%;

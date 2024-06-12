@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import SortByExpand from "./SortByExpand";
 import { optionsSortList } from "../../mock-datas/optionsList";
@@ -12,6 +12,21 @@ const StyledSort = styled.div`
 `;
 export default function Sort() {
   const [isExpandSort, setIsExpandSort] = useState(true);
+  const mediaScreen = window.matchMedia("(max-width: 44em)");
+  function changState(x) {
+    if (x.matches) {
+      // If media query matches
+      setIsExpandSort(false);
+    } else {
+      setIsExpandSort(true);
+    }
+  }
+  useEffect(() => {
+    mediaScreen.addEventListener("change", function () {
+      changState(mediaScreen);
+    });
+  }, []);
+
   const sortValue = useSelector((state) => state.search.paramsSearch.sortValue);
   const dispatch = useDispatch();
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import styled from "styled-components";
 import ShowMe from "./ShowMe";
@@ -13,6 +13,20 @@ const StyledFilter = styled.div`
 `;
 export default function Filter() {
   const [isExpandFilters, setIsExpandFilters] = useState(true);
+  const mediaScreen = window.matchMedia("(max-width: 44em)");
+  function changState(x) {
+    if (x.matches) {
+      // If media query matches
+      setIsExpandFilters(false);
+    } else {
+      setIsExpandFilters(true);
+    }
+  }
+  useEffect(() => {
+    mediaScreen.addEventListener("change", function () {
+      changState(mediaScreen);
+    });
+  }, []);
   return (
     <StyledFilter className="form-field">
       <div
@@ -26,7 +40,7 @@ export default function Filter() {
       </div>
       {isExpandFilters && <ShowMe />}
       {isExpandFilters && <ReleaseDates />}
-      <Genres />
+      {isExpandFilters && <Genres />}
     </StyledFilter>
   );
 }
