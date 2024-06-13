@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { FaArrowAltCircleRight, FaPlay } from "react-icons/fa";
 import Modal from "../../ui/Modal";
 import YoutubeFrame from "../home/youtube-frame/YoutubeFrame";
-const MediaMenu = styled.div`
+export const MediaMenu = styled.div`
   width: 100%;
   border-top: 0.1rem solid #d7d7d7;
   margin-top: 3rem;
@@ -23,8 +23,6 @@ const MediaMenu = styled.div`
     color: var(--tmbLightBlue);
     font-weight: 600;
     font-size: 1.4rem;
-    position: absolute;
-    right: 2rem;
   }
   .active {
     /* box-shadow: 0px -0.3rem 0px 0px #000 inset; */
@@ -167,14 +165,23 @@ export default function Media() {
               {item.number && <span className="number"> {item.number}</span>}
             </li>
           ))}
+          {id === "video" && videos.length > 6 && (
+            <li>
+              <Link>View All {viewAll}</Link>
+            </li>
+          )}
+          {id === "poster" && posters.length > 6 && (
+            <li>
+              {" "}
+              <Link>View All {viewAll}</Link>
+            </li>
+          )}
+          {id === "backdrop" && backdrops.length > 6 && (
+            <li>
+              <Link>View All {viewAll}</Link>
+            </li>
+          )}
         </ul>
-        {id === "video" && videos.length > 6 && <Link>View All {viewAll}</Link>}
-        {id === "poster" && posters.length > 6 && (
-          <Link>View All {viewAll}</Link>
-        )}
-        {id === "backdrop" && backdrops.length > 6 && (
-          <Link>View All {viewAll}</Link>
-        )}
       </MediaMenu>
       <Content>
         <div className="list-contents scroll">

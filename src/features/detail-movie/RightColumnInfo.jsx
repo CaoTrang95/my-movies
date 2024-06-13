@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-const RightColumnInfoStyled = styled.div`
+export const RightColumnInfoStyled = styled.div`
   min-width: 26rem;
   width: 26rem;
   display: flex;

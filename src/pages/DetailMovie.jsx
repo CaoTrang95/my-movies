@@ -35,7 +35,7 @@ const MenuMovie = styled.div`
     margin-right: 0;
   }
 `;
-const OtherContentWrapper = styled.div`
+export const OtherContentWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: #fff;
@@ -50,26 +50,28 @@ export default function DetailMovie() {
   return (
     <>
       <MenuMovie className="MenuMovie">
-        <ul>
-          <MyToolTip
-            name="Overview"
-            list={tooltipOverview}
-            showIcon={true}
-            selected={true}
-          />
-          <MyToolTip
-            name="Media"
-            list={tooltipMedia}
-            showIcon={true}
-            showNumber={true}
-          />
-          <MyToolTip name="Fandom" list={tooltipFandom} showIcon={true} />
-          <MyToolTip name="Share" list={tooltipShare} showIcon={true} />
-        </ul>
+        {!isLoading && (
+          <ul>
+            <MyToolTip
+              name="Overview"
+              list={tooltipOverview}
+              showIcon={true}
+              selected={true}
+            />
+            <MyToolTip
+              name="Media"
+              list={tooltipMedia}
+              showIcon={true}
+              showNumber={true}
+            />
+            <MyToolTip name="Fandom" list={tooltipFandom} showIcon={true} />
+            <MyToolTip name="Share" list={tooltipShare} showIcon={true} />
+          </ul>
+        )}
       </MenuMovie>
       <DetailInfoMovie />
       <OtherContentWrapper>
-        <div className="content-wrapper">
+        <div className="content-wrapper detail-movie">
           {!isLoading && <TopBilledCast />}
           {!isLoading && <RightColumnInfo />}
         </div>

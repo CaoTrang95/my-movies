@@ -24,8 +24,8 @@ const StyledToggle = styled.button`
     cursor: pointer;
   }
   & svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
     color: #fff;
   }
 `;

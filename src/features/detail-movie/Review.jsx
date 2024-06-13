@@ -97,7 +97,7 @@ export default function Social() {
   const colorAvatar = randomColor();
   const date = new Date(reviews[0]?.created_at);
   const createAt = date.toDateString();
-  let contents = reviews[5]?.content.split(/\r\n/);
+  let contents = reviews[0]?.content.split(/\r\n/);
   contents = contents?.filter((item) => item !== "");
   if (contents?.length > 3) {
     contents = contents.slice(0, 4);

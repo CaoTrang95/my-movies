@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetailMovieAsync } from "./detailMovieSlice";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
+import { IoStar } from "react-icons/io5";
 
 export const MovieInfoWrapper = styled.div`
   width: 100%;
-  background-image: url(${(props) => props.$image});
-  background-position: left calc((50vw - 17rem) - 34rem) top;
-  background-size: auto;
-  background-repeat: no-repeat;
+  .background-image {
+    background-image: url(${(props) => props.$image});
+    background-position: left calc((50vw - 17rem) - 34rem) top;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
   .custom_bg {
     width: 100%;
     height: 100%;
@@ -35,10 +38,13 @@ export const MovieInfoContent = styled.div`
     height: 45rem;
     overflow: hidden;
     border-radius: 0.8rem;
-    position: relative;
-    top: 0;
-    left: 0;
+    /* position: relative; */
   }
+  .poster {
+    width: 100%;
+    height: 100%;
+  }
+
   .poster-wrapper:hover > .zoom {
     visibility: visible;
     opacity: 1;
@@ -81,7 +87,7 @@ export const MovieInfoContent = styled.div`
     height: 100%;
   }
   .poster-info {
-    padding-left: 4rem;
+    padding-left: var(--padding-left-right);
     display: flex;
     flex-direction: column;
   }
@@ -162,14 +168,20 @@ export const MovieInfoContent = styled.div`
     stroke-linecap: round;
   }
   .outer-ring svg circle:last-of-type {
-    stroke-dasharray: 17.5rem;
-    stroke-dashoffset: calc(17.5rem - (17.5rem * 73) / 100);
+    stroke-dasharray: var(--stroke-dasharray);
+    stroke-dashoffset: calc(
+      var(--stroke-dasharray) -
+        (var(--stroke-dasharray) * ${(props) => props.$percent * 10}) / 100
+    );
     stroke: ${(props) =>
       props.$percent >= 7
         ? "#21d07a"
         : props.$percent >= 4
         ? "#d2d531"
         : "#db2360"};
+  }
+  .pipe {
+    display: none;
   }
   .outer-ring .number {
     position: absolute;
@@ -270,7 +282,8 @@ export const MovieInfoContent = styled.div`
       align-items: center;
       justify-content: center;
     }
-    .play {
+    .play,
+    .icon-star {
       display: flex;
       gap: 0.6rem;
       border: 0;
@@ -281,6 +294,9 @@ export const MovieInfoContent = styled.div`
       will-change: opacity;
       transition: linear 0.1s;
       color: #fff;
+    }
+    .icon-star {
+      display: none;
     }
     .play a {
       color: #fff;
@@ -346,16 +362,18 @@ export default function DetailInfoMovie() {
         <MovieInfoWrapper
           $image={`https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie?.backdrop_path}`}
         >
-          <div className="background-wrapper">
+          <div className="background-image">
             <div className="custom_bg">
               {!isLoading && (
                 <MovieInfoContent $percent={movie.vote_average}>
                   <div className="poster-wrapper">
-                    <img
-                      alt="movie"
-                      src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path}`}
-                      srcSet={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path} 1x, https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path} 2x`}
-                    />
+                    <div className="poster">
+                      <img
+                        alt="movie"
+                        src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path}`}
+                        srcSet={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie?.poster_path} 1x, https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path} 2x`}
+                      />
+                    </div>
                     <div className="zoom">
                       <Link>
                         <span className="expand"></span>Expand
@@ -395,7 +413,7 @@ export default function DetailInfoMovie() {
                         </div>
                       </div>
                       <div className="user-score">
-                        User <br></br>Score
+                        User <br className="break-line"></br>Score
                       </div>
                       <div className="reactions">
                         <ul>
@@ -419,6 +437,7 @@ export default function DetailInfoMovie() {
                           </li>
                         </ul>
                       </div>
+                      <div className="pipe"></div>
                       <div className="vibes">
                         What's your <span className="vibe">Vibe</span>?
                       </div>
@@ -446,6 +465,9 @@ export default function DetailInfoMovie() {
                         <li className="play">
                           <FaPlay />
                           <Link>Play Trailer</Link>
+                        </li>
+                        <li className="icon-star">
+                          <IoStar />
                         </li>
                       </ul>
                     </div>

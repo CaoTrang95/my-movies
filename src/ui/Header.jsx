@@ -6,6 +6,8 @@ import { IoSearchSharp } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
+import { MovieInfoWrapper } from "../features/detail-movie/DetailInfoMovie";
+import { TopBilledCastWrapper } from "../features/detail-movie/TopBilledCast";
 
 const StyledHeader = styled.header`
   display: flex;

@@ -59,10 +59,10 @@ const MovieVideoImage = styled.div`
   }
 
   .play-icon {
-    width: 1.6rem;
-    min-width: 1.6rem;
-    min-height: 1.6rem;
-    height: 1.6rem;
+    width: 6.4rem;
+    min-width: 6.4rem;
+    min-height: 6.4rem;
+    height: 6.4rem;
     background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg");
     background-repeat: no-repeat;
     filter: invert(1);

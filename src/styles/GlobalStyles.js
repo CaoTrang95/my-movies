@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { NavWrapper } from "../ui/Header";
-import Footer, { FooterWrapper } from "../ui/Footer";
+import { FooterWrapper } from "../ui/Footer";
 import { WrapperLeaderBoard } from "../features/home/leaderboard/LeaderBoardItem";
 import { TabHeader } from "../ui/Tab";
 import { CardWrapper } from "../features/home/Movie";
@@ -8,6 +8,10 @@ import {
   MovieInfoContent,
   MovieInfoWrapper,
 } from "../features/detail-movie/DetailInfoMovie";
+import { MediaMenu } from "../features/detail-movie/Media";
+import { TopBilledCastWrapper } from "../features/detail-movie/TopBilledCast";
+import { OtherContentWrapper } from "../pages/DetailMovie";
+import { RightColumnInfoStyled } from "../features/detail-movie/RightColumnInfo";
 const GlobalStyles = createGlobalStyle`
 @font-face {
   font-family: 'Source Sans Pro';
@@ -77,7 +81,9 @@ const GlobalStyles = createGlobalStyle`
 }
 
 html {
-  --numberOfDiscoverColumns: 1;
+  font-size: 62.5%;
+  --numberOfDiscoverColumns: 5;
+  --stroke-dasharray: 17.5rem;
   --discoverColumnPadding: 3rem;
   --maxPrimaryPageWidth: 1400px;
   --primaryColor: rgba(10.5, 31.5, 31.5, 1);
@@ -85,7 +91,6 @@ html {
   --padding-left-right: 4rem;
   --height-nav-bar: 5rem;
   overflow-x: hidden;
-  font-size: 62.5%;
 }
 ${NavWrapper} .header-nav-bar-small {
     display: none;
@@ -94,28 +99,65 @@ ${NavWrapper} .header-nav-bar-small {
   display: flex;
 }
 
-@media only screen and (max-width: 87em) {
-  html {
-      --maxPrimaryPageWidth: 130rem
-  }
-}
-@media only screen and (max-width: 53em) {html{font-size: 50%;}}
-@media only screen and (max-width: 44em) {
+/* BELOW 1344px (Smaller desktops) */
+@media only screen and (max-width: 84em) {
     html {
+      --maxPrimaryPageWidth: 130rem;
+      --numberOfDiscoverColumns: 4;
+    }
+  }
+  @media only screen and (max-width: 67em) {
+    html {
+      ${MediaMenu} {
+        a,
+        li {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  } 
+  //BELOW 864px
+  @media only screen and (max-width: 54em) {
+    html {
+      font-size: 56.25%;
+      --numberOfDiscoverColumns: 3;
+      --stroke-dasharray: 15rem;
+    }
+    ${NavWrapper} {
+      font-size: 1.2rem;
+    }
+    ${MovieInfoContent} {
+      .outer-ring {
+        width: 6rem;
+        height: 6rem;
+        padding: 0.2rem;
+        circle {
+          cx: 2.8rem;
+          cy: 2.8rem;
+          r: 2.4rem;
+        }
+        .number h3 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  } 
+  //BELOW 704px
+  @media only screen and (max-width: 44em) {
+    html {
+      font-size: 54%;
+      --stroke-dasharray: 12.5rem;
       --numberOfDiscoverColumns:2;
       --padding-top-bottom: 2rem;
       --padding-left-right: 2rem;
       --height-nav-bar: 4.4rem;
-      font-size: 50%;
     }
     ${NavWrapper} .header-nav-bar-small {
       display: flex;
     }
-
     .NavItem {
       display: none;
     }
-
     ${FooterWrapper} nav {
       flex-direction: column;
       row-gap: 3rem;
@@ -186,43 +228,124 @@ ${NavWrapper} .header-nav-bar-small {
   }
   ${MovieInfoContent} {
     flex-direction: column;
+    gap: 5rem;
     .poster-wrapper {
       width: calc(((100vw / 2.222222) - 40px) / 1.5);
       min-width: calc(((100vw / 2.222222) - 40px) / 1.5);
       height: calc((100vw / 2.222222) - 40px);
       min-height: calc((100vw / 2.222222) - 40px);
     }
-  }
-  ${MovieInfoWrapper} {
-    .background-wrapper {
-      background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
-      height: calc((100vw / 2.222222));
-      background-size: cover;
-      .custom_bg {
-        background-image: none;
+    .poster {
+      width: 100%;
+      height: 100%;
+    }
+    .outer-ring {
+      width: 5rem;
+      height: 5rem;
+      padding: 0.2rem;
+      circle {
+        cx: 2.3rem;
+        cy: 2.3rem;
+        r: 2rem;
+      }
+      .number h3 {
+        font-size: 1.2rem;
       }
     }
+    .poster-info {
+      padding-left: 0;
+      .fact {
+        justify-content: center;
+      }
+      .ring-line {
+        justify-content: center;
+        gap: 1.6rem;
+      }
+      .break-line {
+        display: none;
+      }
+      .pipe {
+        width: 1px;
+        height: 24px;
+        display: inline-block;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        margin-top: 4px;
+        margin-left: 6rem;
+        margin-right: 6rem;
+      }
+      .actions {
+        position: fixed;
+        z-index: 10000;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(3, 37, 65, 0.8);
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        backdrop-filter: blur(20px);
+        ul {
+          margin: 0;
+          width: 100%;
+        }
+        li {
+          background-color: transparent;
+          width: 25%;
+        }
+        .icon-star {
+          display: flex;
+        }
+        .play {
+          display: none;
+        }
+      }
+      .tagline {
+        font-size: 1.4rem;
+        margin-top: 2rem;
+      }
+      h3 {
+        font-size: 1.8rem;
+      }
+      .overview {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        letter-spacing: 0.4px;
+      }
+    }
+    .crew-item .crew-name {
+      font-size: 1.4rem;
+    }
   }
-}
-
-@media only screen and (min-width: 900px) {
-    html {
-        --numberOfDiscoverColumns:3
+  ${MovieInfoWrapper} {
+    .background-image{
+      background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
+      background-size: 100% calc((100vw / 2.222222));
+      position: relative;
+      background-color: rgb(32, 32, 32);
     }
-}
-
-@media only screen and (min-width: 104rem) {
-    html {
-        --numberOfDiscoverColumns:4
+    .custom_bg {
+      background-image: linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) 20%, rgba(31.5, 31.5, 31.5, 0) 50%);
+      h2{
+        font-size: calc(.5em + 3vw);
+        text-align: center;}
+      }
     }
-}
-
-@media only screen and (min-width: 124rem) {
-    html {
-        --numberOfDiscoverColumns:5
+    ${TopBilledCastWrapper}{
+      width: 100%;
     }
-}
-
+    ${OtherContentWrapper}{
+      .detail-movie{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    ${RightColumnInfoStyled}{
+      margin-top: 4rem;
+    }
+  }
+  //BELOW 560px
+  @media only screen and (max-width: 35em) {
+    html{font-size: 50%;}
+  }
 :root{
   & {
   --tmdbDarkBlue:rgba(3, 37, 65, 1);

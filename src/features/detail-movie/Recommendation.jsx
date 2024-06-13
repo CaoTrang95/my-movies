@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 const StyledRecommend = styled.div`
   width: 100%;
-  height: 30rem;
   border-top: 0.1rem solid #d7d7d7;
   margin-top: 3rem;
   padding-top: 2rem;

@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 import Social from "./Review";
 import Media from "./Media";
 import Recommendation from "./Recommendation";
-const TopBilledCastWrapper = styled.div`
+export const TopBilledCastWrapper = styled.div`
   width: calc(100vw - 8rem - 26.8rem);
   max-width: calc(var(--maxPrimaryPageWidth) - 8rem - 26.8rem);
   padding-right: 3rem;
@@ -35,9 +35,8 @@ const TopBilledCastWrapper = styled.div`
     overflow-x: scroll;
     overflow-y: hidden;
     width: 100%;
-    height: 100%;
   }
-  .scroll::after {
+  .list-casts.scroll::after {
     transition: linear 0.3s;
     opacity: 1;
     content: "";
@@ -72,7 +71,7 @@ export default function TopBilledCast() {
   const casts = useSelector((state) => state.detailMovie.casts);
   const castsShow = casts.slice(0, 9);
   return (
-    <TopBilledCastWrapper>
+    <TopBilledCastWrapper className="TopBilledCastWrapper">
       <h3>Top Billed Cast</h3>
       <div className="list-casts scroll">
         {castsShow.map((cast) => (
