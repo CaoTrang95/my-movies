@@ -2,7 +2,10 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const SocialMenu = styled.div`
+import { StyledListMovies } from "../movie/ListMovies";
+import { CardWrapper } from "../home/Movie";
+import { Content } from "./Media";
+export const SocialMenu = styled.div`
   width: 100%;
   border-top: 0.1rem solid #d7d7d7;
   padding-top: 3rem;
@@ -17,11 +20,15 @@ const SocialMenu = styled.div`
     margin: 0;
     padding-bottom: 0.5rem;
   }
+  .social-reviews {
+    display: flex;
+    gap: 3rem;
+  }
   .active {
     border-bottom: 0.4rem solid #000;
   }
 `;
-const Review = styled.div`
+export const Review = styled.div`
   width: 100%;
   border: 0.1rem solid #d7d7d7;
   border-radius: 0.8rem;
@@ -107,8 +114,10 @@ export default function Social() {
     <>
       <SocialMenu>
         <h3>Social</h3>
-        <h4 className="active"> Reviews {reviews.length}</h4>
-        <h4>Discussions</h4>
+        <div className="social-reviews">
+          <h4 className="active"> Reviews {reviews.length}</h4>
+          <h4>Discussions</h4>
+        </div>
       </SocialMenu>
       {reviews.length === 0 ? (
         <p>

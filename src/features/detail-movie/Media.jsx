@@ -46,7 +46,7 @@ export const MediaMenu = styled.div`
     font-weight: 600;
   }
 `;
-const Content = styled.div`
+export const Content = styled.div`
   width: 100%;
   .list-contents {
     overflow-x: scroll;

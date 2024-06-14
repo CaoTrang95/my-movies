@@ -23,6 +23,7 @@ export default function Filter() {
     }
   }
   useEffect(() => {
+    changState(mediaScreen);
     mediaScreen.addEventListener("change", function () {
       changState(mediaScreen);
     });

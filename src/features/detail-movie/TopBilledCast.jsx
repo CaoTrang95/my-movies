@@ -32,6 +32,7 @@ export const TopBilledCastWrapper = styled.div`
   }
   .list-casts {
     display: flex;
+    position: relative;
     overflow-x: scroll;
     overflow-y: hidden;
     width: 100%;

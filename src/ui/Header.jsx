@@ -29,6 +29,7 @@ const StyledHeader = styled.header`
     z-index: 9999;
     background: rgba(3, 37, 65, 0.9);
     backdrop-filter: blur(2rem);
+    -webkit-backdrop-filter: blur(2rem);
     position: absolute;
     top: 6.4rem;
     left: 0;
@@ -102,6 +103,10 @@ const NavItem = styled.div`
     width: 15.4rem;
     margin-right: 3rem;
     height: 2rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
   ul {
     height: 100%;

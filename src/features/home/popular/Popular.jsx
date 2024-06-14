@@ -61,7 +61,7 @@ export default function Popular() {
         {isErrorPopular && (
           <p className="error">
             This panel didn't return any results. Try
-            <Link to="/">refreshing</Link> it.
+            <Link to="/"> refreshing</Link> it.
           </p>
         )}
 

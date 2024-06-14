@@ -67,7 +67,7 @@ export const CardWrapper = styled.div`
     color: rgba(0, 0, 0, 0.6);
   }
   .overview-content {
-    margin-top: 2rem;
+    margin-top: 1.4rem;
     opacity: 0.8;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;

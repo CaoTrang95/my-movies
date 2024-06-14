@@ -21,7 +21,8 @@ export const FooterWrapper = styled.div`
     margin-right: 4rem;
   }
   .join {
-    /* width: 14.6rem; */
+    width: 13rem;
+    height: 9.4rem;
     position: relative;
     top: -3.2rem;
     right: 0;
@@ -32,8 +33,8 @@ export const FooterWrapper = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    width: 13rem;
-    height: 9.4rem;
+    width: 100%;
+    height: 100%;
   }
   a {
     display: inline-block;

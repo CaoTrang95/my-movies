@@ -10,7 +10,7 @@ import {
 import TopBilledCast from "../features/detail-movie/TopBilledCast";
 import RightColumnInfo from "../features/detail-movie/RightColumnInfo";
 import { useSelector } from "react-redux";
-const MenuMovie = styled.div`
+export const MenuMovie = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -23,10 +23,10 @@ const MenuMovie = styled.div`
     align-items: center;
     display: flex;
     list-style-type: none;
+    gap: 4.8rem;
   }
   li {
     cursor: pointer;
-    margin-right: 4.8rem;
   }
   li a {
     cursor: pointer;
@@ -76,7 +76,6 @@ export default function DetailMovie() {
           {!isLoading && <RightColumnInfo />}
         </div>
       </OtherContentWrapper>
-      ;
     </>
   );
 }

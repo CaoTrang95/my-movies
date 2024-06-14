@@ -5,7 +5,7 @@ import { getListMoviesSearchAsync, setClickedLoadMore } from "./searchSlice";
 import styled from "styled-components";
 import { useCallback, useRef } from "react";
 import Spinner from "../../ui/Spinner";
-const StyledListMovies = styled.div`
+export const StyledListMovies = styled.div`
   flex: 1;
   display: flex;
   margin-left: 3rem;

@@ -22,6 +22,7 @@ export default function Sort() {
     }
   }
   useEffect(() => {
+    changState(mediaScreen);
     mediaScreen.addEventListener("change", function () {
       changState(mediaScreen);
     });

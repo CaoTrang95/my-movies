@@ -32,17 +32,19 @@ export const MovieInfoContent = styled.div`
   padding: var(--padding-top-bottom) var(--padding-left-right);
   display: flex;
   color: #fff;
+  position: relative;
   .poster-wrapper {
     width: 30rem;
     min-width: 30rem;
     height: 45rem;
     overflow: hidden;
     border-radius: 0.8rem;
-    /* position: relative; */
+    position: relative;
   }
   .poster {
     width: 100%;
     height: 100%;
+    position: relative;
   }
 
   .poster-wrapper:hover > .zoom {
@@ -167,7 +169,7 @@ export const MovieInfoContent = styled.div`
     stroke-width: 4;
     stroke-linecap: round;
   }
-  .outer-ring svg circle:last-of-type {
+  .outer-ring svg circle:last-child {
     stroke-dasharray: var(--stroke-dasharray);
     stroke-dashoffset: calc(
       var(--stroke-dasharray) -
@@ -252,6 +254,7 @@ export const MovieInfoContent = styled.div`
     font-weight: 600;
     transform: scale(1);
     transition: transform 0.2s;
+    white-space: nowrap;
   }
   .vibes:hover {
     transform: scale(1.05);
